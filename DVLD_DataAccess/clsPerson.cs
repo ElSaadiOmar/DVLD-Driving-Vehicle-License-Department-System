@@ -366,7 +366,7 @@ namespace DVLD_DataAccess
                             ,[Phone]
                             ,[Email]
                             ,[NationalityCountryID]
-                            ,[ImagePath]
+                            
                             FROM [DVLD].[dbo].[People] order by PersonID";
             using(SqlConnection Connection = new SqlConnection(clsDataSettings.ConnectionString))
             using (SqlCommand Command = new SqlCommand(Query,Connection))
