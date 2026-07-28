@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DVLD_Buisness;
+using TheArtOfDevHtmlRenderer.Adapters;
 
 namespace DVLD.People.Controls
 {
@@ -31,7 +32,19 @@ namespace DVLD.People.Controls
                 lblDateOfBirth.Text = Person.DateOfBirth.ToString();
                 lblAddress.Text = Person.Address.ToString();
                 lblPhone.Text = Person.Phone;
-                lblGender.Text = Person.Gender;
+                switch (Person.Gender)
+                {
+                    case clsPerson.enGender.Male:
+                        {
+                            lblGender.Text = "Male";
+                            break;
+                        }
+                    case clsPerson.enGender.Female:
+                        {
+                            lblGender.Text = "Female";
+                            break;
+                        }
+                }
                 if (!string.IsNullOrEmpty(Person.ImagePath))
                 {
                     // pictureBox1.ImageLocation = Person.ImagePath;

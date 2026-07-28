@@ -13,7 +13,7 @@ namespace DVLD_DataAccess
     {
         public static bool GetPersonInfoByID(int ID,ref string NationalNo,
             ref string FirstName,ref string SecondName ,ref string ThirdName,ref string LastName,
-            ref DateTime DateOfBirth,ref string Gender,ref string Address, ref string Email,
+            ref DateTime DateOfBirth,ref int Gender,ref string Address, ref string Email,
             ref string Phone,ref int Nationality, ref string ImagePath)
         {
             string Query = @"SELECT [PersonID]
@@ -23,12 +23,7 @@ namespace DVLD_DataAccess
                             ,[ThirdName]
                             ,[LastName]
                             ,[DateOfBirth]
-	                        ,Gender =
-		                            CASE
-		                            	WHEN Gender=0 THEN 'Male'
-		                            	 WHEN Gender=1 THEN 'Female'
-		                            	ELSE 'Unknown'
-		                            END
+	                        ,[Gender]
                             ,[Address]
                             ,[Phone]
                             ,[Email]
@@ -53,7 +48,7 @@ namespace DVLD_DataAccess
                             ThirdName = Reader["ThirdName"] != DBNull.Value ? (string)Reader["ThirdName"] : "";
                             LastName = Reader["LastName"] != DBNull.Value ? (string)Reader["LastName"] : "";
                             DateOfBirth = Reader["DateOfBirth"] != DBNull.Value ? (DateTime)Reader["DateOfBirth"] : DateTime.MinValue;
-                            Gender = Reader["Gender"] != DBNull.Value ? (string)Reader["Gender"] : "";
+                            Gender = Reader["Gender"] != DBNull.Value ? (int)Reader["Gender"] : 0;
                             Address = Reader["Address"] != DBNull.Value ? (string)Reader["Address"] : "";
                             Phone = Reader["Phone"] != DBNull.Value ? (string)Reader["Phone"] : "";
                             Email = Reader["Email"] != DBNull.Value ? (string)Reader["Email"] : "";
@@ -77,7 +72,7 @@ namespace DVLD_DataAccess
         }
         public static bool GetPersonInfoByNationalNo(string NationalNo,ref int ID,
            ref string FirstName, ref string SecondName, ref string ThirdName, ref string LastName,
-           ref DateTime DateOfBirth, ref string Gender, ref string Address, ref string Email,
+           ref DateTime DateOfBirth, ref int Gender, ref string Address, ref string Email,
            ref string Phone, ref int Nationality, ref string ImagePath)
         {
             string Query = @"SELECT [PersonID]
@@ -87,12 +82,7 @@ namespace DVLD_DataAccess
                             ,[ThirdName]
                             ,[LastName]
                             ,[DateOfBirth]
-	                        ,Gender =
-		                            CASE
-		                            	WHEN Gender=0 THEN 'Male'
-		                            	 WHEN Gender=1 THEN 'Female'
-		                            	ELSE 'Unknown'
-		                            END
+	                        ,[Gender]
                             ,[Address]
                             ,[Phone]
                             ,[Email]
@@ -119,7 +109,7 @@ namespace DVLD_DataAccess
                             ThirdName = Reader["ThirdName"] != DBNull.Value ? (string)Reader["ThirdName"] : "";
                             LastName = Reader["LastName"] != DBNull.Value ? (string)Reader["LastName"] : "";
                             DateOfBirth = Reader["DateOfBirth"] != DBNull.Value ? (DateTime)Reader["DateOfBirth"] : DateTime.MinValue;
-                            Gender = Reader["Gender"] != DBNull.Value ? (string)Reader["Gender"] : "";
+                            Gender = Reader["Gender"] != DBNull.Value ? (int)Reader["Gender"] : 0;
                             Address = Reader["Address"] != DBNull.Value ? (string)Reader["Address"] : "";
                             Phone = Reader["Phone"] != DBNull.Value ? (string)Reader["Phone"] : "";
                             Email = Reader["Email"] != DBNull.Value ? (string)Reader["Email"] : "";
@@ -145,7 +135,7 @@ namespace DVLD_DataAccess
 
         public static int AddNewPerson( string NationalNo,
              string FirstName,  string SecondName,  string ThirdName,  string LastName,
-             DateTime DateOfBirth,  string Gender,  string Address,  string Email,
+             DateTime DateOfBirth,  int Gender,  string Address,  string Email,
              string Phone, int NationalityCountryID,  string ImagePath)
         {
 
@@ -187,7 +177,7 @@ namespace DVLD_DataAccess
                 Command.Parameters.AddWithValue("@ThirdName", (object)ThirdName ?? DBNull.Value);
                 Command.Parameters.AddWithValue("@LastName", LastName);
                 Command.Parameters.AddWithValue("@DateOfBirth", DateOfBirth != DateTime.MinValue ? (object)DateOfBirth : DBNull.Value);
-                Command.Parameters.AddWithValue("@Gender",Gender.Equals("male", StringComparison.OrdinalIgnoreCase) ? 0 : 1);
+                Command.Parameters.AddWithValue("@Gender",Gender);
                 Command.Parameters.AddWithValue("@Address", Address );
                 Command.Parameters.AddWithValue("@Phone", Phone );
                 Command.Parameters.AddWithValue("@Email", (object)Email ?? DBNull.Value);
@@ -215,7 +205,7 @@ namespace DVLD_DataAccess
 
         public static bool UpdatePerson(int PersonID,string NationalNo,
              string FirstName, string SecondName, string ThirdName, string LastName,
-             DateTime DateOfBirth, string Gender, string Address, string Email,
+             DateTime DateOfBirth, int Gender, string Address, string Email,
              string Phone, int NationalityCountryID, string ImagePath)
         {
             string Query = @"UPDATE People
@@ -242,7 +232,7 @@ namespace DVLD_DataAccess
                 Command.Parameters.AddWithValue("@ThirdName", (object)ThirdName ?? DBNull.Value);
                 Command.Parameters.AddWithValue("@LastName", LastName);
                 Command.Parameters.AddWithValue("@DateOfBirth", DateOfBirth != DateTime.MinValue ? (object)DateOfBirth : DBNull.Value);
-                Command.Parameters.AddWithValue("@Gender", Gender.Equals("male", StringComparison.OrdinalIgnoreCase) ? 0 : 1);
+                Command.Parameters.AddWithValue("@Gender", Gender);
                 Command.Parameters.AddWithValue("@Address", Address);
                 Command.Parameters.AddWithValue("@Phone", Phone);
                 Command.Parameters.AddWithValue("@Email", (object)Email ?? DBNull.Value);

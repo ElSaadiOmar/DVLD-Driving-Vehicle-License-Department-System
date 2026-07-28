@@ -9,7 +9,8 @@ namespace DVLD_Buisness
 {
     public class clsPerson
     {
-        public enum enMode { AddNew = 0, Update = 1 };
+        public enum enMode { AddNew = 0, Update = 1 }; 
+        public enum enGender { Male = 0, Female = 1 };
 
         public enMode Mode = enMode.AddNew;
         public int PersonID { get; set; }
@@ -19,7 +20,7 @@ namespace DVLD_Buisness
         public string ThirdName { get; set; }
         public string LastName { get; set; }
         public DateTime DateOfBirth { get; set; }
-        public string Gender { get; set; }
+        public enGender Gender { get; set; }
         public string Address { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }
@@ -36,7 +37,7 @@ namespace DVLD_Buisness
             ThirdName = "";
             LastName = "";
             DateOfBirth = DateTime.Now;
-            Gender = "";
+            Gender = enGender.Male;
             Address = "";
             Email = "";
             Phone = "";
@@ -44,7 +45,7 @@ namespace DVLD_Buisness
             ImagePath = "";
         }
         private clsPerson(int PersonID, string NationalNo, string FirstName, string SecondName,
-            string ThirdName, string LastName, DateTime DateOfBirth, string Gender,
+            string ThirdName, string LastName, DateTime DateOfBirth, enGender Gender,
             string Address, string Email, string Phone, int NationalityCountryID, string ImagePath)
         {
             this.PersonID = PersonID;
@@ -71,7 +72,7 @@ namespace DVLD_Buisness
             string ThirdName = "";
             string LastName = "";
             DateTime DateOfBirth = DateTime.Now;
-            string Gender = "";
+            int Gender = (int)enGender.Male;
             string Address = "";
             string Email = "";
             string Phone = "";
@@ -83,7 +84,7 @@ namespace DVLD_Buisness
                 ref Email, ref Phone, ref NationalityCountryID, ref ImagePath))
             {
                 return new clsPerson(PersonID, NationalNo, FirstName, SecondName, ThirdName,
-                    LastName, DateOfBirth, Gender, Address, Email, Phone, NationalityCountryID, ImagePath);
+                    LastName, DateOfBirth, (enGender)Gender, Address, Email, Phone, NationalityCountryID, ImagePath);
             }
             else
                 return null;
@@ -96,7 +97,7 @@ namespace DVLD_Buisness
             string ThirdName = "";
             string LastName = "";
             DateTime DateOfBirth = DateTime.Now;
-            string Gender = "";
+            int Gender = (int)enGender.Male;
             string Address = "";
             string Email = "";
             string Phone = "";
@@ -108,7 +109,7 @@ namespace DVLD_Buisness
                 ref Email, ref Phone, ref NationalityCountryID, ref ImagePath))
             {
                 return new clsPerson(PersonID, NationalNo, FirstName, SecondName, ThirdName,
-                    LastName, DateOfBirth, Gender, Address, Email, Phone, NationalityCountryID, ImagePath);
+                    LastName, DateOfBirth, (enGender)Gender, Address, Email, Phone, NationalityCountryID, ImagePath);
             }
             else
                 return null;
@@ -117,14 +118,14 @@ namespace DVLD_Buisness
         private bool _AddNewPerson()
         {
             PersonID = clsPersonData.AddNewPerson(NationalNo, FirstName, SecondName, ThirdName, LastName, DateOfBirth,
-                Gender, Address, Email, Phone, NationalityCountryID, ImagePath);
+                (int)Gender, Address, Email, Phone, NationalityCountryID, ImagePath);
             return PersonID != -1;
 
         }
         private bool _UpdatePerson()
         {
             return clsPersonData.UpdatePerson(PersonID, NationalNo, FirstName, SecondName, ThirdName, LastName, DateOfBirth,
-                Gender, Address, Email, Phone, NationalityCountryID, ImagePath);
+                (int)Gender, Address, Email, Phone, NationalityCountryID, ImagePath);
         }
 
         public bool Save()

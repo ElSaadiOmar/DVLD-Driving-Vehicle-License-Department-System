@@ -58,10 +58,8 @@ namespace DVLD.People
                 cbCountry.SelectedValue = _Person.NationalityCountryID;
             }
             _Person.NationalityCountryID = (int)cbCountry.SelectedValue;
-
-            if(_Person.Gender =="Female") rbFemale.Checked = true;
+            if (_Person.Gender == clsPerson.enGender.Female) rbFemale.Checked = true;
             else rbMale.Checked = true;
-            
         }
            
         private void _ApplyTheme()
@@ -223,14 +221,20 @@ namespace DVLD.People
             txtPhone.Text = Person.Phone;
             dtDateOfBirth.Text = Person.DateOfBirth.ToString();
             cbCountry.SelectedValue = Person.NationalityCountryID;
-            if (Person.Gender == "Male")
+            switch (Person.Gender) 
             {
-                rbMale.Checked = true; 
+                case clsPerson.enGender.Male:
+                {
+                    rbMale.Checked = true;
+                    break;
+                }
+                case clsPerson.enGender.Female:
+                {
+                    rbFemale.Checked = true;
+                    break;
+                }
             }
-            else
-            {
-                rbFemale.Checked = true;
-            }
+            
             txtAddress.Text = Person.Address;
             if (string.IsNullOrEmpty(Person.ImagePath))
             {
@@ -300,18 +304,15 @@ namespace DVLD.People
         {
             if (rbMale.Checked)
             {
-                _Person.Gender = "Male";
+                _Person.Gender = clsPerson.enGender.Male;
             }
             else if (rbFemale.Checked)
             {
                 
-                _Person.Gender = "Female";
+                _Person.Gender = clsPerson.enGender.Female;
             }
         }
 
-        //Fix bug of Country and Date of Birth are never saved back to the object
-
-        //Add two event handler for dtDateOfBirth and cbCountry to
         private void dtDateOfBirth_ValueChanged(object sender, EventArgs e)
         {
             _Person.DateOfBirth = dtDateOfBirth.Value;
