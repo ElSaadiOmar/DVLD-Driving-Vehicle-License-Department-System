@@ -281,6 +281,7 @@
             this.dtDateOfBirth.Size = new System.Drawing.Size(214, 28);
             this.dtDateOfBirth.TabIndex = 5;
             this.dtDateOfBirth.Value = new System.DateTime(2026, 7, 21, 0, 0, 0, 0);
+            this.dtDateOfBirth.ValueChanged += new System.EventHandler(this.dtDateOfBirth_ValueChanged);
             // 
             // cbCountry
             // 
@@ -291,6 +292,7 @@
             this.cbCountry.Name = "cbCountry";
             this.cbCountry.Size = new System.Drawing.Size(214, 30);
             this.cbCountry.TabIndex = 10;
+            this.cbCountry.SelectedIndexChanged += new System.EventHandler(this.cbCountry_SelectedIndexChanged);
             // 
             // txtPhone
             // 

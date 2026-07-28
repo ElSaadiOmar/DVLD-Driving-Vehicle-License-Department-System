@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
@@ -17,6 +18,7 @@ namespace DVLD.People
     public partial class frmAddAndUpdatePerson : Form
     {
         private clsPerson _Person;
+
         private Dictionary<string, PropertyInfo> _MapPropertiesWithControl;
 
         public frmAddAndUpdatePerson()
@@ -56,7 +58,9 @@ namespace DVLD.People
                 cbCountry.SelectedValue = _Person.NationalityCountryID;
             }
             _Person.NationalityCountryID = (int)cbCountry.SelectedValue;
-            rbMale.Checked = true;
+
+            if(_Person.Gender =="Female") rbFemale.Checked = true;
+            else rbMale.Checked = true;
             
         }
            
@@ -221,11 +225,11 @@ namespace DVLD.People
             cbCountry.SelectedValue = Person.NationalityCountryID;
             if (Person.Gender == "Male")
             {
-                rbMale.Select();
+                rbMale.Checked = true; 
             }
             else
             {
-                rbFemale.Select();
+                rbFemale.Checked = true;
             }
             txtAddress.Text = Person.Address;
             if (string.IsNullOrEmpty(Person.ImagePath))
@@ -300,8 +304,22 @@ namespace DVLD.People
             }
             else if (rbFemale.Checked)
             {
+                
                 _Person.Gender = "Female";
             }
+        }
+
+        //Fix bug of Country and Date of Birth are never saved back to the object
+
+        //Add two event handler for dtDateOfBirth and cbCountry to
+        private void dtDateOfBirth_ValueChanged(object sender, EventArgs e)
+        {
+            _Person.DateOfBirth = dtDateOfBirth.Value;
+        }
+
+        private void cbCountry_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _Person.NationalityCountryID = cbCountry.SelectedIndex;
         }
     }
 }
