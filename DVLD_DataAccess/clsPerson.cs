@@ -29,8 +29,7 @@ namespace DVLD_DataAccess
                             ,[Email]
                             ,[NationalityCountryID]
                             ,[ImagePath]
-                            FROM [DVLD].[dbo].[People] where People.PersonID = @PersonID;";
-            // inner join Countries C on People.NationalityCountryID = C.CountryID
+                            FROM [dbo].[People] where People.PersonID = @PersonID;";
             using (SqlConnection Connection = new SqlConnection(clsDataSettings.ConnectionString))
             using (SqlCommand Command = new SqlCommand(Query, Connection))
             { 
@@ -88,7 +87,7 @@ namespace DVLD_DataAccess
                             ,[Email]
                             ,[NationalityCountryID]
                             ,[ImagePath]
-                            FROM [DVLD].[dbo].[People] where People.NationalNo = @NationalNo;";// inner join Countries C on People.NationalityCountryID = C.CountryID
+                            FROM [dbo].[People] where People.NationalNo = @NationalNo;";
 
             using (SqlConnection Connection = new SqlConnection(clsDataSettings.ConnectionString))
             using (SqlCommand Command = new SqlCommand(Query, Connection))
@@ -349,24 +348,24 @@ namespace DVLD_DataAccess
         {
             DataTable dt = new DataTable();
             string Query = @"SELECT [PersonID]
-                            ,[NationalNo]
-                            ,[FirstName]
-                            ,[SecondName]
-                            ,[ThirdName]
-                            ,[LastName]
-                            ,[DateOfBirth]
-	                        ,Gender =
-		                            CASE
-		                            	WHEN Gender=0 THEN 'Male'
-		                            	 WHEN Gender=1 THEN 'Female'
-		                            	ELSE 'Unknown'
-		                            END
-                            ,[Address]
-                            ,[Phone]
-                            ,[Email]
-                            ,[NationalityCountryID]
-                            
-                            FROM [DVLD].[dbo].[People] order by PersonID";
+                                    ,[NationalNo]
+                                    ,[FirstName]
+                                    ,[SecondName]
+                                    ,[ThirdName]
+                                    ,[LastName]
+                                    ,[DateOfBirth]
+	                                ,Gender =
+	                                    CASE
+	                                     	WHEN Gender=0 THEN 'Male'
+   	                                        WHEN Gender=1 THEN 'Female'
+   	                                    ELSE 'Unknown'
+                                    END
+                                    ,[Address]
+                                    ,[Phone]
+                                    ,[Email]
+                                    ,C.CountryName     
+                            FROM [dbo].[People] inner join Countries C on People.NationalityCountryID = C.CountryID 
+                            order by PersonID";
             using(SqlConnection Connection = new SqlConnection(clsDataSettings.ConnectionString))
             using (SqlCommand Command = new SqlCommand(Query,Connection))
             {
