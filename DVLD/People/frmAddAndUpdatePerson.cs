@@ -202,7 +202,7 @@ namespace DVLD.People
         {
             foreach(Control Ctrl in gbAddUpdatePerson.Controls )
             {
-                if(!string.IsNullOrEmpty(errorProvider1.GetError(Ctrl)))
+                if(!string.IsNullOrEmpty(errorProvider1.GetError(Ctrl)) || string.IsNullOrEmpty(Ctrl.Text))
                 { return false; }
             }
             return true;
