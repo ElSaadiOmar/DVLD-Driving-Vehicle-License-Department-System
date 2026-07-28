@@ -320,7 +320,10 @@ namespace DVLD.People
 
         private void cbCountry_SelectedIndexChanged(object sender, EventArgs e)
         {
-            _Person.NationalityCountryID = cbCountry.SelectedIndex;
+            if(cbCountry.SelectedValue != null)
+            {
+                _Person.NationalityCountryID = (int)cbCountry.SelectedValue;
+            }
         }
     }
 }
