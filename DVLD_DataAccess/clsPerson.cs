@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace DVLD_DataAccess
 {
@@ -66,8 +67,9 @@ namespace DVLD_DataAccess
                         } 
                     }
                 }
-                catch
+                catch(Exception ex)
                 {
+                    Debug.WriteLine(ex.ToString());
                     return false;
                 }
             }
@@ -132,10 +134,11 @@ namespace DVLD_DataAccess
                         }
                     }
                 }
-                catch
+                catch (Exception ex)
                 {
+                    Debug.WriteLine(ex.ToString());
                     return false;
-                } 
+                }
             }
         }
    
@@ -200,8 +203,9 @@ namespace DVLD_DataAccess
                        return insertedID;
                     }
                 }
-                catch
+                catch (Exception ex)
                 {
+                    Debug.WriteLine(ex.ToString());                   
                     return -1;
                 }
                 return -1;
@@ -250,8 +254,9 @@ namespace DVLD_DataAccess
                     int RowAfficted = Command.ExecuteNonQuery();
                     return RowAfficted > 0;
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
+                    Debug.WriteLine(ex.ToString());
                     return false;
                 }
 
@@ -275,8 +280,9 @@ namespace DVLD_DataAccess
                     int RowAffected = Command.ExecuteNonQuery();
                     return RowAffected > 0;
                 }
-                catch(Exception ex )
+                catch (Exception ex)
                 {
+                    Debug.WriteLine(ex.ToString());
                     return false;
                 }
             }
@@ -299,6 +305,7 @@ namespace DVLD_DataAccess
                 }
                 catch (Exception ex)
                 {
+                    Debug.WriteLine(ex.ToString());
                     return false;
                 }
             }
@@ -322,6 +329,7 @@ namespace DVLD_DataAccess
                 }
                 catch (Exception ex)
                 {
+                    Debug.WriteLine(ex.ToString());
                     return false;
                 }
             }
@@ -341,6 +349,7 @@ namespace DVLD_DataAccess
                 }
                 catch (Exception ex)
                 {
+                    Debug.WriteLine(ex.ToString());
                     return false;
                 }
             }
@@ -382,8 +391,9 @@ namespace DVLD_DataAccess
                         
                     }
                 }
-                catch
+                catch (Exception ex)
                 {
+                    Debug.WriteLine(ex.ToString());
                     return dt;
                 }
             }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -40,7 +41,7 @@ namespace DVLD_DataAccess
                 }
                 catch (Exception ex)
                 {
-                    //Console.WriteLine("Error: " + ex.Message);
+                    Debug.WriteLine(ex.ToString());
                     return false;
                 }
             }
@@ -77,7 +78,7 @@ namespace DVLD_DataAccess
                 }
                 catch (Exception ex)
                 {
-                    //Console.WriteLine("Error: " + ex.Message);
+                    Debug.WriteLine(ex.ToString());
                     return false;
                 }
             }
@@ -104,7 +105,7 @@ namespace DVLD_DataAccess
                 }
                 catch (Exception ex)
                 {
-                    // Console.WriteLine("Error: " + ex.Message);
+                    Debug.WriteLine(ex.ToString());
                 }
             }
             return dt;
@@ -128,7 +129,7 @@ namespace DVLD_DataAccess
                 }
                 catch (Exception ex)
                 {
-                    //Console.WriteLine("Error: " + ex.Message);
+                    Debug.WriteLine(ex.ToString());
                     return false;
                 }
             }
@@ -154,7 +155,7 @@ namespace DVLD_DataAccess
                 }
                 catch (Exception ex)
                 {
-                    //Console.WriteLine("Error: " + ex.Message);
+                    Debug.WriteLine(ex.ToString());
                     return false;
                 }
             }
