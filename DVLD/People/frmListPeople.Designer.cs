@@ -67,6 +67,7 @@
             this.dgvPeopleList.RowTemplate.Height = 24;
             this.dgvPeopleList.Size = new System.Drawing.Size(1388, 381);
             this.dgvPeopleList.TabIndex = 0;
+            this.dgvPeopleList.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvPeopleList_CellMouseDown);
             // 
             // cmPersonMenu
             // 
@@ -81,55 +82,59 @@
             this.tsmsendEmail,
             this.tsmphoneCall});
             this.cmPersonMenu.Name = "cmsPersonMenu";
-            this.cmPersonMenu.Size = new System.Drawing.Size(192, 172);
+            this.cmPersonMenu.Size = new System.Drawing.Size(215, 200);
             // 
             // tsmshowDetails
             // 
             this.tsmshowDetails.Image = ((System.Drawing.Image)(resources.GetObject("tsmshowDetails.Image")));
             this.tsmshowDetails.ImageTransparentColor = System.Drawing.Color.Black;
             this.tsmshowDetails.Name = "tsmshowDetails";
-            this.tsmshowDetails.Size = new System.Drawing.Size(191, 26);
+            this.tsmshowDetails.Size = new System.Drawing.Size(214, 26);
             this.tsmshowDetails.Text = "Show Details";
+            this.tsmshowDetails.Click += new System.EventHandler(this.tsmshowDetails_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(188, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(211, 6);
             // 
             // tsmaddNewPerson
             // 
             this.tsmaddNewPerson.Image = ((System.Drawing.Image)(resources.GetObject("tsmaddNewPerson.Image")));
             this.tsmaddNewPerson.Name = "tsmaddNewPerson";
-            this.tsmaddNewPerson.Size = new System.Drawing.Size(191, 26);
+            this.tsmaddNewPerson.Size = new System.Drawing.Size(214, 26);
             this.tsmaddNewPerson.Text = "Add New Person";
+            this.tsmaddNewPerson.Click += new System.EventHandler(this.tsmaddNewPerson_Click);
             // 
             // tsmedit
             // 
             this.tsmedit.Name = "tsmedit";
-            this.tsmedit.Size = new System.Drawing.Size(191, 26);
+            this.tsmedit.Size = new System.Drawing.Size(214, 26);
             this.tsmedit.Text = "Edit";
+            this.tsmedit.Click += new System.EventHandler(this.tsmedit_Click);
             // 
             // tsmdelete
             // 
             this.tsmdelete.Name = "tsmdelete";
-            this.tsmdelete.Size = new System.Drawing.Size(191, 26);
+            this.tsmdelete.Size = new System.Drawing.Size(214, 26);
             this.tsmdelete.Text = "Delete";
+            this.tsmdelete.Click += new System.EventHandler(this.tsmdelete_Click);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(188, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(211, 6);
             // 
             // tsmsendEmail
             // 
             this.tsmsendEmail.Name = "tsmsendEmail";
-            this.tsmsendEmail.Size = new System.Drawing.Size(191, 26);
+            this.tsmsendEmail.Size = new System.Drawing.Size(214, 26);
             this.tsmsendEmail.Text = "Send Email";
             // 
             // tsmphoneCall
             // 
             this.tsmphoneCall.Name = "tsmphoneCall";
-            this.tsmphoneCall.Size = new System.Drawing.Size(191, 26);
+            this.tsmphoneCall.Size = new System.Drawing.Size(214, 26);
             this.tsmphoneCall.Text = "Phone Call";
             // 
             // label1

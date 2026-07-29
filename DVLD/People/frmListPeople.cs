@@ -64,8 +64,59 @@ namespace DVLD.People
         {
             frmAddAndUpdatePerson frm = new frmAddAndUpdatePerson();
             frm.ShowDialog();
+            _RefreshPeopleList();
         }
 
-      
+        private void dgvPeopleList_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if(e.Button == MouseButtons.Right && e.RowIndex >= 0)
+            {
+                dgvPeopleList.ClearSelection();
+                dgvPeopleList.Rows[e.RowIndex].Selected = true;
+                cmPersonMenu.Show(Cursor.Position);
+            }
+        }
+
+        private void tsmshowDetails_Click(object sender, EventArgs e)
+        {
+            int ID = (int)dgvPeopleList.SelectedRows[0].Cells["PersonID"].Value;
+            frmShowPersonInfo frm = new frmShowPersonInfo(ID);
+            frm.ShowDialog();
+        }
+
+        private void tsmaddNewPerson_Click(object sender, EventArgs e)
+        {
+            frmAddAndUpdatePerson frm = new frmAddAndUpdatePerson();
+            frm.ShowDialog();
+            _RefreshPeopleList();
+        }
+
+        private void tsmedit_Click(object sender, EventArgs e)
+        {
+            int ID = (int)dgvPeopleList.SelectedRows[0].Cells["PersonID"].Value;
+            frmAddAndUpdatePerson frm = new frmAddAndUpdatePerson(ID);
+            frm.ShowDialog();
+            _RefreshPeopleList();
+        }
+
+        private void tsmdelete_Click(object sender, EventArgs e)
+        {
+            
+                int ID = (int)dgvPeopleList.SelectedRows[0].Cells["PersonID"].Value;
+                DialogResult result = MessageBox.Show($"Are you sure you want delete person [{ID.ToString()}]", "Confirm Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if(result ==DialogResult.OK)
+                {
+                    if(clsPerson.Delete(ID))
+                    {
+                        MessageBox.Show("Person Deleted Successfully","Successful",MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    _RefreshPeopleList();
+                }
+                    else
+                    {
+                        MessageBox.Show("Person was not Deleted because it has data linked to it", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+          
+        }
     }
 }
