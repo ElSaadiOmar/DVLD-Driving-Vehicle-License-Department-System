@@ -56,5 +56,11 @@ namespace DVLD.People.Controls
             }
 
         }
+
+        private void lnkEditPersonInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            frmAddAndUpdatePerson frm = new frmAddAndUpdatePerson(int.Parse(lblPersonID.Text));
+            frm.ShowDialog();
+        }
     }
 }
