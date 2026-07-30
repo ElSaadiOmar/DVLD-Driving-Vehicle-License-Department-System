@@ -61,6 +61,7 @@ namespace DVLD.People.Controls
         {
             frmAddAndUpdatePerson frm = new frmAddAndUpdatePerson(int.Parse(lblPersonID.Text));
             frm.ShowDialog();
+            FillTheCardWithPersonInfo(int.Parse(lblPersonID.Text));
         }
     }
 }
