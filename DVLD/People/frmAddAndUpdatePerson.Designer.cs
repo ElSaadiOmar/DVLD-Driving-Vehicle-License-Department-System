@@ -38,7 +38,7 @@
             this.rbMale = new System.Windows.Forms.RadioButton();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pbPersonImage = new System.Windows.Forms.PictureBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -75,7 +75,7 @@
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.gbAddUpdatePerson.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPersonImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
@@ -99,7 +99,7 @@
             this.gbAddUpdatePerson.Controls.Add(this.rbMale);
             this.gbAddUpdatePerson.Controls.Add(this.btnSave);
             this.gbAddUpdatePerson.Controls.Add(this.btnClose);
-            this.gbAddUpdatePerson.Controls.Add(this.pictureBox1);
+            this.gbAddUpdatePerson.Controls.Add(this.pbPersonImage);
             this.gbAddUpdatePerson.Controls.Add(this.label14);
             this.gbAddUpdatePerson.Controls.Add(this.label13);
             this.gbAddUpdatePerson.Controls.Add(this.label12);
@@ -221,16 +221,16 @@
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // pictureBox1
+            // pbPersonImage
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.White;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(1024, 130);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(214, 222);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 102;
-            this.pictureBox1.TabStop = false;
+            this.pbPersonImage.BackColor = System.Drawing.Color.White;
+            this.pbPersonImage.Image = global::DVLD.Properties.Resources.Male_512;
+            this.pbPersonImage.Location = new System.Drawing.Point(1024, 130);
+            this.pbPersonImage.Name = "pbPersonImage";
+            this.pbPersonImage.Size = new System.Drawing.Size(214, 222);
+            this.pbPersonImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbPersonImage.TabIndex = 102;
+            this.pbPersonImage.TabStop = false;
             // 
             // label14
             // 
@@ -592,7 +592,7 @@
             this.gbAddUpdatePerson.ResumeLayout(false);
             this.gbAddUpdatePerson.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPersonImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
@@ -639,7 +639,7 @@
         private System.Windows.Forms.ComboBox cbCountry;
         private System.Windows.Forms.TextBox txtPhone;
         private System.Windows.Forms.TextBox txtAddress;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pbPersonImage;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;

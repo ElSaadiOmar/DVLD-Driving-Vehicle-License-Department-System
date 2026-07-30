@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.IO;
 using System.Drawing;
 using System.Linq;
 using System.Reflection;
@@ -60,7 +61,7 @@ namespace DVLD.People
             {
                 cbCountry.SelectedValue = _Person.NationalityCountryID;
             }
-            
+
             cbCountry.SelectedValueChanged += cbCountry_SelectedValueChanged;
             cbCountry.TextChanged += cbCountry_TextChanged;
             if (_Person.Gender == clsPerson.enGender.Female) rbFemale.Checked = true;
@@ -225,6 +226,7 @@ namespace DVLD.People
             txtPhone.Text = Person.Phone;
             dtDateOfBirth.Text = Person.DateOfBirth.ToString();
             cbCountry.SelectedValue = Person.NationalityCountryID;
+            txtAddress.Text = Person.Address;
             switch (Person.Gender)
             {
                 case clsPerson.enGender.Male:
@@ -238,18 +240,35 @@ namespace DVLD.People
                         break;
                     }
             }
-
-            txtAddress.Text = Person.Address;
-            if (string.IsNullOrEmpty(Person.ImagePath))
+            _ChangeImage();
+        }
+        private void _ChangeImage()
+        {
+            if (!string.IsNullOrEmpty(_Person.ImagePath) && File.Exists(_Person.ImagePath))
             {
-
+                try { pbPersonImage.Image = Image.FromFile(_Person.ImagePath); }
+                catch
+                {
+                    _ChangeImageBasedGender();
+                    MessageBox.Show("your Image cant open", "Invalid Image", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             else
             {
-
+                _ChangeImageBasedGender();
             }
         }
-
+        private void _ChangeImageBasedGender()
+        {
+            if (rbFemale.Checked)
+            {
+                pbPersonImage.Image = Properties.Resources.Female_512;
+            }
+            else
+            {
+                pbPersonImage.Image = Properties.Resources.Male_512;
+            }
+        }
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -313,12 +332,15 @@ namespace DVLD.People
             if (rbMale.Checked)
             {
                 _Person.Gender = clsPerson.enGender.Male;
+                _ChangeImage();
             }
             else if (rbFemale.Checked)
             {
 
                 _Person.Gender = clsPerson.enGender.Female;
+                _ChangeImage();
             }
+            
         }
 
         private void dtDateOfBirth_ValueChanged(object sender, EventArgs e)
@@ -331,8 +353,8 @@ namespace DVLD.People
         {
             if (cbCountry.SelectedValue is int selectedCountryID)
             {
-                    _Person.NationalityCountryID = selectedCountryID;
-                    errorProvider1.SetError(cbCountry, "");
+                _Person.NationalityCountryID = selectedCountryID;
+                errorProvider1.SetError(cbCountry, "");
             }
             else
             {
@@ -342,7 +364,7 @@ namespace DVLD.People
 
         private void cbCountry_TextChanged(object sender, EventArgs e)
         {
-            if (clsCountry.isCountryExist(cbCountry.Text.ToString()) && !int.TryParse(cbCountry.Text.ToString(),out int C))
+            if (clsCountry.isCountryExist(cbCountry.Text.ToString()) && !int.TryParse(cbCountry.Text.ToString(), out int C))
             {
                 _Person.NationalityCountryID = clsCountry.Find(cbCountry.Text.ToString()).ID;
                 errorProvider1.SetError(cbCountry, "");
