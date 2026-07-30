@@ -207,8 +207,14 @@ namespace DVLD.People
         {
             foreach (Control Ctrl in gbAddUpdatePerson.Controls)
             {
-                if (!string.IsNullOrEmpty(errorProvider1.GetError(Ctrl)) || string.IsNullOrEmpty(Ctrl.Text))
-                { return false; }
+                if(Ctrl is TextBox || Ctrl is ComboBox)
+                {
+                    Ctrl.Focus();
+                    if (!string.IsNullOrEmpty(errorProvider1.GetError(Ctrl)) )
+                    { 
+                        return false;
+                    }
+                }
             }
             return true;
         }
