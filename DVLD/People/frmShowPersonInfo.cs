@@ -19,9 +19,16 @@ namespace DVLD
         {
             InitializeComponent();
             _PersonID = PersonID;
-            label1.BackColor = AppColors.PanelBg;
+            ApplyTheme();
         }
 
+        private void ApplyTheme()
+        {
+            // Form
+            this.BackColor = AppColors.PanelBg;
+            label1.ForeColor = AppColors.NavyDark;
+
+        }
         private void frmPersonDetails_Load(object sender, EventArgs e)
         {
             ctrlPersonCard1.FillTheCardWithPersonInfo(_PersonID);
