@@ -133,7 +133,6 @@ namespace DVLD.People
             if (string.IsNullOrEmpty(txt.Text))
             {
                 errorProvider1.SetError((Control)Field, "This field is required");
-                e.Cancel = true;
             }
             else
             {
