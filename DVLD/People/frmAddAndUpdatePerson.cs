@@ -55,7 +55,9 @@ namespace DVLD.People
 
             if (_Person.NationalityCountryID == -1)
             {
-                cbCountry.SelectedValue = clsCountry.Find("Algeria")?.ID;
+                clsCountry Country = clsCountry.Find("Algeria");
+                cbCountry.SelectedValue = Country?.ID;
+                _Person.NationalityCountryID = (int)Country?.ID;
             }
             else
             {
