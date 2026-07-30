@@ -47,6 +47,7 @@ namespace DVLD.People
         {
             dtDateOfBirth.MaxDate = DateTime.Now.AddYears(-18);
             cbCountry.SelectedValueChanged -= cbCountry_SelectedValueChanged;
+            cbCountry.TextChanged -= cbCountry_TextChanged;
             cbCountry.DisplayMember = "CountryName";
             cbCountry.ValueMember = "CountryID";
             cbCountry.DataSource = clsCountry.GetAllCountries();
@@ -61,7 +62,7 @@ namespace DVLD.People
             }
             
             cbCountry.SelectedValueChanged += cbCountry_SelectedValueChanged;
-
+            cbCountry.TextChanged += cbCountry_TextChanged;
             if (_Person.Gender == clsPerson.enGender.Female) rbFemale.Checked = true;
             else rbMale.Checked = true;
         }
@@ -329,10 +330,23 @@ namespace DVLD.People
 
         private void cbCountry_SelectedValueChanged(object sender, EventArgs e)
         {
-            if (cbCountry.SelectedValue is int selectedCountryID && clsCountry.isCountryExist(selectedCountryID))
+            if (cbCountry.SelectedValue is int selectedCountryID)
             {
                     _Person.NationalityCountryID = selectedCountryID;
                     errorProvider1.SetError(cbCountry, "");
+            }
+            else
+            {
+                errorProvider1.SetError(cbCountry, "Selected country does not exist.");
+            }
+        }
+
+        private void cbCountry_TextChanged(object sender, EventArgs e)
+        {
+            if (clsCountry.isCountryExist(cbCountry.Text.ToString()) && !int.TryParse(cbCountry.Text.ToString(),out int C))
+            {
+                _Person.NationalityCountryID = clsCountry.Find(cbCountry.Text.ToString()).ID;
+                errorProvider1.SetError(cbCountry, "");
             }
             else
             {

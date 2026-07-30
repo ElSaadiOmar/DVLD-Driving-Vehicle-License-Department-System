@@ -307,6 +307,7 @@
             this.cbCountry.Size = new System.Drawing.Size(214, 30);
             this.cbCountry.TabIndex = 10;
             this.cbCountry.SelectedValueChanged += new System.EventHandler(this.cbCountry_SelectedValueChanged);
+            this.cbCountry.TextChanged += new System.EventHandler(this.cbCountry_TextChanged);
             // 
             // txtPhone
             // 
