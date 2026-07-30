@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddAndUpdatePerson));
             this.gbAddUpdatePerson = new System.Windows.Forms.GroupBox();
+            this.llblRemoveImage = new System.Windows.Forms.LinkLabel();
             this.llblSetImage = new System.Windows.Forms.LinkLabel();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.rbFemale = new System.Windows.Forms.RadioButton();
@@ -91,6 +92,7 @@
             this.gbAddUpdatePerson.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbAddUpdatePerson.Controls.Add(this.llblRemoveImage);
             this.gbAddUpdatePerson.Controls.Add(this.llblSetImage);
             this.gbAddUpdatePerson.Controls.Add(this.pictureBox3);
             this.gbAddUpdatePerson.Controls.Add(this.rbFemale);
@@ -134,11 +136,23 @@
             this.gbAddUpdatePerson.TabIndex = 0;
             this.gbAddUpdatePerson.TabStop = false;
             // 
+            // llblRemoveImage
+            // 
+            this.llblRemoveImage.AutoSize = true;
+            this.llblRemoveImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.llblRemoveImage.Location = new System.Drawing.Point(1107, 408);
+            this.llblRemoveImage.Name = "llblRemoveImage";
+            this.llblRemoveImage.Size = new System.Drawing.Size(84, 25);
+            this.llblRemoveImage.TabIndex = 108;
+            this.llblRemoveImage.TabStop = true;
+            this.llblRemoveImage.Text = "Remove";
+            this.llblRemoveImage.Visible = false;
+            // 
             // llblSetImage
             // 
             this.llblSetImage.AutoSize = true;
             this.llblSetImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.llblSetImage.Location = new System.Drawing.Point(1090, 376);
+            this.llblSetImage.Location = new System.Drawing.Point(1090, 371);
             this.llblSetImage.Name = "llblSetImage";
             this.llblSetImage.Size = new System.Drawing.Size(101, 25);
             this.llblSetImage.TabIndex = 12;
@@ -292,7 +306,7 @@
             this.cbCountry.Name = "cbCountry";
             this.cbCountry.Size = new System.Drawing.Size(214, 30);
             this.cbCountry.TabIndex = 10;
-            this.cbCountry.SelectedIndexChanged += new System.EventHandler(this.cbCountry_SelectedIndexChanged);
+            this.cbCountry.SelectedValueChanged += new System.EventHandler(this.cbCountry_SelectedValueChanged);
             // 
             // txtPhone
             // 
@@ -636,5 +650,6 @@
         private System.Windows.Forms.RadioButton rbMale;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.LinkLabel llblSetImage;
+        private System.Windows.Forms.LinkLabel llblRemoveImage;
     }
 }

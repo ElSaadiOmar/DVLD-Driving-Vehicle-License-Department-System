@@ -40,16 +40,18 @@ namespace DVLD.People
             _InitControl();
             _ApplyTheme();
             _InitializeMapPropertiesWithControl();
-           
+
         }
 
         private void _InitControl()
         {
             dtDateOfBirth.MaxDate = DateTime.Now.AddYears(-18);
-            cbCountry.DataSource = clsCountry.GetAllCountries();
+            cbCountry.SelectedValueChanged -= cbCountry_SelectedValueChanged;
             cbCountry.DisplayMember = "CountryName";
             cbCountry.ValueMember = "CountryID";
-            if(_Person.NationalityCountryID == -1)
+            cbCountry.DataSource = clsCountry.GetAllCountries();
+
+            if (_Person.NationalityCountryID == -1)
             {
                 cbCountry.SelectedValue = clsCountry.Find("Algeria")?.ID;
             }
@@ -57,11 +59,13 @@ namespace DVLD.People
             {
                 cbCountry.SelectedValue = _Person.NationalityCountryID;
             }
-            _Person.NationalityCountryID = (int)cbCountry.SelectedValue;
+            
+            cbCountry.SelectedValueChanged += cbCountry_SelectedValueChanged;
+
             if (_Person.Gender == clsPerson.enGender.Female) rbFemale.Checked = true;
             else rbMale.Checked = true;
         }
-           
+
         private void _ApplyTheme()
         {
             // Form
@@ -200,14 +204,14 @@ namespace DVLD.People
 
         private bool _AllFieldesAreRight()
         {
-            foreach(Control Ctrl in gbAddUpdatePerson.Controls )
+            foreach (Control Ctrl in gbAddUpdatePerson.Controls)
             {
-                if(!string.IsNullOrEmpty(errorProvider1.GetError(Ctrl)) || string.IsNullOrEmpty(Ctrl.Text))
+                if (!string.IsNullOrEmpty(errorProvider1.GetError(Ctrl)) || string.IsNullOrEmpty(Ctrl.Text))
                 { return false; }
             }
             return true;
         }
-      
+
         private void _FillAllField(clsPerson Person)
         {
             if (Person == null) return;
@@ -221,20 +225,20 @@ namespace DVLD.People
             txtPhone.Text = Person.Phone;
             dtDateOfBirth.Text = Person.DateOfBirth.ToString();
             cbCountry.SelectedValue = Person.NationalityCountryID;
-            switch (Person.Gender) 
+            switch (Person.Gender)
             {
                 case clsPerson.enGender.Male:
-                {
-                    rbMale.Checked = true;
-                    break;
-                }
+                    {
+                        rbMale.Checked = true;
+                        break;
+                    }
                 case clsPerson.enGender.Female:
-                {
-                    rbFemale.Checked = true;
-                    break;
-                }
+                    {
+                        rbFemale.Checked = true;
+                        break;
+                    }
             }
-            
+
             txtAddress.Text = Person.Address;
             if (string.IsNullOrEmpty(Person.ImagePath))
             {
@@ -258,7 +262,11 @@ namespace DVLD.People
                 if (_Person.Save())
                 {
                     lblTitle.Text = "Update Person";
+
+                    MessageBox.Show("Data Saved Successfully", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                     lblPersonID.Text = _Person.PersonID.ToString();
+
                 }
                 else
                 {
@@ -284,12 +292,12 @@ namespace DVLD.People
 
         private void txtEmail_Validating(object sender, CancelEventArgs e)
         {
-            if(string.IsNullOrEmpty(txtEmail.Text))
+            if (string.IsNullOrEmpty(txtEmail.Text))
             {
                 errorProvider1.SetError((Control)sender, "");
                 return;
             }
-            if(!clsValidation.ValidateEmail(txtEmail.Text))
+            if (!clsValidation.ValidateEmail(txtEmail.Text))
             {
                 errorProvider1.SetError((Control)sender, "Invalid Email");
                 e.Cancel = true;
@@ -308,7 +316,7 @@ namespace DVLD.People
             }
             else if (rbFemale.Checked)
             {
-                
+
                 _Person.Gender = clsPerson.enGender.Female;
             }
         }
@@ -318,11 +326,17 @@ namespace DVLD.People
             _Person.DateOfBirth = dtDateOfBirth.Value;
         }
 
-        private void cbCountry_SelectedIndexChanged(object sender, EventArgs e)
+
+        private void cbCountry_SelectedValueChanged(object sender, EventArgs e)
         {
-            if(cbCountry.SelectedValue != null)
+            if (cbCountry.SelectedValue is int selectedCountryID && clsCountry.isCountryExist(selectedCountryID))
             {
-                _Person.NationalityCountryID = (int)cbCountry.SelectedValue;
+                    _Person.NationalityCountryID = selectedCountryID;
+                    errorProvider1.SetError(cbCountry, "");
+            }
+            else
+            {
+                errorProvider1.SetError(cbCountry, "Selected country does not exist.");
             }
         }
     }
