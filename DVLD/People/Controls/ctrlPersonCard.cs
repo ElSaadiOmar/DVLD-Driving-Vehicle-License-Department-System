@@ -56,6 +56,44 @@ namespace DVLD.People.Controls
             }
 
         }
+        public void FillTheCardWithPersonInfo(string NationalNo)
+        {
+
+            clsPerson Person = clsPerson.Find(NationalNo);
+            if (Person != null)
+            {
+                lblPersonID.Text = Person.PersonID.ToString();
+                lblName.Text = Person.GetFullName();
+                lblNationalNo.Text = Person.NationalNo;
+                lblEmail.Text = Person.Email;
+                lblCountry.Text = clsCountry.Find(Person.NationalityCountryID).CountryName;
+                lblDateOfBirth.Text = Person.DateOfBirth.ToString();
+                lblAddress.Text = Person.Address.ToString();
+                lblPhone.Text = Person.Phone;
+                switch (Person.Gender)
+                {
+                    case clsPerson.enGender.Male:
+                        {
+                            lblGender.Text = "Male";
+                            break;
+                        }
+                    case clsPerson.enGender.Female:
+                        {
+                            lblGender.Text = "Female";
+                            break;
+                        }
+                }
+                if (!string.IsNullOrEmpty(Person.ImagePath))
+                {
+                    // pictureBox1.ImageLocation = Person.ImagePath;
+                }
+                else
+                {
+                    //pictureBox1.Image = null;
+                }
+            }
+
+        }
 
         private void lnkEditPersonInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
