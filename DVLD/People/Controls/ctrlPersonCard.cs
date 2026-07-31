@@ -59,9 +59,16 @@ namespace DVLD.People.Controls
 
         private void lnkEditPersonInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            frmAddAndUpdatePerson frm = new frmAddAndUpdatePerson(int.Parse(lblPersonID.Text));
-            frm.ShowDialog();
-            FillTheCardWithPersonInfo(int.Parse(lblPersonID.Text));
+            if(int.TryParse(lblPersonID.Text,out int ID))
+            {
+                frmAddAndUpdatePerson frm = new frmAddAndUpdatePerson(ID);
+                frm.ShowDialog();
+                FillTheCardWithPersonInfo(ID);
+            }
+            else
+            {
+                MessageBox.Show("You must has Person to Edit", "Person not Exist", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
