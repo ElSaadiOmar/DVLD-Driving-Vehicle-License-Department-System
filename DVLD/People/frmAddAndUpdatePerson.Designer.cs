@@ -139,6 +139,7 @@
             // llblRemoveImage
             // 
             this.llblRemoveImage.AutoSize = true;
+            this.llblRemoveImage.CausesValidation = false;
             this.llblRemoveImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.llblRemoveImage.Location = new System.Drawing.Point(1107, 408);
             this.llblRemoveImage.Name = "llblRemoveImage";
@@ -151,6 +152,7 @@
             // llblSetImage
             // 
             this.llblSetImage.AutoSize = true;
+            this.llblSetImage.CausesValidation = false;
             this.llblSetImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.llblSetImage.Location = new System.Drawing.Point(1090, 371);
             this.llblSetImage.Name = "llblSetImage";
@@ -172,6 +174,7 @@
             // rbFemale
             // 
             this.rbFemale.AutoSize = true;
+            this.rbFemale.CausesValidation = false;
             this.rbFemale.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbFemale.Location = new System.Drawing.Point(376, 181);
             this.rbFemale.Name = "rbFemale";
@@ -184,6 +187,7 @@
             // rbMale
             // 
             this.rbMale.AutoSize = true;
+            this.rbMale.CausesValidation = false;
             this.rbMale.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbMale.Location = new System.Drawing.Point(235, 185);
             this.rbMale.Name = "rbMale";
@@ -196,6 +200,7 @@
             // btnSave
             // 
             this.btnSave.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnSave.CausesValidation = false;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
             this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -210,6 +215,7 @@
             // btnClose
             // 
             this.btnClose.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnClose.CausesValidation = false;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
             this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -235,6 +241,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
+            this.label14.CausesValidation = false;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.Location = new System.Drawing.Point(1109, 37);
             this.label14.Name = "label14";
@@ -245,6 +252,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
+            this.label13.CausesValidation = false;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.Location = new System.Drawing.Point(838, 37);
             this.label13.Name = "label13";
@@ -255,6 +263,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
+            this.label12.CausesValidation = false;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.Location = new System.Drawing.Point(574, 37);
             this.label12.Name = "label12";
@@ -265,6 +274,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
+            this.label11.CausesValidation = false;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.Location = new System.Drawing.Point(308, 37);
             this.label11.Name = "label11";
@@ -286,6 +296,7 @@
             // 
             // dtDateOfBirth
             // 
+            this.dtDateOfBirth.CausesValidation = false;
             this.dtDateOfBirth.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.dtDateOfBirth.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtDateOfBirth.Location = new System.Drawing.Point(758, 130);
@@ -393,6 +404,7 @@
             // 
             // label7
             // 
+            this.label7.CausesValidation = false;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(583, 234);
             this.label7.Name = "label7";
@@ -402,6 +414,7 @@
             // 
             // label8
             // 
+            this.label8.CausesValidation = false;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(593, 181);
             this.label8.Name = "label8";
@@ -411,6 +424,7 @@
             // 
             // label9
             // 
+            this.label9.CausesValidation = false;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(531, 128);
             this.label9.Name = "label9";
@@ -500,6 +514,7 @@
             // 
             // label6
             // 
+            this.label6.CausesValidation = false;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(24, 287);
             this.label6.Name = "label6";
@@ -509,6 +524,7 @@
             // 
             // label5
             // 
+            this.label5.CausesValidation = false;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(24, 234);
             this.label5.Name = "label5";
@@ -518,6 +534,7 @@
             // 
             // label4
             // 
+            this.label4.CausesValidation = false;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(24, 181);
             this.label4.Name = "label4";
@@ -527,6 +544,7 @@
             // 
             // label3
             // 
+            this.label3.CausesValidation = false;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(24, 128);
             this.label3.Name = "label3";
@@ -536,6 +554,7 @@
             // 
             // label2
             // 
+            this.label2.CausesValidation = false;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(24, 75);
             this.label2.Name = "label2";
@@ -546,6 +565,7 @@
             // lblTitle
             // 
             this.lblTitle.AutoSize = true;
+            this.lblTitle.CausesValidation = false;
             this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.Location = new System.Drawing.Point(436, 32);
             this.lblTitle.Name = "lblTitle";
@@ -555,6 +575,7 @@
             // 
             // lblPersonID
             // 
+            this.lblPersonID.CausesValidation = false;
             this.lblPersonID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPersonID.Location = new System.Drawing.Point(195, 130);
             this.lblPersonID.Name = "lblPersonID";
@@ -564,6 +585,7 @@
             // 
             // label10
             // 
+            this.label10.CausesValidation = false;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.Location = new System.Drawing.Point(36, 130);
             this.label10.Name = "label10";

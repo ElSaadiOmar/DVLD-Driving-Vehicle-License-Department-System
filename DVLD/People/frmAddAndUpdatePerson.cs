@@ -22,6 +22,10 @@ namespace DVLD.People
 
         private Dictionary<string, PropertyInfo> _MapPropertiesWithControl;
 
+
+        List<Control> _lstControls;
+
+
         public frmAddAndUpdatePerson()
         {
             InitializeComponent();
@@ -41,7 +45,7 @@ namespace DVLD.People
             _InitControl();
             _ApplyTheme();
             _InitializeMapPropertiesWithControl();
-
+            _InitializeValidationControls();
         }
 
         private void _InitControl()
@@ -87,6 +91,21 @@ namespace DVLD.People
             btnSave.FlatAppearance.BorderSize = 0;
         }
 
+        private void _InitializeValidationControls()
+        {
+            _lstControls = new List<Control>
+            {
+                txtNationalNo,
+                txtFirstName,
+                txtSecondName,
+                txtThirdName,
+                txtLastName,
+                txtPhone,
+                txtEmail,
+                txtAddress,
+                cbCountry,
+             };
+        }
         private void _InitializeMapPropertiesWithControl()
         {
             Type PersonType = typeof(clsPerson);
@@ -207,18 +226,18 @@ namespace DVLD.People
 
         private bool _AllFieldesAreRight()
         {
-            foreach (Control Ctrl in gbAddUpdatePerson.Controls)
+            if(ValidateChildren())
             {
-                if(Ctrl is TextBox || Ctrl is ComboBox)
-                {
-                    Ctrl.Focus();
-                    if (!string.IsNullOrEmpty(errorProvider1.GetError(Ctrl)) )
-                    { 
+                foreach (Control Ctrl in _lstControls)
+                {   Ctrl.Focus();
+                    if (!string.IsNullOrEmpty(errorProvider1.GetError(Ctrl)))
+                    {
                         return false;
                     }
                 }
+                return true;
             }
-            return true;
+            return false ;
         }
 
         private void _FillAllField(clsPerson Person)
@@ -348,7 +367,7 @@ namespace DVLD.People
                 _Person.Gender = clsPerson.enGender.Female;
                 _ChangeImage();
             }
-            
+
         }
 
         private void dtDateOfBirth_ValueChanged(object sender, EventArgs e)
@@ -382,5 +401,7 @@ namespace DVLD.People
                 errorProvider1.SetError(cbCountry, "Selected country does not exist.");
             }
         }
+
+
     }
 }
