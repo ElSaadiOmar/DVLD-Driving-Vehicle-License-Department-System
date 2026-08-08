@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,22 +38,17 @@ namespace DVLD.People.Controls
                     case clsPerson.enGender.Male:
                         {
                             lblGender.Text = "Male";
+                            pbPersonImage.Image = Properties.Resources.Male_512;
                             break;
                         }
                     case clsPerson.enGender.Female:
                         {
                             lblGender.Text = "Female";
+                            pbPersonImage.Image = Properties.Resources.Female_512;
                             break;
                         }
                 }
-                if (!string.IsNullOrEmpty(Person.ImagePath))
-                {
-                    // pictureBox1.ImageLocation = Person.ImagePath;
-                }
-                else
-                {
-                    //pictureBox1.Image = null;
-                }
+                _ChangeImage(Person.ImagePath);
             }
 
         }
@@ -75,26 +71,32 @@ namespace DVLD.People.Controls
                     case clsPerson.enGender.Male:
                         {
                             lblGender.Text = "Male";
+                            pbPersonImage.Image = Properties.Resources.Male_512;
                             break;
                         }
                     case clsPerson.enGender.Female:
                         {
                             lblGender.Text = "Female";
+                            pbPersonImage.Image = Properties.Resources.Female_512;
                             break;
                         }
                 }
-                if (!string.IsNullOrEmpty(Person.ImagePath))
-                {
-                    // pictureBox1.ImageLocation = Person.ImagePath;
-                }
-                else
-                {
-                    //pictureBox1.Image = null;
-                }
+                _ChangeImage(Person.ImagePath);
             }
 
         }
-
+        private void _ChangeImage(string ImagePath)
+        {
+            if (!string.IsNullOrEmpty(ImagePath) && File.Exists(ImagePath))
+            {
+                try { pbPersonImage.ImageLocation = ImagePath; }
+                catch
+                {
+                    MessageBox.Show("your Image cant open", "Invalid Image", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+        
         private void lnkEditPersonInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             if(int.TryParse(lblPersonID.Text,out int ID))

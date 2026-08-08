@@ -273,7 +273,9 @@ namespace DVLD.People
         {
             if (!string.IsNullOrEmpty(_Person.ImagePath) && File.Exists(_Person.ImagePath))
             {
-                try { pbPersonImage.Image = Image.FromFile(_Person.ImagePath); }
+                try { pbPersonImage.ImageLocation = _Person.ImagePath;
+                    llblRemoveImage.Visible = true;
+                }
                 catch
                 {
                     _ChangeImageBasedGender();
@@ -402,6 +404,30 @@ namespace DVLD.People
             }
         }
 
+        private void llblSetImage_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            openFileDialog1.InitialDirectory = @"C:\Users\elssa\Pictures";
+            openFileDialog1.FileName = string.Empty;
+            openFileDialog1.Title = "Chose Image";
+            openFileDialog1.Filter = "Image Files (*.jpg;*.jpeg;*.png;*.bmp;*.gif)|*.jpg;*.jpeg;*.png;*.bmp;*.gif|All Files (*.*)|*.*";
 
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                string ImagePath = openFileDialog1.FileName;
+                if (clsUtil.CopyImageToProjectImagesFolder(ref ImagePath))
+                {
+                    _Person.ImagePath = ImagePath;
+                    _ChangeImage();
+                    llblRemoveImage.Visible = true;
+                }
+            }
+        }
+
+        private void llblRemoveImage_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            File.Delete(pbPersonImage.ImageLocation);
+            _ChangeImageBasedGender();
+            llblRemoveImage.Visible = false;
+        }
     }
 }

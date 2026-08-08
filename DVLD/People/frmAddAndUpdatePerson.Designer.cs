@@ -73,6 +73,7 @@
             this.lblPersonID = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.gbAddUpdatePerson.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPersonImage)).BeginInit();
@@ -148,6 +149,7 @@
             this.llblRemoveImage.TabStop = true;
             this.llblRemoveImage.Text = "Remove";
             this.llblRemoveImage.Visible = false;
+            this.llblRemoveImage.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblRemoveImage_LinkClicked);
             // 
             // llblSetImage
             // 
@@ -160,6 +162,7 @@
             this.llblSetImage.TabIndex = 12;
             this.llblSetImage.TabStop = true;
             this.llblSetImage.Text = "Set Image";
+            this.llblSetImage.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblSetImage_LinkClicked);
             // 
             // pictureBox3
             // 
@@ -597,6 +600,10 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
             // frmAddAndUpdatePerson
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -674,5 +681,6 @@
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.LinkLabel llblSetImage;
         private System.Windows.Forms.LinkLabel llblRemoveImage;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
