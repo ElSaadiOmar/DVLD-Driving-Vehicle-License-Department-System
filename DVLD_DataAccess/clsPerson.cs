@@ -47,7 +47,7 @@ namespace DVLD_DataAccess
                             ThirdName = Reader["ThirdName"] != DBNull.Value ? (string)Reader["ThirdName"] : "";
                             LastName = Reader["LastName"] != DBNull.Value ? (string)Reader["LastName"] : "";
                             DateOfBirth = Reader["DateOfBirth"] != DBNull.Value ? (DateTime)Reader["DateOfBirth"] : DateTime.MinValue;
-                            Gender = Reader["Gender"] != DBNull.Value ? (int)Reader["Gender"] : 0;
+                            Gender = Reader["Gender"] != DBNull.Value ? (byte)Reader["Gender"] : 0;
                             Address = Reader["Address"] != DBNull.Value ? (string)Reader["Address"] : "";
                             Phone = Reader["Phone"] != DBNull.Value ? (string)Reader["Phone"] : "";
                             Email = Reader["Email"] != DBNull.Value ? (string)Reader["Email"] : "";
@@ -108,7 +108,7 @@ namespace DVLD_DataAccess
                             ThirdName = Reader["ThirdName"] != DBNull.Value ? (string)Reader["ThirdName"] : "";
                             LastName = Reader["LastName"] != DBNull.Value ? (string)Reader["LastName"] : "";
                             DateOfBirth = Reader["DateOfBirth"] != DBNull.Value ? (DateTime)Reader["DateOfBirth"] : DateTime.MinValue;
-                            Gender = Reader["Gender"] != DBNull.Value ? (int)Reader["Gender"] : 0;
+                            Gender = Reader["Gender"] != DBNull.Value ? (byte)Reader["Gender"] : 0;
                             Address = Reader["Address"] != DBNull.Value ? (string)Reader["Address"] : "";
                             Phone = Reader["Phone"] != DBNull.Value ? (string)Reader["Phone"] : "";
                             Email = Reader["Email"] != DBNull.Value ? (string)Reader["Email"] : "";
