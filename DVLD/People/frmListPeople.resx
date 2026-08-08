@@ -124,16 +124,16 @@
   <data name="tsmshowDetails.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAIoSURBVFhH1VdLLwNRGO1P8YeayRSlMx0dSjyiqJa2XiFR
-        UjYetZFQEatKJGxILESsLG1YWVmJRRN/4Mq5yZVxpleYmuAkJ5np/b5zzp3vTtNGIv8RhmG0xa3kRnu8
-        q2HG2l9wjc+4LjTE7eTD7PyCqNfrYr9WE4VCoYEwXBcKoqa5qMy9XC6XXxKOc871gRA1Ym7UjAkdsWuY
-        9g8OiUTSeX8SXKfY0dnRQHD20QJNV5vZpsSa2vVELidDqHtd32klI0OwjxYsBIGVbK+wrW6RsG3f41fE
-        mmUlZO3h0rAvOPto4Q1QGHGFZVsCc9+uVn2mTIxifm5G9ixPDrQWoDjcIx8zm3yFKshQ2gkeAI9THbgg
-        RC/GFjgAn+agDBxANb4+PwUi67CPFtzIwl8l67CPFtzIwmBtb1eupfr65DWvhxoAhpnxMXF2ciw5msmI
-        9bWKr4512EcLbmRh7ProYF9cX15IIoSbTvvqWId9tOBGFoaZNwCum9WxDvtowY0srEYAYzWCZueAddhH
-        C25k4cf7O2mIUfzKIZyanvpgigOIz7iOddhHC270iubyeVEqFUUylZIhYO64rlirrMq1UAPc3lzJ2auT
-        jxAwV/dYQ01oAbDbne2tD6+fulZvw+pKObwAOHBs6iXWvGNgHfbRghuVIN5/3H9G7xcS67CPFtyoBL9L
-        1mEfLbixFbYc4Kf4/wLgpziLBCW0vhnAXORZtkL5z8iIuezzJ/AGxF5/fYi+SSAAAAAASUVORK5CYII=
+        YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAInSURBVFhH1VdLS8NAGPSn+IdKSNRqk8bGVvGB9VW1vioK
+        VqlefF4ErYinCoJeFDyIePLoRU+ePEkPBf/AyiyspJOuaGpQBwaS7vfNzObblLal5T/CMIzWuJ3cbIt3
+        1kzLquIan3FdZIg7yaf5wqKoVCrisFwW+Xy+hjBcFwliprmkzP1cKRarCde95PpQiBmWFzMtoSN2DdPe
+        /gGRSLofT4LrFNs72msIzj5aoOlma7whsaZ2PZbLyRDqXtd3XsrKEOyjBQtBYHW8Rzh2l0g4TuDxK2LN
+        thOy9nh5MBCcfbTwB8gPecJ2bIG57+zuBkyZGEVhYU72rEz0NRdgZrBbPmY2+QpVkIGMGz4AHqc6cGGI
+        XowtdAA+zWEZOoBqfHt9CUXWYR8tuJGFv0rWYR8tuJGFwfLBvlxLpdPymtcjDQDD7OiIuDg7lRzOZsXG
+        eilQxzrsowU3sjB2fXJ0KG6vryQRwstkAnWswz5acCMLw8wfANeN6liHfbTgRhZWI4CxGkGjc8A67KMF
+        N7Lw8+ODNMQofuUQTk1P1ZniAOIzrmMd9tGCG/2iuclJMTs7I5KplAwBc9fzxHppTa5FGuD+7kbOXp18
+        hIC5uscaaiILgN3u7WzXvX7qWr0Na6vF6ALgwLGpn1jzj4F12EcLblSCeP9x/xn9X0iswz5acKMS/C5Z
+        h3204MZm2HSAn+L/C4Cf4iwSltD6ZgBziWfZDOU/I8Py2OdP4B21An98AzAF1QAAAABJRU5ErkJggg==
 </value>
   </data>
   <data name="tsmaddNewPerson.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -203,4 +203,7 @@
         YpcB94Z2Gmv9F7C//I5n8BHwQlU9wwAN/A82aWKkAnMS8gAAAABJRU5ErkJggg==
 </value>
   </data>
+  <metadata name="errorProvider1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>177, 17</value>
+  </metadata>
 </root>

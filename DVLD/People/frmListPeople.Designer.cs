@@ -41,11 +41,14 @@
             this.tsmsendEmail = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmphoneCall = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cbFilterBy = new System.Windows.Forms.ComboBox();
             this.btnAddNewPerson = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
+            this.txtFilter = new System.Windows.Forms.TextBox();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPeopleList)).BeginInit();
             this.cmPersonMenu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvPeopleList
@@ -82,59 +85,59 @@
             this.tsmsendEmail,
             this.tsmphoneCall});
             this.cmPersonMenu.Name = "cmsPersonMenu";
-            this.cmPersonMenu.Size = new System.Drawing.Size(215, 200);
+            this.cmPersonMenu.Size = new System.Drawing.Size(192, 172);
             // 
             // tsmshowDetails
             // 
             this.tsmshowDetails.Image = ((System.Drawing.Image)(resources.GetObject("tsmshowDetails.Image")));
             this.tsmshowDetails.ImageTransparentColor = System.Drawing.Color.Black;
             this.tsmshowDetails.Name = "tsmshowDetails";
-            this.tsmshowDetails.Size = new System.Drawing.Size(214, 26);
+            this.tsmshowDetails.Size = new System.Drawing.Size(191, 26);
             this.tsmshowDetails.Text = "Show Details";
             this.tsmshowDetails.Click += new System.EventHandler(this.tsmshowDetails_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(211, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(188, 6);
             // 
             // tsmaddNewPerson
             // 
             this.tsmaddNewPerson.Image = ((System.Drawing.Image)(resources.GetObject("tsmaddNewPerson.Image")));
             this.tsmaddNewPerson.Name = "tsmaddNewPerson";
-            this.tsmaddNewPerson.Size = new System.Drawing.Size(214, 26);
+            this.tsmaddNewPerson.Size = new System.Drawing.Size(191, 26);
             this.tsmaddNewPerson.Text = "Add New Person";
             this.tsmaddNewPerson.Click += new System.EventHandler(this.tsmaddNewPerson_Click);
             // 
             // tsmedit
             // 
             this.tsmedit.Name = "tsmedit";
-            this.tsmedit.Size = new System.Drawing.Size(214, 26);
+            this.tsmedit.Size = new System.Drawing.Size(191, 26);
             this.tsmedit.Text = "Edit";
             this.tsmedit.Click += new System.EventHandler(this.tsmedit_Click);
             // 
             // tsmdelete
             // 
             this.tsmdelete.Name = "tsmdelete";
-            this.tsmdelete.Size = new System.Drawing.Size(214, 26);
+            this.tsmdelete.Size = new System.Drawing.Size(191, 26);
             this.tsmdelete.Text = "Delete";
             this.tsmdelete.Click += new System.EventHandler(this.tsmdelete_Click);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(211, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(188, 6);
             // 
             // tsmsendEmail
             // 
             this.tsmsendEmail.Name = "tsmsendEmail";
-            this.tsmsendEmail.Size = new System.Drawing.Size(214, 26);
+            this.tsmsendEmail.Size = new System.Drawing.Size(191, 26);
             this.tsmsendEmail.Text = "Send Email";
             // 
             // tsmphoneCall
             // 
             this.tsmphoneCall.Name = "tsmphoneCall";
-            this.tsmphoneCall.Size = new System.Drawing.Size(214, 26);
+            this.tsmphoneCall.Size = new System.Drawing.Size(191, 26);
             this.tsmphoneCall.Text = "Phone Call";
             // 
             // label1
@@ -146,13 +149,27 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Filter By";
             // 
-            // comboBox1
+            // cbFilterBy
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(138, 195);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(151, 24);
-            this.comboBox1.TabIndex = 2;
+            this.cbFilterBy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbFilterBy.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.cbFilterBy.FormattingEnabled = true;
+            this.cbFilterBy.Items.AddRange(new object[] {
+            "None",
+            "Person ID",
+            "National No",
+            "First Name",
+            "Second Name",
+            "Third Name",
+            "Last Name",
+            "Nationalty",
+            "Phone",
+            "Address"});
+            this.cbFilterBy.Location = new System.Drawing.Point(138, 191);
+            this.cbFilterBy.Name = "cbFilterBy";
+            this.cbFilterBy.Size = new System.Drawing.Size(167, 28);
+            this.cbFilterBy.TabIndex = 2;
+            this.cbFilterBy.SelectedIndexChanged += new System.EventHandler(this.cbFilterBy_SelectedIndexChanged);
             // 
             // btnAddNewPerson
             // 
@@ -180,13 +197,28 @@
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
+            // txtFilter
+            // 
+            this.txtFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.txtFilter.Location = new System.Drawing.Point(350, 191);
+            this.txtFilter.Name = "txtFilter";
+            this.txtFilter.Size = new System.Drawing.Size(234, 26);
+            this.txtFilter.TabIndex = 5;
+            this.txtFilter.Visible = false;
+            this.txtFilter.TextChanged += new System.EventHandler(this.txtFilter_TextChanged);
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // frmListPeople
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(1412, 676);
+            this.Controls.Add(this.txtFilter);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnAddNewPerson);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cbFilterBy);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvPeopleList);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -197,7 +229,9 @@
             this.Load += new System.EventHandler(this.frmMangePeople_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPeopleList)).EndInit();
             this.cmPersonMenu.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -205,7 +239,7 @@
 
         private System.Windows.Forms.DataGridView dgvPeopleList;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cbFilterBy;
         private System.Windows.Forms.Button btnAddNewPerson;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.ContextMenuStrip cmPersonMenu;
@@ -217,5 +251,7 @@
         private System.Windows.Forms.ToolStripMenuItem tsmphoneCall;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
+        private System.Windows.Forms.TextBox txtFilter;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }
