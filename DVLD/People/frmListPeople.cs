@@ -262,8 +262,7 @@ namespace DVLD.People
             {
                 if(int.TryParse(FilterText,out int Result))
                 {
-
-                    _dtAllPeople.DefaultView.RowFilter = $"{FilterBy}={Result}";
+                    _dtAllPeople.DefaultView.RowFilter =  $"CONVERT({FilterBy}, System.String) LIKE '{Result}%'";
                 }
                 else
                 {
@@ -274,8 +273,7 @@ namespace DVLD.People
             {
                 if (!string.IsNullOrEmpty(FilterText))
                 {
-
-                    _dtAllPeople.DefaultView.RowFilter = $"{FilterBy} LIKE {FilterText.Trim()}%";
+                    _dtAllPeople.DefaultView.RowFilter = $"{FilterBy} LIKE '{FilterText.Trim()}%'";
                 }
                 else
                 {
