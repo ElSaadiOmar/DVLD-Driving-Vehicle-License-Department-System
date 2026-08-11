@@ -31,7 +31,7 @@ namespace DVLD
         }
         private void frmPersonDetails_Load(object sender, EventArgs e)
         {
-            ctrlPersonCard1.FillTheCardWithPersonInfo(_PersonID);
+            ctrlPersonCard1.LoadPersonInfo(_PersonID);
         }
 
     }

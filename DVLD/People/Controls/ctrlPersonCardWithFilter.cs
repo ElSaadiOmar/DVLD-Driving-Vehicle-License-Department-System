@@ -105,7 +105,7 @@ namespace DVLD.People.Controls
                         {
                             if (clsPerson.IsPersonExist(ID))
                             {
-                                ctrlPersonCard1.FillTheCardWithPersonInfo(ID);
+                                ctrlPersonCard1.LoadPersonInfo(ID);
                             }
                             else
                             {
@@ -122,7 +122,7 @@ namespace DVLD.People.Controls
                     {
                         if (clsPerson.IsPersonExist(txtSearchValue.Text.ToString()))
                         {
-                            ctrlPersonCard1.FillTheCardWithPersonInfo(txtSearchValue.Text.ToString());
+                            ctrlPersonCard1.LoadPersonInfo(txtSearchValue.Text.ToString());
                         }
                         else
                         {

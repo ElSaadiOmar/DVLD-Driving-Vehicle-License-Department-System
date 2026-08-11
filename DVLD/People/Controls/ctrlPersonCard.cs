@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DVLD.Properties;
 using DVLD_Buisness;
 using TheArtOfDevHtmlRenderer.Adapters;
 
@@ -15,77 +16,84 @@ namespace DVLD.People.Controls
 {
     public partial class ctrlPersonCard : UserControl
     {
+        private clsPerson _Person;
         public ctrlPersonCard()
         {
             InitializeComponent();
         }
-        public void FillTheCardWithPersonInfo(int PersonID)
-        {
 
-            clsPerson Person = clsPerson.Find(PersonID);
-            if (Person != null)
+        public void LoadPersonInfo(int PersonID)
+        {
+            _Person = clsPerson.Find(PersonID);
+            if (_Person == null)
             {
-                lblPersonID.Text = Person.PersonID.ToString();
-                lblName.Text = Person.GetFullName();
-                lblNationalNo.Text = Person.NationalNo;
-                lblEmail.Text = Person.Email;
-                lblCountry.Text = clsCountry.Find(Person.NationalityCountryID).CountryName;
-                lblDateOfBirth.Text = Person.DateOfBirth.ToString();
-                lblAddress.Text = Person.Address.ToString();
-                lblPhone.Text = Person.Phone;
-                switch (Person.Gender)
+                ResetPersonInfo();
+                MessageBox.Show("No _Person with PersonID = " + PersonID.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            _FillPersonInfo();
+        }
+        public void LoadPersonInfo(string NationalNo)
+        {
+            _Person = clsPerson.Find(NationalNo);
+            if (_Person == null)
+            {
+                ResetPersonInfo();
+                MessageBox.Show("No _Person with National No. = " + NationalNo.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            _FillPersonInfo();
+        }
+
+
+        public void _FillPersonInfo()
+        {
+                lblPersonID.Text = _Person.PersonID.ToString();
+                lblFullName.Text = _Person.GetFullName();
+                lblNationalNo.Text = _Person.NationalNo;
+                lblEmail.Text = _Person.Email;
+                lblCountry.Text = clsCountry.Find(_Person.NationalityCountryID).CountryName;
+                lblDateOfBirth.Text = _Person.DateOfBirth.ToString();
+                lblAddress.Text = _Person.Address.ToString();
+                lblPhone.Text = _Person.Phone;
+                switch (_Person.Gender)
                 {
                     case clsPerson.enGender.Male:
                         {
+                            pbGender.Image = Resources.Man_32;
                             lblGender.Text = "Male";
                             pbPersonImage.Image = Properties.Resources.Male_512;
                             break;
                         }
                     case clsPerson.enGender.Female:
-                        {
-                            lblGender.Text = "Female";
+                    {
+                        pbGender.Image = Resources.Woman_32;
+                        lblGender.Text = "Female";
                             pbPersonImage.Image = Properties.Resources.Female_512;
                             break;
                         }
                 }
-                _ChangeImage(Person.ImagePath);
-            }
+                _LoadImage(_Person.ImagePath);
 
         }
-        public void FillTheCardWithPersonInfo(string NationalNo)
+        public void ResetPersonInfo()
         {
-
-            clsPerson Person = clsPerson.Find(NationalNo);
-            if (Person != null)
-            {
-                lblPersonID.Text = Person.PersonID.ToString();
-                lblName.Text = Person.GetFullName();
-                lblNationalNo.Text = Person.NationalNo;
-                lblEmail.Text = Person.Email;
-                lblCountry.Text = clsCountry.Find(Person.NationalityCountryID).CountryName;
-                lblDateOfBirth.Text = Person.DateOfBirth.ToString();
-                lblAddress.Text = Person.Address.ToString();
-                lblPhone.Text = Person.Phone;
-                switch (Person.Gender)
-                {
-                    case clsPerson.enGender.Male:
-                        {
-                            lblGender.Text = "Male";
-                            pbPersonImage.Image = Properties.Resources.Male_512;
-                            break;
-                        }
-                    case clsPerson.enGender.Female:
-                        {
-                            lblGender.Text = "Female";
-                            pbPersonImage.Image = Properties.Resources.Female_512;
-                            break;
-                        }
-                }
-                _ChangeImage(Person.ImagePath);
-            }
+            lblPersonID.Text = "[????]";
+            lblNationalNo.Text = "[????]";
+            lblFullName.Text = "[????]";
+            pbGender.Image = Resources.Man_32;
+            lblGender.Text = "[????]";
+            lblEmail.Text = "[????]";
+            lblPhone.Text = "[????]";
+            lblDateOfBirth.Text = "[????]";
+            lblCountry.Text = "[????]";
+            lblAddress.Text = "[????]";
+            pbPersonImage.Image = Resources.Male_512;
 
         }
-        private void _ChangeImage(string ImagePath)
+        private void _LoadImage(string ImagePath)
         {
             if (!string.IsNullOrEmpty(ImagePath) && File.Exists(ImagePath))
             {
@@ -103,7 +111,7 @@ namespace DVLD.People.Controls
             {
                 frmAddAndUpdatePerson frm = new frmAddAndUpdatePerson(ID);
                 frm.ShowDialog();
-                FillTheCardWithPersonInfo(ID);
+                LoadPersonInfo(ID);
             }
             else
             {
