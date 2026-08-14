@@ -303,22 +303,63 @@ namespace DVLD.People
             this.Close();
         }
 
+        private bool _HandelPersonImage()
+        {
+            if(_Person.ImagePath != pbPersonImage.ImageLocation)
+            {
+                if(_Person.ImagePath != "")
+                {
+                    try
+                    {
+                        File.Delete(_Person.ImagePath);
+                    }
+                    catch(IOException IO)
+                    {
+
+                    }
+                }
+                if(pbPersonImage.ImageLocation != null)
+                {
+                    string ImageSource = pbPersonImage.ImageLocation.ToString();
+                    if(clsUtil.CopyImageToProjectImagesFolder(ref ImageSource))
+                    {
+                        pbPersonImage.ImageLocation = ImageSource;
+                        _Person.ImagePath = ImageSource;
+                        return true;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error Copying Image File", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
         private void btnSave_Click(object sender, EventArgs e)
         {
+            
             if (_AllFieldesAreRight())//Validation is true
             {
-                if (_Person.Save())
+                if(_HandelPersonImage())
                 {
-                    lblTitle.Text = "Update Person";
+                    if (_Person.Save())
+                    {
+                        lblTitle.Text = "Update Person";
 
-                    MessageBox.Show("Data Saved Successfully", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Data Saved Successfully", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                    lblPersonID.Text = _Person.PersonID.ToString();
+                        lblPersonID.Text = _Person.PersonID.ToString();
 
+                    }
+                    else
+                    {
+                        MessageBox.Show("Save is faild", "Save Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Save is faild", "Save Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("You are have invalid Image", "Image Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
@@ -409,23 +450,19 @@ namespace DVLD.People
             openFileDialog1.InitialDirectory = @"C:\Users\elssa\Pictures";
             openFileDialog1.FileName = string.Empty;
             openFileDialog1.Title = "Chose Image";
-            openFileDialog1.Filter = "Image Files (*.jpg;*.jpeg;*.png;*.bmp;*.gif)|*.jpg;*.jpeg;*.png;*.bmp;*.gif|All Files (*.*)|*.*";
+            openFileDialog1.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.gif;*.bmp";
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 string ImagePath = openFileDialog1.FileName;
-                if (clsUtil.CopyImageToProjectImagesFolder(ref ImagePath))
-                {
-                    _Person.ImagePath = ImagePath;
-                    _ChangeImage();
-                    llblRemoveImage.Visible = true;
-                }
+                pbPersonImage.Load(ImagePath);
+                llblRemoveImage.Visible = true;
             }
         }
 
         private void llblRemoveImage_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            File.Delete(pbPersonImage.ImageLocation);
+            pbPersonImage.ImageLocation = null;
             _ChangeImageBasedGender();
             llblRemoveImage.Visible = false;
         }
