@@ -155,11 +155,11 @@ namespace DVLD_Buisness
         }
         public static bool Delete(int PersonID)
         {
-            return clsPersonData.DeletePersonByID(PersonID);
+            return clsPersonData.DeletePerson(PersonID);
         }
         public static bool Delete(string NationalNo)
         {
-            return clsPersonData.DeletePersonByNationalNo(NationalNo);
+            return clsPersonData.DeletePerson(NationalNo);
         }
 
         public static bool IsPersonExist(int PersonID)

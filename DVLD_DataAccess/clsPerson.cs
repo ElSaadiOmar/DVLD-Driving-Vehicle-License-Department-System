@@ -254,7 +254,7 @@ namespace DVLD_DataAccess
         }
 
 
-        public static bool DeletePersonByID(int PersonID)
+        public static bool DeletePerson(int PersonID)
         {
             string Query = @"DELETE FROM People
                             WHERE PersonID = @PersonID";
@@ -277,7 +277,7 @@ namespace DVLD_DataAccess
             }
 
         }
-        public static bool DeletePersonByNationalNo(string NationalNo)
+        public static bool DeletePerson(string NationalNo)
         {
             string Query = @"DELETE FROM People
                             WHERE NationalNo = @NationalNo";
