@@ -51,7 +51,7 @@ namespace DVLD.People.Controls
         public void _FillPersonInfo()
         {
                 lblPersonID.Text = _Person.PersonID.ToString();
-                lblFullName.Text = _Person.GetFullName();
+                lblFullName.Text = _Person.FullName;
                 lblNationalNo.Text = _Person.NationalNo;
                 lblEmail.Text = _Person.Email;
                 lblCountry.Text = clsCountry.Find(_Person.NationalityCountryID).CountryName;
