@@ -44,15 +44,15 @@ namespace DVLD_DataAccess
                             NationalNo = Reader["NationalNo"] != DBNull.Value ? (string)Reader["NationalNo"] : "";
                             FirstName = Reader["FirstName"] != DBNull.Value ? (string)Reader["FirstName"] : "";
                             SecondName = Reader["SecondName"] != DBNull.Value ? (string)Reader["SecondName"] : "";
-                            ThirdName = Reader["ThirdName"] != DBNull.Value ? (string)Reader["ThirdName"] : "";
+                            ThirdName = Reader["ThirdName"] != DBNull.Value ? (string)Reader["ThirdName"] : null;
                             LastName = Reader["LastName"] != DBNull.Value ? (string)Reader["LastName"] : "";
                             DateOfBirth = Reader["DateOfBirth"] != DBNull.Value ? (DateTime)Reader["DateOfBirth"] : DateTime.MinValue;
                             Gender = Reader["Gender"] != DBNull.Value ? (byte)Reader["Gender"] : 0;
                             Address = Reader["Address"] != DBNull.Value ? (string)Reader["Address"] : "";
                             Phone = Reader["Phone"] != DBNull.Value ? (string)Reader["Phone"] : "";
-                            Email = Reader["Email"] != DBNull.Value ? (string)Reader["Email"] : "";
+                            Email = Reader["Email"] != DBNull.Value ? (string)Reader["Email"] : null;
                             Nationality = Reader["NationalityCountryID"] != DBNull.Value ? (int)Reader["NationalityCountryID"] : -1;
-                            ImagePath = Reader["ImagePath"] != DBNull.Value ? (string)Reader["ImagePath"] : "";
+                            ImagePath = Reader["ImagePath"] != DBNull.Value ? (string)Reader["ImagePath"] : null;
                             return true;
                         }
                         else
@@ -105,15 +105,15 @@ namespace DVLD_DataAccess
                             ID = Reader["PersonID"] != DBNull.Value ? (int)Reader["PersonID"] : -1;
                             FirstName = Reader["FirstName"] != DBNull.Value ? (string)Reader["FirstName"] : "";
                             SecondName = Reader["SecondName"] != DBNull.Value ? (string)Reader["SecondName"] : "";
-                            ThirdName = Reader["ThirdName"] != DBNull.Value ? (string)Reader["ThirdName"] : "";
+                            ThirdName = Reader["ThirdName"] != DBNull.Value ? (string)Reader["ThirdName"] : null;
                             LastName = Reader["LastName"] != DBNull.Value ? (string)Reader["LastName"] : "";
                             DateOfBirth = Reader["DateOfBirth"] != DBNull.Value ? (DateTime)Reader["DateOfBirth"] : DateTime.MinValue;
                             Gender = Reader["Gender"] != DBNull.Value ? (byte)Reader["Gender"] : 0;
                             Address = Reader["Address"] != DBNull.Value ? (string)Reader["Address"] : "";
                             Phone = Reader["Phone"] != DBNull.Value ? (string)Reader["Phone"] : "";
-                            Email = Reader["Email"] != DBNull.Value ? (string)Reader["Email"] : "";
+                            Email = Reader["Email"] != DBNull.Value ? (string)Reader["Email"] : null;
                             Nationality = Reader["NationalityCountryID"] != DBNull.Value ? (int)Reader["NationalityCountryID"] : -1;
-                            ImagePath = Reader["ImagePath"] != DBNull.Value ? (string)Reader["ImagePath"] : "";
+                            ImagePath = Reader["ImagePath"] != DBNull.Value ? (string)Reader["ImagePath"] : null;
 
                             return true;
                         }
@@ -173,15 +173,30 @@ namespace DVLD_DataAccess
                 Command.Parameters.AddWithValue("@NationalNo", NationalNo );
                 Command.Parameters.AddWithValue("@FirstName", FirstName );
                 Command.Parameters.AddWithValue("@SecondName", SecondName );
-                Command.Parameters.AddWithValue("@ThirdName", (object)ThirdName ?? DBNull.Value);
+
+                if(string.IsNullOrWhiteSpace(ThirdName))
+                    Command.Parameters.AddWithValue("@ThirdName",DBNull.Value);
+                else
+                    Command.Parameters.AddWithValue("@ThirdName",ThirdName);
+
                 Command.Parameters.AddWithValue("@LastName", LastName);
                 Command.Parameters.AddWithValue("@DateOfBirth", DateOfBirth != DateTime.MinValue ? (object)DateOfBirth : DBNull.Value);
                 Command.Parameters.AddWithValue("@Gender",Gender);
                 Command.Parameters.AddWithValue("@Address", Address );
                 Command.Parameters.AddWithValue("@Phone", Phone );
-                Command.Parameters.AddWithValue("@Email", (object)Email ?? DBNull.Value);
+
+                if (string.IsNullOrWhiteSpace(Email))
+                    Command.Parameters.AddWithValue("@Email", DBNull.Value);
+                else
+                    Command.Parameters.AddWithValue("@Email", Email);
+
                 Command.Parameters.AddWithValue("@NationalityCountryID", NationalityCountryID);
-                Command.Parameters.AddWithValue("@ImagePath", (object)ImagePath ?? DBNull.Value);
+
+                if (string.IsNullOrWhiteSpace(ImagePath))
+                    Command.Parameters.AddWithValue("@ImagePath", DBNull.Value);
+                else
+                    Command.Parameters.AddWithValue("@ImagePath", ImagePath);
+                
 
                 try
                 {
@@ -228,15 +243,30 @@ namespace DVLD_DataAccess
                 Command.Parameters.AddWithValue("@NationalNo", NationalNo);
                 Command.Parameters.AddWithValue("@FirstName", FirstName);
                 Command.Parameters.AddWithValue("@SecondName", SecondName);
-                Command.Parameters.AddWithValue("@ThirdName", (object)ThirdName ?? DBNull.Value);
+
+                if (string.IsNullOrWhiteSpace(ThirdName))
+                    Command.Parameters.AddWithValue("@ThirdName", DBNull.Value);
+                else
+                    Command.Parameters.AddWithValue("@ThirdName", ThirdName);
+
                 Command.Parameters.AddWithValue("@LastName", LastName);
                 Command.Parameters.AddWithValue("@DateOfBirth", DateOfBirth != DateTime.MinValue ? (object)DateOfBirth : DBNull.Value);
                 Command.Parameters.AddWithValue("@Gender", Gender);
                 Command.Parameters.AddWithValue("@Address", Address);
                 Command.Parameters.AddWithValue("@Phone", Phone);
-                Command.Parameters.AddWithValue("@Email", (object)Email ?? DBNull.Value);
+
+                if (string.IsNullOrWhiteSpace(Email))
+                    Command.Parameters.AddWithValue("@Email", DBNull.Value);
+                else
+                    Command.Parameters.AddWithValue("@Email", Email);
+
                 Command.Parameters.AddWithValue("@NationalityCountryID", NationalityCountryID);
-                Command.Parameters.AddWithValue("@ImagePath", (object)ImagePath ?? DBNull.Value);
+
+                if (string.IsNullOrWhiteSpace(ImagePath))
+                    Command.Parameters.AddWithValue("@ImagePath", DBNull.Value);
+                else
+                    Command.Parameters.AddWithValue("@ImagePath", ImagePath);
+
                 try
                 {
                     Connection.Open();

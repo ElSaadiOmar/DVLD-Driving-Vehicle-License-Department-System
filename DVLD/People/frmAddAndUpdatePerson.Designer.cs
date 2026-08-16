@@ -378,7 +378,7 @@
             this.txtThirdName.Size = new System.Drawing.Size(214, 30);
             this.txtThirdName.TabIndex = 2;
             this.txtThirdName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this._LettersOnly_KeyPress);
-            this.txtThirdName.Validating += new System.ComponentModel.CancelEventHandler(this._LettersOnly_Validating);
+            this.txtThirdName.Validating += new System.ComponentModel.CancelEventHandler(this.txtThirdName_Validating);
             this.txtThirdName.Validated += new System.EventHandler(this.TextBox_Validated);
             // 
             // txtLastName

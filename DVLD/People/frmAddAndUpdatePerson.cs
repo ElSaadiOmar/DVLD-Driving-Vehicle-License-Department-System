@@ -466,5 +466,20 @@ namespace DVLD.People
             _ChangeImageBasedGender();
             llblRemoveImage.Visible = false;
         }
+
+        private void txtThirdName_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtThirdName.Text))
+            {
+                errorProvider1.SetError((Control)sender, "");
+                return;
+            }
+            TextBox txt = (TextBox)sender;
+            if (!_TextIsOnlyLetters(txt.Text))
+            {
+                errorProvider1.SetError((Control)sender, "This Field Accept Only Letter");
+                e.Cancel = true;
+            }
+        }
     }
 }
