@@ -51,25 +51,19 @@ namespace DVLD.People
         private void _InitControl()
         {
             dtDateOfBirth.MaxDate = DateTime.Now.AddYears(-18);
-            cbCountry.SelectedValueChanged -= cbCountry_SelectedValueChanged;
-            cbCountry.TextChanged -= cbCountry_TextChanged;
             cbCountry.DisplayMember = "CountryName";
             cbCountry.ValueMember = "CountryID";
             cbCountry.DataSource = clsCountry.GetAllCountries();
-
+            cbCountry.SelectedValueChanged += cbCountry_SelectedValueChanged;
             if (_Person.NationalityCountryID == -1)
             {
-                clsCountry Country = clsCountry.Find("Algeria");
-                cbCountry.SelectedValue = Country?.ID;
-                _Person.NationalityCountryID = (int)Country?.ID;
+                cbCountry.SelectedIndex = cbCountry.FindString("Algeria");
             }
             else
             {
                 cbCountry.SelectedValue = _Person.NationalityCountryID;
             }
 
-            cbCountry.SelectedValueChanged += cbCountry_SelectedValueChanged;
-            cbCountry.TextChanged += cbCountry_TextChanged;
             if (_Person.Gender == clsPerson.enGender.Female) rbFemale.Checked = true;
             else rbMale.Checked = true;
         }
@@ -103,7 +97,6 @@ namespace DVLD.People
                 txtPhone,
                 txtEmail,
                 txtAddress,
-                cbCountry,
              };
         }
         private void _InitializeMapPropertiesWithControl()
@@ -221,7 +214,6 @@ namespace DVLD.People
             }
 
         }
-
 
 
         private bool _AllFieldesAreRight()
@@ -418,25 +410,11 @@ namespace DVLD.People
             _Person.DateOfBirth = dtDateOfBirth.Value;
         }
 
-
         private void cbCountry_SelectedValueChanged(object sender, EventArgs e)
         {
             if (cbCountry.SelectedValue is int selectedCountryID)
             {
                 _Person.NationalityCountryID = selectedCountryID;
-                errorProvider1.SetError(cbCountry, "");
-            }
-            else
-            {
-                errorProvider1.SetError(cbCountry, "Selected country does not exist.");
-            }
-        }
-
-        private void cbCountry_TextChanged(object sender, EventArgs e)
-        {
-            if (clsCountry.isCountryExist(cbCountry.Text.ToString()) && !int.TryParse(cbCountry.Text.ToString(), out int C))
-            {
-                _Person.NationalityCountryID = clsCountry.Find(cbCountry.Text.ToString()).ID;
                 errorProvider1.SetError(cbCountry, "");
             }
             else

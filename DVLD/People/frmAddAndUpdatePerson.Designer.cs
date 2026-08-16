@@ -313,6 +313,7 @@
             // 
             // cbCountry
             // 
+            this.cbCountry.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCountry.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.cbCountry.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbCountry.FormattingEnabled = true;
@@ -320,8 +321,6 @@
             this.cbCountry.Name = "cbCountry";
             this.cbCountry.Size = new System.Drawing.Size(214, 30);
             this.cbCountry.TabIndex = 10;
-            this.cbCountry.SelectedValueChanged += new System.EventHandler(this.cbCountry_SelectedValueChanged);
-            this.cbCountry.TextChanged += new System.EventHandler(this.cbCountry_TextChanged);
             // 
             // txtPhone
             // 
