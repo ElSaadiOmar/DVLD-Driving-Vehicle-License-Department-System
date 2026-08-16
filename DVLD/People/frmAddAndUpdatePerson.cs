@@ -307,7 +307,7 @@ namespace DVLD.People
         {
             if(_Person.ImagePath != pbPersonImage.ImageLocation)
             {
-                if(_Person.ImagePath != "")
+                if(!string.IsNullOrEmpty(_Person.ImagePath))
                 {
                     try
                     {
