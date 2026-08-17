@@ -208,10 +208,14 @@ namespace DVLD.People
         private void txtNationalNo_Validating(object sender, CancelEventArgs e)
         {
             _RequiredField_Validating(sender, e);
-            if (clsPerson.IsPersonExist(txtNationalNo.Text) && txtNationalNo.Text != _Person.NationalNo)
+            if (clsPerson.IsPersonExist(txtNationalNo.Text.Trim()) && txtNationalNo.Text.Trim() != _Person.NationalNo)
             {
                 errorProvider1.SetError(txtNationalNo, "Person with this NationalNo are exist");
                 e.Cancel = true;
+            }
+            else
+            {
+                errorProvider1.SetError(txtNationalNo, null);
             }
 
         }
