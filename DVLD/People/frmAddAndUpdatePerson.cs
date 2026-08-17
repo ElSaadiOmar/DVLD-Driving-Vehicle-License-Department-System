@@ -235,7 +235,11 @@ namespace DVLD.People
 
         private void _FillAllField(clsPerson Person)
         {
-            if (Person == null) return;
+            if (Person == null) {
+                MessageBox.Show("Person Not Found", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
+                return;
+            }
             lblPersonID.Text = Person.PersonID.ToString() ?? "N/A";
             txtFirstName.Text = Person.FirstName;
             txtSecondName.Text = Person.SecondName;
