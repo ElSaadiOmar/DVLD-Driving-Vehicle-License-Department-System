@@ -42,15 +42,16 @@ namespace DVLD.People
 
         private void frmAddAndUpdatePerson_Load(object sender, EventArgs e)
         {
-            _InitControl();
+            _ResetDefaultValues();
             _ApplyTheme();
             _InitializeMapPropertiesWithControl();
             _InitializeValidationControls();
         }
 
-        private void _InitControl()
+        private void _ResetDefaultValues()
         {
             dtDateOfBirth.MaxDate = DateTime.Now.AddYears(-18);
+            dtDateOfBirth.MinDate = DateTime.Now.AddYears(-100);
             cbCountry.DisplayMember = "CountryName";
             cbCountry.ValueMember = "CountryID";
             cbCountry.DataSource = clsCountry.GetAllCountries();
