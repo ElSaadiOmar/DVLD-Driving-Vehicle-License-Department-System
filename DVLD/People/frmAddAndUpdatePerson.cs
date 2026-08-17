@@ -248,7 +248,7 @@ namespace DVLD.People
             txtNationalNo.Text = Person.NationalNo;
             txtEmail.Text = Person.Email ?? string.Empty;
             txtPhone.Text = Person.Phone;
-            dtDateOfBirth.Text = Person.DateOfBirth.ToString();
+            dtDateOfBirth.Value = Person.DateOfBirth;
             cbCountry.SelectedValue = Person.NationalityCountryID;
             txtAddress.Text = Person.Address;
             switch (Person.Gender)
@@ -344,7 +344,7 @@ namespace DVLD.People
                     {
                         lblTitle.Text = "Update Person";
 
-                        MessageBox.Show("Data Saved Successfully", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Data Saved Successfully", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         lblPersonID.Text = _Person.PersonID.ToString();
 
