@@ -204,7 +204,7 @@ namespace DVLD.People
             }
 
 
-        }
+        }    
         private void txtNationalNo_Validating(object sender, CancelEventArgs e)
         {
             _RequiredField_Validating(sender, e);
@@ -313,6 +313,7 @@ namespace DVLD.People
                     try
                     {
                         File.Delete(_Person.ImagePath);
+                        _Person.ImagePath = null;
                     }
                     catch(IOException IO)
                     {
