@@ -14,14 +14,18 @@ namespace DVLD
 {
     public partial class frmShowPersonInfo : Form
     {
-        private int _PersonID {  get; set; }
         public frmShowPersonInfo(int PersonID)
         {
             InitializeComponent();
-            _PersonID = PersonID;
             ApplyTheme();
+            ctrlPersonCard1.LoadPersonInfo(PersonID);
         }
-
+        public frmShowPersonInfo(string NationalNo)
+        {
+            InitializeComponent();
+            ApplyTheme();
+            ctrlPersonCard1.LoadPersonInfo(NationalNo);
+        }
         private void ApplyTheme()
         {
             // Form
@@ -29,10 +33,7 @@ namespace DVLD
             label1.ForeColor = AppColors.NavyDark;
 
         }
-        private void frmPersonDetails_Load(object sender, EventArgs e)
-        {
-            ctrlPersonCard1.LoadPersonInfo(_PersonID);
-        }
+     
 
     }
 }
