@@ -18,6 +18,10 @@ namespace DVLD.People
 {
     public partial class frmAddAndUpdatePerson : Form
     {
+        public delegate void DataBackEventHandler(object sender,int PersonID);
+
+        public event DataBackEventHandler DataBack;
+
         private clsPerson _Person;
 
         private Dictionary<string, PropertyInfo> _MapPropertiesWithControl;
@@ -352,6 +356,7 @@ namespace DVLD.People
                         MessageBox.Show("Data Saved Successfully", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         lblPersonID.Text = _Person.PersonID.ToString();
+                        DataBack?.Invoke(this,_Person.PersonID);
 
                     }
                     else

@@ -36,7 +36,6 @@ namespace DVLD.People.Controls
             }
         }
 
-
         private bool _TextIsOnlyDigit(string Text)
         {
             foreach (char c in Text)
@@ -70,9 +69,17 @@ namespace DVLD.People.Controls
         private void btnAddNewPerson_Click(object sender, EventArgs e)
         {
             frmAddAndUpdatePerson frm = new frmAddAndUpdatePerson();
+            frm.DataBack += DataBack;
             frm.ShowDialog();
         }
 
+        private void DataBack(object sender,int PersonID)
+        {
+            cbSearchBy.SelectedIndex = 0;
+            txtSearchValue.Text = PersonID.ToString();
+            ctrlPersonCard1.LoadPersonInfo(PersonID);
+        }
+       
         private void cbSearchBy_SelectedIndexChanged(object sender, EventArgs e)
         {
             txtSearchValue.Text = string.Empty;
