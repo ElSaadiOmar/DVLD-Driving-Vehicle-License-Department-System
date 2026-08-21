@@ -29,15 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ctrlPersonCardWithFilter));
             this.label1 = new System.Windows.Forms.Label();
             this.cbSearchBy = new System.Windows.Forms.ComboBox();
             this.txtSearchValue = new System.Windows.Forms.TextBox();
             this.gbFilter = new System.Windows.Forms.GroupBox();
-            this.btnSearch = new System.Windows.Forms.Button();
-            this.btnAddNewPerson = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.ctrlPersonCard1 = new DVLD.People.Controls.ctrlPersonCard();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.btnAddNewPerson = new System.Windows.Forms.Button();
             this.gbFilter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
@@ -89,10 +88,21 @@
             this.gbFilter.TabStop = false;
             this.gbFilter.Text = "Filter";
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
+            // ctrlPersonCard1
+            // 
+            this.ctrlPersonCard1.Location = new System.Drawing.Point(4, 105);
+            this.ctrlPersonCard1.Name = "ctrlPersonCard1";
+            this.ctrlPersonCard1.Size = new System.Drawing.Size(1040, 409);
+            this.ctrlPersonCard1.TabIndex = 0;
+            // 
             // btnSearch
             // 
             this.btnSearch.BackColor = System.Drawing.Color.Transparent;
-            this.btnSearch.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSearch.BackgroundImage")));
+            this.btnSearch.BackgroundImage = global::DVLD.Properties.Resources.SearchPerson;
             this.btnSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnSearch.FlatAppearance.BorderSize = 0;
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -106,7 +116,7 @@
             // btnAddNewPerson
             // 
             this.btnAddNewPerson.BackColor = System.Drawing.Color.Transparent;
-            this.btnAddNewPerson.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAddNewPerson.BackgroundImage")));
+            this.btnAddNewPerson.BackgroundImage = global::DVLD.Properties.Resources.Addperson_man;
             this.btnAddNewPerson.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnAddNewPerson.FlatAppearance.BorderSize = 0;
             this.btnAddNewPerson.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -116,17 +126,6 @@
             this.btnAddNewPerson.TabIndex = 4;
             this.btnAddNewPerson.UseVisualStyleBackColor = false;
             this.btnAddNewPerson.Click += new System.EventHandler(this.btnAddNewPerson_Click);
-            // 
-            // errorProvider1
-            // 
-            this.errorProvider1.ContainerControl = this;
-            // 
-            // ctrlPersonCard1
-            // 
-            this.ctrlPersonCard1.Location = new System.Drawing.Point(4, 105);
-            this.ctrlPersonCard1.Name = "ctrlPersonCard1";
-            this.ctrlPersonCard1.Size = new System.Drawing.Size(1040, 409);
-            this.ctrlPersonCard1.TabIndex = 0;
             // 
             // ctrlPersonCardWithFilter
             // 

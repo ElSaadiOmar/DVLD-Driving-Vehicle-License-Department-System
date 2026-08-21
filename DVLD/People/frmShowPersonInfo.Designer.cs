@@ -51,7 +51,6 @@
             this.Controls.Add(this.ctrlPersonCard1);
             this.Name = "frmShowPersonInfo";
             this.Text = "frmPersonDetails";
-            this.Load += new System.EventHandler(this.frmPersonDetails_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

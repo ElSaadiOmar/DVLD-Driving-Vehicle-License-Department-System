@@ -28,22 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ctrlPersonCard));
             this.gbPersonInformation = new System.Windows.Forms.GroupBox();
-            this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.pictureBox8 = new System.Windows.Forms.PictureBox();
-            this.pictureBox10 = new System.Windows.Forms.PictureBox();
-            this.pictureBox7 = new System.Windows.Forms.PictureBox();
-            this.pbPersonImage = new System.Windows.Forms.PictureBox();
             this.lnkEditPersonInfo = new System.Windows.Forms.LinkLabel();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.lblDateOfBirth = new System.Windows.Forms.Label();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pbGender = new System.Windows.Forms.PictureBox();
             this.lblAddress = new System.Windows.Forms.Label();
             this.lblCountry = new System.Windows.Forms.Label();
             this.lblEmail = new System.Windows.Forms.Label();
@@ -58,6 +48,15 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox9 = new System.Windows.Forms.PictureBox();
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.pictureBox10 = new System.Windows.Forms.PictureBox();
+            this.pictureBox7 = new System.Windows.Forms.PictureBox();
+            this.pbPersonImage = new System.Windows.Forms.PictureBox();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pbGender = new System.Windows.Forms.PictureBox();
             this.gbPersonInformation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
@@ -108,16 +107,6 @@
             this.gbPersonInformation.TabStop = false;
             this.gbPersonInformation.Text = "Person Info";
             // 
-            // pictureBox9
-            // 
-            this.pictureBox9.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox9.Image")));
-            this.pictureBox9.Location = new System.Drawing.Point(580, 150);
-            this.pictureBox9.Name = "pictureBox9";
-            this.pictureBox9.Size = new System.Drawing.Size(32, 32);
-            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox9.TabIndex = 57;
-            this.pictureBox9.TabStop = false;
-            // 
             // label7
             // 
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -145,46 +134,6 @@
             this.label9.TabIndex = 59;
             this.label9.Text = "Date Of Birth:";
             // 
-            // pictureBox8
-            // 
-            this.pictureBox8.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox8.Image")));
-            this.pictureBox8.Location = new System.Drawing.Point(580, 203);
-            this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(32, 32);
-            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox8.TabIndex = 58;
-            this.pictureBox8.TabStop = false;
-            // 
-            // pictureBox10
-            // 
-            this.pictureBox10.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox10.Image")));
-            this.pictureBox10.Location = new System.Drawing.Point(580, 256);
-            this.pictureBox10.Name = "pictureBox10";
-            this.pictureBox10.Size = new System.Drawing.Size(32, 32);
-            this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox10.TabIndex = 56;
-            this.pictureBox10.TabStop = false;
-            // 
-            // pictureBox7
-            // 
-            this.pictureBox7.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox7.Image")));
-            this.pictureBox7.Location = new System.Drawing.Point(158, 309);
-            this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(32, 32);
-            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox7.TabIndex = 55;
-            this.pictureBox7.TabStop = false;
-            // 
-            // pbPersonImage
-            // 
-            this.pbPersonImage.Image = global::DVLD.Properties.Resources.Male_512;
-            this.pbPersonImage.Location = new System.Drawing.Point(813, 127);
-            this.pbPersonImage.Name = "pbPersonImage";
-            this.pbPersonImage.Size = new System.Drawing.Size(174, 214);
-            this.pbPersonImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbPersonImage.TabIndex = 46;
-            this.pbPersonImage.TabStop = false;
-            // 
             // lnkEditPersonInfo
             // 
             this.lnkEditPersonInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -196,26 +145,6 @@
             this.lnkEditPersonInfo.Text = "Edit Person Info";
             this.lnkEditPersonInfo.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkEditPersonInfo_LinkClicked);
             // 
-            // pictureBox6
-            // 
-            this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
-            this.pictureBox6.Location = new System.Drawing.Point(158, 256);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(32, 32);
-            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox6.TabIndex = 54;
-            this.pictureBox6.TabStop = false;
-            // 
-            // pictureBox5
-            // 
-            this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
-            this.pictureBox5.Location = new System.Drawing.Point(158, 150);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(32, 32);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox5.TabIndex = 53;
-            this.pictureBox5.TabStop = false;
-            // 
             // lblDateOfBirth
             // 
             this.lblDateOfBirth.Location = new System.Drawing.Point(663, 150);
@@ -223,26 +152,6 @@
             this.lblDateOfBirth.Size = new System.Drawing.Size(133, 32);
             this.lblDateOfBirth.TabIndex = 47;
             this.lblDateOfBirth.Text = "[????]";
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.Location = new System.Drawing.Point(158, 97);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(32, 32);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox4.TabIndex = 52;
-            this.pictureBox4.TabStop = false;
-            // 
-            // pbGender
-            // 
-            this.pbGender.Image = global::DVLD.Properties.Resources.Man_32;
-            this.pbGender.Location = new System.Drawing.Point(158, 203);
-            this.pbGender.Name = "pbGender";
-            this.pbGender.Size = new System.Drawing.Size(32, 32);
-            this.pbGender.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pbGender.TabIndex = 51;
-            this.pbGender.TabStop = false;
             // 
             // lblAddress
             // 
@@ -362,6 +271,96 @@
             this.label1.Size = new System.Drawing.Size(115, 32);
             this.label1.TabIndex = 34;
             this.label1.Text = "Person ID:";
+            // 
+            // pictureBox9
+            // 
+            this.pictureBox9.Image = global::DVLD.Properties.Resources.Calendar_32;
+            this.pictureBox9.Location = new System.Drawing.Point(580, 150);
+            this.pictureBox9.Name = "pictureBox9";
+            this.pictureBox9.Size = new System.Drawing.Size(32, 32);
+            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox9.TabIndex = 57;
+            this.pictureBox9.TabStop = false;
+            // 
+            // pictureBox8
+            // 
+            this.pictureBox8.Image = global::DVLD.Properties.Resources.Phone_32;
+            this.pictureBox8.Location = new System.Drawing.Point(580, 203);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(32, 32);
+            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox8.TabIndex = 58;
+            this.pictureBox8.TabStop = false;
+            // 
+            // pictureBox10
+            // 
+            this.pictureBox10.Image = global::DVLD.Properties.Resources.Country_32;
+            this.pictureBox10.Location = new System.Drawing.Point(580, 256);
+            this.pictureBox10.Name = "pictureBox10";
+            this.pictureBox10.Size = new System.Drawing.Size(32, 32);
+            this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox10.TabIndex = 56;
+            this.pictureBox10.TabStop = false;
+            // 
+            // pictureBox7
+            // 
+            this.pictureBox7.Image = global::DVLD.Properties.Resources.Address_32;
+            this.pictureBox7.Location = new System.Drawing.Point(158, 309);
+            this.pictureBox7.Name = "pictureBox7";
+            this.pictureBox7.Size = new System.Drawing.Size(32, 32);
+            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox7.TabIndex = 55;
+            this.pictureBox7.TabStop = false;
+            // 
+            // pbPersonImage
+            // 
+            this.pbPersonImage.Image = global::DVLD.Properties.Resources.Male_512;
+            this.pbPersonImage.Location = new System.Drawing.Point(813, 127);
+            this.pbPersonImage.Name = "pbPersonImage";
+            this.pbPersonImage.Size = new System.Drawing.Size(174, 214);
+            this.pbPersonImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbPersonImage.TabIndex = 46;
+            this.pbPersonImage.TabStop = false;
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.Image = global::DVLD.Properties.Resources.Email_32;
+            this.pictureBox6.Location = new System.Drawing.Point(158, 256);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(32, 32);
+            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox6.TabIndex = 54;
+            this.pictureBox6.TabStop = false;
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Image = global::DVLD.Properties.Resources.Number_32;
+            this.pictureBox5.Location = new System.Drawing.Point(158, 150);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(32, 32);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox5.TabIndex = 53;
+            this.pictureBox5.TabStop = false;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = global::DVLD.Properties.Resources.Person_32;
+            this.pictureBox4.Location = new System.Drawing.Point(158, 97);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(32, 32);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox4.TabIndex = 52;
+            this.pictureBox4.TabStop = false;
+            // 
+            // pbGender
+            // 
+            this.pbGender.Image = global::DVLD.Properties.Resources.Man_32;
+            this.pbGender.Location = new System.Drawing.Point(158, 203);
+            this.pbGender.Name = "pbGender";
+            this.pbGender.Size = new System.Drawing.Size(32, 32);
+            this.pbGender.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pbGender.TabIndex = 51;
+            this.pbGender.TabStop = false;
             // 
             // ctrlPersonCard
             // 

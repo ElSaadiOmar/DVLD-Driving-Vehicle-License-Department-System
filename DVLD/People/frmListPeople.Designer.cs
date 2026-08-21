@@ -32,9 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmListPeople));
             this.dgvPeopleList = new System.Windows.Forms.DataGridView();
             this.cmPersonMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.tsmshowDetails = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsmaddNewPerson = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmedit = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmdelete = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
@@ -42,10 +40,12 @@
             this.tsmphoneCall = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.cbFilterBy = new System.Windows.Forms.ComboBox();
-            this.btnAddNewPerson = new System.Windows.Forms.Button();
-            this.btnClose = new System.Windows.Forms.Button();
             this.txtFilter = new System.Windows.Forms.TextBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.btnClose = new System.Windows.Forms.Button();
+            this.btnAddNewPerson = new System.Windows.Forms.Button();
+            this.tsmshowDetails = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmaddNewPerson = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPeopleList)).BeginInit();
             this.cmPersonMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
@@ -87,27 +87,10 @@
             this.cmPersonMenu.Name = "cmsPersonMenu";
             this.cmPersonMenu.Size = new System.Drawing.Size(192, 172);
             // 
-            // tsmshowDetails
-            // 
-            this.tsmshowDetails.Image = ((System.Drawing.Image)(resources.GetObject("tsmshowDetails.Image")));
-            this.tsmshowDetails.ImageTransparentColor = System.Drawing.Color.Black;
-            this.tsmshowDetails.Name = "tsmshowDetails";
-            this.tsmshowDetails.Size = new System.Drawing.Size(191, 26);
-            this.tsmshowDetails.Text = "Show Details";
-            this.tsmshowDetails.Click += new System.EventHandler(this.tsmshowDetails_Click);
-            // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(188, 6);
-            // 
-            // tsmaddNewPerson
-            // 
-            this.tsmaddNewPerson.Image = ((System.Drawing.Image)(resources.GetObject("tsmaddNewPerson.Image")));
-            this.tsmaddNewPerson.Name = "tsmaddNewPerson";
-            this.tsmaddNewPerson.Size = new System.Drawing.Size(191, 26);
-            this.tsmaddNewPerson.Text = "Add New Person";
-            this.tsmaddNewPerson.Click += new System.EventHandler(this.tsmaddNewPerson_Click);
             // 
             // tsmedit
             // 
@@ -171,32 +154,6 @@
             this.cbFilterBy.TabIndex = 2;
             this.cbFilterBy.SelectedIndexChanged += new System.EventHandler(this.cbFilterBy_SelectedIndexChanged);
             // 
-            // btnAddNewPerson
-            // 
-            this.btnAddNewPerson.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.btnAddNewPerson.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAddNewPerson.BackgroundImage")));
-            this.btnAddNewPerson.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnAddNewPerson.Location = new System.Drawing.Point(1332, 164);
-            this.btnAddNewPerson.Name = "btnAddNewPerson";
-            this.btnAddNewPerson.Size = new System.Drawing.Size(64, 56);
-            this.btnAddNewPerson.TabIndex = 3;
-            this.btnAddNewPerson.UseVisualStyleBackColor = false;
-            this.btnAddNewPerson.Click += new System.EventHandler(this.btnAddNewPerson_Click);
-            // 
-            // btnClose
-            // 
-            this.btnClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
-            this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClose.Location = new System.Drawing.Point(1283, 627);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(113, 45);
-            this.btnClose.TabIndex = 4;
-            this.btnClose.Text = "    Close";
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
             // txtFilter
             // 
             this.txtFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
@@ -210,6 +167,49 @@
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
+            // 
+            // btnClose
+            // 
+            this.btnClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.Image = global::DVLD.Properties.Resources.Whiteclose;
+            this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnClose.Location = new System.Drawing.Point(1283, 627);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(113, 45);
+            this.btnClose.TabIndex = 4;
+            this.btnClose.Text = "    Close";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // btnAddNewPerson
+            // 
+            this.btnAddNewPerson.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.btnAddNewPerson.BackgroundImage = global::DVLD.Properties.Resources.Addperson_man;
+            this.btnAddNewPerson.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnAddNewPerson.Location = new System.Drawing.Point(1332, 164);
+            this.btnAddNewPerson.Name = "btnAddNewPerson";
+            this.btnAddNewPerson.Size = new System.Drawing.Size(64, 56);
+            this.btnAddNewPerson.TabIndex = 3;
+            this.btnAddNewPerson.UseVisualStyleBackColor = false;
+            this.btnAddNewPerson.Click += new System.EventHandler(this.btnAddNewPerson_Click);
+            // 
+            // tsmshowDetails
+            // 
+            this.tsmshowDetails.Image = ((System.Drawing.Image)(resources.GetObject("tsmshowDetails.Image")));
+            this.tsmshowDetails.ImageTransparentColor = System.Drawing.Color.Black;
+            this.tsmshowDetails.Name = "tsmshowDetails";
+            this.tsmshowDetails.Size = new System.Drawing.Size(191, 26);
+            this.tsmshowDetails.Text = "Show Details";
+            this.tsmshowDetails.Click += new System.EventHandler(this.tsmshowDetails_Click);
+            // 
+            // tsmaddNewPerson
+            // 
+            this.tsmaddNewPerson.Image = ((System.Drawing.Image)(resources.GetObject("tsmaddNewPerson.Image")));
+            this.tsmaddNewPerson.Name = "tsmaddNewPerson";
+            this.tsmaddNewPerson.Size = new System.Drawing.Size(191, 26);
+            this.tsmaddNewPerson.Text = "Add New Person";
+            this.tsmaddNewPerson.Click += new System.EventHandler(this.tsmaddNewPerson_Click);
             // 
             // frmListPeople
             // 
