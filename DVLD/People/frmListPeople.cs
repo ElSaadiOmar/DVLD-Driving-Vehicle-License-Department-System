@@ -17,18 +17,20 @@ namespace DVLD.People
     {
         private DataTable _dtAllPeople;
 
+        private DataTable _dtPeople;
         public frmListPeople()
         {
             InitializeComponent(); 
-            ApplyTheme();
-            _RefreshPeopleList();
-            cbFilterBy.SelectedItem = cbFilterBy.Items[0];
         }
 
         private void _RefreshPeopleList()
         {
             _dtAllPeople = clsPerson.GetAllPeople();
-            dgvPeopleList.DataSource = _dtAllPeople;
+            _dtPeople = _dtAllPeople.DefaultView.ToTable(false,  "PersonID","NationalNo",
+                                                         "FirstName", "SecondName", "ThirdName", "LastName",
+                                                         "Gender", "DateOfBirth", "CountryName",
+                                                         "Phone", "Email");
+            dgvPeopleList.DataSource = _dtPeople;
         }
         private void ApplyTheme()
         {
@@ -58,6 +60,49 @@ namespace DVLD.People
         private void frmMangePeople_Load(object sender, EventArgs e)
         {
             _RefreshPeopleList();
+            ApplyTheme();
+            cbFilterBy.SelectedIndex = 0;
+
+            if (dgvPeopleList.Rows.Count > 0)
+            {
+
+                dgvPeopleList.Columns[0].HeaderText = "Person ID";
+                dgvPeopleList.Columns[0].Width = 110;
+
+                dgvPeopleList.Columns[1].HeaderText = "National No.";
+                dgvPeopleList.Columns[1].Width = 120;
+
+
+                dgvPeopleList.Columns[2].HeaderText = "First Name";
+                dgvPeopleList.Columns[2].Width = 120;
+
+                dgvPeopleList.Columns[3].HeaderText = "Second Name";
+                dgvPeopleList.Columns[3].Width = 140;
+
+
+                dgvPeopleList.Columns[4].HeaderText = "Third Name";
+                dgvPeopleList.Columns[4].Width = 120;
+
+                dgvPeopleList.Columns[5].HeaderText = "Last Name";
+                dgvPeopleList.Columns[5].Width = 120;
+
+                dgvPeopleList.Columns[6].HeaderText = "Date Of Birth";
+                dgvPeopleList.Columns[6].Width = 120;
+
+                dgvPeopleList.Columns[7].HeaderText = "Gender";
+                dgvPeopleList.Columns[7].Width = 140;
+
+                dgvPeopleList.Columns[8].HeaderText = "Nationality";
+                dgvPeopleList.Columns[8].Width = 120;
+
+
+                dgvPeopleList.Columns[9].HeaderText = "Phone";
+                dgvPeopleList.Columns[9].Width = 120;
+
+
+                dgvPeopleList.Columns[10].HeaderText = "Email";
+                dgvPeopleList.Columns[10].Width = 170;
+            }
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -214,7 +259,7 @@ namespace DVLD.People
             {
                 case "None":
                     txtFilter.Visible = false;
-                    _dtAllPeople.DefaultView.RowFilter = "";
+                    _dtPeople.DefaultView.RowFilter = "";
                     break;
                 case "Person ID":
                     txtFilter.Visible = true;
@@ -255,29 +300,29 @@ namespace DVLD.People
         private void _Filter(string FilterBy,string FilterText)
         {
 
-            if (_dtAllPeople.Rows.Count == 0)
+            if (_dtPeople.Rows.Count == 0)
                 return;
-            Type DataType = _dtAllPeople.Columns[FilterBy].DataType;
+            Type DataType = _dtPeople.Columns[FilterBy].DataType;
             if (DataType == typeof(int))
             {
                 if(int.TryParse(FilterText,out int Result))
                 {
-                    _dtAllPeople.DefaultView.RowFilter =  $"CONVERT({FilterBy}, System.String) LIKE '{Result}%'";
+                    _dtPeople.DefaultView.RowFilter =  $"CONVERT({FilterBy}, System.String) LIKE '{Result}%'";
                 }
                 else
                 {
-                    _dtAllPeople.DefaultView.RowFilter = "";
+                    _dtPeople.DefaultView.RowFilter = "";
                 }
             }
             else
             {
                 if (!string.IsNullOrEmpty(FilterText))
                 {
-                    _dtAllPeople.DefaultView.RowFilter = $"{FilterBy} LIKE '{FilterText.Trim()}%'";
+                    _dtPeople.DefaultView.RowFilter = $"{FilterBy} LIKE '{FilterText.Trim()}%'";
                 }
                 else
                 {
-                    _dtAllPeople.DefaultView.RowFilter = "";
+                    _dtPeople.DefaultView.RowFilter = "";
                 }
             }
         }
@@ -286,7 +331,7 @@ namespace DVLD.People
             string filterColumn = cbFilterBy.Text.Replace(" ", "");
             string filterValue = txtFilter.Text.Trim();
 
-            if (_dtAllPeople.Rows.Count == 0)
+            if (_dtPeople.Rows.Count == 0)
                 return;
             _Filter(filterColumn, filterValue);
         }
