@@ -133,6 +133,12 @@ namespace DVLD_Buisness
         {
             return clsUserData.GetAllUsers();
         }
+
+        
+        public static bool isUserExistForPersonID(int PersonID)
+        {
+            return clsUserData.IsUserExistForPersonID(PersonID);
+        }
     }
 }
 
