@@ -17,13 +17,24 @@ namespace DVLD.People.Controls
     public partial class ctrlPersonCard : UserControl
     {
         private clsPerson _Person;
+
+        private int _PersonID = -1;
+        public int PersonID
+        {
+            get { return _PersonID; }
+        }
+
+        public clsPerson SelectedPersonInfo
+        {
+            get { return _Person; }
+        }
         public ctrlPersonCard()
         {
             InitializeComponent();
         }
 
         public void LoadPersonInfo(int PersonID)
-        {
+        { 
             _Person = clsPerson.Find(PersonID);
             if (_Person == null)
             {
@@ -43,13 +54,13 @@ namespace DVLD.People.Controls
                 MessageBox.Show("No _Person with National No. = " + NationalNo.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
             _FillPersonInfo();
         }
 
 
         public void _FillPersonInfo()
         {
+                _PersonID = _Person.PersonID;
                 lblPersonID.Text = _Person.PersonID.ToString();
                 lblFullName.Text = _Person.FullName;
                 lblNationalNo.Text = _Person.NationalNo;
@@ -80,6 +91,7 @@ namespace DVLD.People.Controls
         }
         public void ResetPersonInfo()
         {
+            _PersonID = -1;
             lblPersonID.Text = "[????]";
             lblNationalNo.Text = "[????]";
             lblFullName.Text = "[????]";
