@@ -120,11 +120,23 @@
     <Compile Include="Users\ctrlUserCard.Designer.cs">
       <DependentUpon>ctrlUserCard.cs</DependentUpon>
     </Compile>
+    <Compile Include="Users\frmAddAndUpdateUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users\frmAddAndUpdateUser.Designer.cs">
+      <DependentUpon>frmAddAndUpdateUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Users\frmShowUserInfo.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Users\frmShowUserInfo.Designer.cs">
       <DependentUpon>frmShowUserInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Users\frmUsersList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users\frmUsersList.Designer.cs">
+      <DependentUpon>frmUsersList.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
@@ -166,8 +178,14 @@
     <EmbeddedResource Include="Users\ctrlUserCard.resx">
       <DependentUpon>ctrlUserCard.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Users\frmAddAndUpdateUser.resx">
+      <DependentUpon>frmAddAndUpdateUser.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Users\frmShowUserInfo.resx">
       <DependentUpon>frmShowUserInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users\frmUsersList.resx">
+      <DependentUpon>frmUsersList.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
