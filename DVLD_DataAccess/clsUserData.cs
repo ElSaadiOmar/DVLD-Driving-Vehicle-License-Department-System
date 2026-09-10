@@ -268,6 +268,26 @@ namespace DVLD_DataAccess
                 }
             }
         }
+        public static bool IsUserExist(string UserName)
+        {
+            string Query = "select Found=1 from [dbo].[Users] where UserName = @UserName";
+            using (SqlConnection Connection = new SqlConnection(clsDataSettings.ConnectionString))
+            using (SqlCommand Command = new SqlCommand(Query, Connection))
+            {
+                Command.Parameters.AddWithValue("@UserName", UserName);
+                try
+                {
+                    Connection.Open();
+                    object Result = Command.ExecuteScalar();
+                    return Result != null;
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex.ToString());
+                    return false;
+                }
+            }
+        }
         public static bool IsUserExistByPersonID(int PersonID)
         {
             string Query = "select Found=1 from People where PersonID = @PersonID";

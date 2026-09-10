@@ -129,6 +129,11 @@ namespace DVLD_Buisness
         {
             return clsUserData.IsUserExist(UserID);
         }
+        public static bool IsUserExist(string UserName)
+        {
+            return clsUserData.IsUserExist(UserName);
+        }
+
         public static DataTable GetAllUsers()
         {
             return clsUserData.GetAllUsers();
