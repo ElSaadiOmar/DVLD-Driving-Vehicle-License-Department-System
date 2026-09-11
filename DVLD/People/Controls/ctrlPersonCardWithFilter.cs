@@ -14,7 +14,15 @@ namespace DVLD.People.Controls
 {
     public partial class ctrlPersonCardWithFilter : UserControl
     {
-
+        public event Action<int> OnPersonSelected;
+        protected virtual void PersonSelected(int PersonID)
+        {
+            Action<int> handler = OnPersonSelected;
+            if (handler != null)
+            {
+                handler(PersonID); // Raise the event with the parameter
+            }
+        }
         public ctrlPersonCardWithFilter()
         {
             InitializeComponent();
@@ -23,6 +31,43 @@ namespace DVLD.People.Controls
         }
 
 
+        private bool _ShowAddPerson = true;
+        public bool ShowAddPerson
+        {
+            get
+            {
+                return _ShowAddPerson;
+            }
+            set
+            {
+                _ShowAddPerson = value;
+                btnAddNewPerson.Visible = _ShowAddPerson;
+            }
+        }
+
+        private bool _FilterEnabled = true;
+        public bool FilterEnabled
+        {
+            get
+            {
+                return _FilterEnabled;
+            }
+            set
+            {
+                _FilterEnabled = value;
+                gbFilter.Enabled = _FilterEnabled;
+            }
+        }
+     
+        public int PersonID
+        {
+            get { return ctrlPersonCard1.PersonID; }
+        }
+        public clsPerson SelectedPersonInfo 
+        { 
+            get { return ctrlPersonCard1.SelectedPersonInfo; } 
+        }
+   
         private void _DigitOnly_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
@@ -79,7 +124,14 @@ namespace DVLD.People.Controls
             txtSearchValue.Text = PersonID.ToString();
             ctrlPersonCard1.LoadPersonInfo(PersonID);
         }
-       
+
+        public void LoadPersonInfo(int PersonID)
+        {
+            cbSearchBy.SelectedIndex = 1;
+            txtSearchValue.Text = PersonID.ToString();
+            FindNow();
+
+        }
         private void cbSearchBy_SelectedIndexChanged(object sender, EventArgs e)
         {
             txtSearchValue.Text = string.Empty;
@@ -101,30 +153,33 @@ namespace DVLD.People.Controls
                 _DigitesOnly_Validating(sender, e);
             }
         }
-
-        private void btnSearch_Click(object sender, EventArgs e)
+        public void FilterFocus()
         {
-            switch (cbSearchBy.SelectedItem.ToString())
+            txtSearchValue.Focus();
+        }
+        private void FindNow()
+        {
+            switch (cbSearchBy.Text)
             {
                 case "Person ID":
+                {
+                    if (int.TryParse(txtSearchValue.Text, out int ID))
                     {
-                        if (int.TryParse(txtSearchValue.Text, out int ID))
+                        if (clsPerson.IsPersonExist(ID))
                         {
-                            if (clsPerson.IsPersonExist(ID))
-                            {
-                                ctrlPersonCard1.LoadPersonInfo(ID);
-                            }
-                            else
-                            {
-                                MessageBox.Show($"Person With this PersonID [{ID}] was not exist","Person not found",MessageBoxButtons.OK,MessageBoxIcon.Error);
-                            }
+                            ctrlPersonCard1.LoadPersonInfo(ID);
                         }
                         else
                         {
-                            MessageBox.Show($"this PersonID is Invalid", "Invalid ID", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show($"Person With this PersonID [{ID}] was not exist", "Person not found", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
-                        break;
                     }
+                    else
+                    {
+                        MessageBox.Show($"this PersonID is Invalid", "Invalid ID", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    break;
+                }
                 case "National No":
                     {
                         if (clsPerson.IsPersonExist(txtSearchValue.Text.ToString()))
@@ -138,6 +193,20 @@ namespace DVLD.People.Controls
                         break;
                     }
             }
+            if (OnPersonSelected != null && FilterEnabled)
+                // Raise the event with a parameter
+                OnPersonSelected(ctrlPersonCard1.PersonID);
+        }
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            if (!this.ValidateChildren())
+            {
+                //Here we dont continue becuase the form is not valid
+                MessageBox.Show("Some fileds are not valide!, put the mouse over the red icon(s) to see the erro", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+
+            }
+            FindNow();
         }
     }
 }
