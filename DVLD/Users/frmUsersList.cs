@@ -75,7 +75,20 @@ namespace DVLD.Users
                     MessageBox.Show("User is not delted due to data connected to it.", "Faild", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-       
+
+        private void btnAddNewPerson_Click(object sender, EventArgs e)
+        {
+            frmAddAndUpdateUser frm = new frmAddAndUpdateUser();
+            frm.ShowDialog();
+            frmUsersList_Load(null, null);
+        }
+
+        private void tsmEditUser_Click(object sender, EventArgs e)
+        {
+            frmAddAndUpdateUser frm = new frmAddAndUpdateUser((int)dgvUsersList.SelectedRows[0].Cells[0].Value);
+            frm.ShowDialog();
+            frmUsersList_Load(null, null);
+        }
 
         private void dgvUsersList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
