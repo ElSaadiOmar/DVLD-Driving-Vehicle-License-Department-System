@@ -66,11 +66,13 @@
             this.tcUserInfo.Controls.Add(this.tpPersonalInfo);
             this.tcUserInfo.Controls.Add(this.tpLoginInfo);
             this.tcUserInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.tcUserInfo.Location = new System.Drawing.Point(12, 72);
+            this.tcUserInfo.Location = new System.Drawing.Point(12, 121);
             this.tcUserInfo.Name = "tcUserInfo";
             this.tcUserInfo.SelectedIndex = 0;
             this.tcUserInfo.Size = new System.Drawing.Size(1029, 619);
             this.tcUserInfo.TabIndex = 118;
+            this.tcUserInfo.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tcUserInfo_Selecting);
+            this.tcUserInfo.DoubleClick += new System.EventHandler(this.btnPersonInfoNext_Click);
             // 
             // tpPersonalInfo
             // 
@@ -173,7 +175,7 @@
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.Size = new System.Drawing.Size(212, 30);
             this.txtUserName.TabIndex = 118;
-            this.txtUserName.Validating += new System.ComponentModel.CancelEventHandler(this.txtRequiredFeild_Validating);
+            this.txtUserName.Validating += new System.ComponentModel.CancelEventHandler(this.txtUserName_Validating);
             // 
             // txtConfirmPassword
             // 
@@ -228,7 +230,7 @@
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(212, 30);
             this.txtPassword.TabIndex = 119;
-            this.txtPassword.Validating += new System.ComponentModel.CancelEventHandler(this.txtRequiredFeild_Validating);
+            this.txtPassword.Validating += new System.ComponentModel.CancelEventHandler(this.txtPassword_Validating);
             // 
             // pictureBox1
             // 
@@ -266,35 +268,41 @@
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.Image = global::DVLD.Properties.Resources.Whiteclose;
             this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClose.Location = new System.Drawing.Point(707, 710);
+            this.btnClose.Location = new System.Drawing.Point(707, 759);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(145, 53);
             this.btnClose.TabIndex = 123;
             this.btnClose.Text = "    Close";
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnSave
             // 
             this.btnSave.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnSave.CausesValidation = false;
+            this.btnSave.Enabled = false;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
+            this.btnSave.ForeColor = System.Drawing.Color.White;
             this.btnSave.Image = global::DVLD.Properties.Resources.Save_32;
             this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSave.Location = new System.Drawing.Point(885, 710);
+            this.btnSave.Location = new System.Drawing.Point(885, 759);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(145, 53);
             this.btnSave.TabIndex = 124;
             this.btnSave.Text = "          Save";
             this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // lblTitle
             // 
             this.lblTitle.AutoSize = true;
-            this.lblTitle.Location = new System.Drawing.Point(403, 50);
+            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Bold);
+            this.lblTitle.Location = new System.Drawing.Point(343, 70);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(44, 16);
+            this.lblTitle.Size = new System.Drawing.Size(299, 48);
             this.lblTitle.TabIndex = 125;
-            this.lblTitle.Text = "label5";
+            this.lblTitle.Text = "Add New User";
             // 
             // errorProvider1
             // 
@@ -302,10 +310,13 @@
             // 
             // ctrlPersonCardWithFilter1
             // 
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.ctrlPersonCardWithFilter1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(240)))), ((int)(((byte)(249)))));
+            this.ctrlPersonCardWithFilter1.FilterEnabled = true;
             this.ctrlPersonCardWithFilter1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
             this.ctrlPersonCardWithFilter1.Location = new System.Drawing.Point(-16, 0);
             this.ctrlPersonCardWithFilter1.Name = "ctrlPersonCardWithFilter1";
+            this.ctrlPersonCardWithFilter1.ShowAddPerson = true;
             this.ctrlPersonCardWithFilter1.Size = new System.Drawing.Size(1035, 509);
             this.ctrlPersonCardWithFilter1.TabIndex = 120;
             // 
@@ -320,6 +331,7 @@
             this.Controls.Add(this.tcUserInfo);
             this.Name = "frmAddAndUpdateUser";
             this.Text = "frmAddAndUpdateUser";
+            //this.Activated += new System.EventHandler(this.frmAddAndUpdateUser_Activated);
             this.Load += new System.EventHandler(this.frmAddAndUpdateUser_Load);
             this.tcUserInfo.ResumeLayout(false);
             this.tpPersonalInfo.ResumeLayout(false);
