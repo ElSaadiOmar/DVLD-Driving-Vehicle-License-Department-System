@@ -136,6 +136,7 @@
             this.tsmChangePassword.Name = "tsmChangePassword";
             this.tsmChangePassword.Size = new System.Drawing.Size(197, 26);
             this.tsmChangePassword.Text = "Change Password";
+            this.tsmChangePassword.Click += new System.EventHandler(this.tsmChangePassword_Click);
             // 
             // toolStripSeparator2
             // 

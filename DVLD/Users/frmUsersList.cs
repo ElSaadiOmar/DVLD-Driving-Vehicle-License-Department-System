@@ -92,7 +92,7 @@ namespace DVLD.Users
 
         private void dgvUsersList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            frmShowUserInfo frm = new frmShowUserInfo((int)dgvUsersList.Rows[dgvUsersList.CurrentCell.RowIndex].Cells[0].Value, true);
+            frmShowUserInfo frm = new frmShowUserInfo((int)dgvUsersList.SelectedRows[0].Cells[0].Value, true);
             frm.ShowDialog();
             frmUsersList_Load(null, null);
         }
@@ -118,6 +118,14 @@ namespace DVLD.Users
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void tsmChangePassword_Click(object sender, EventArgs e)
+        {
+            
+            frmChangePassword frm = new frmChangePassword((int)dgvUsersList.SelectedRows[0].Cells[0].Value);
+            frm.ShowDialog();
+            frmUsersList_Load(null, null);
         }
     }
 }
