@@ -67,14 +67,16 @@
             this.dgvUsersList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvUsersList.ContextMenuStrip = this.cmUserMenu;
             this.dgvUsersList.Location = new System.Drawing.Point(43, 229);
+            this.dgvUsersList.MultiSelect = false;
             this.dgvUsersList.Name = "dgvUsersList";
             this.dgvUsersList.ReadOnly = true;
             this.dgvUsersList.RowHeadersWidth = 51;
             this.dgvUsersList.RowTemplate.Height = 24;
+            this.dgvUsersList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvUsersList.Size = new System.Drawing.Size(1177, 382);
             this.dgvUsersList.TabIndex = 6;
+            this.dgvUsersList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsersList_CellDoubleClick);
             this.dgvUsersList.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvUsersList_CellMouseDown);
-            this.dgvUsersList.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dgvUsersList_MouseDown);
             // 
             // cmUserMenu
             // 
@@ -91,6 +93,7 @@
             this.toolStripMenuItem8});
             this.cmUserMenu.Name = "cmsPersonMenu";
             this.cmUserMenu.Size = new System.Drawing.Size(198, 198);
+            this.cmUserMenu.Opening += new System.ComponentModel.CancelEventHandler(this.cmUserMenu_Opening);
             // 
             // tsmShowUser
             // 
@@ -174,6 +177,7 @@
             this.btnClose.TabIndex = 10;
             this.btnClose.Text = "    Close";
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnAddNewPerson
             // 
@@ -185,7 +189,6 @@
             this.btnAddNewPerson.Size = new System.Drawing.Size(70, 64);
             this.btnAddNewPerson.TabIndex = 9;
             this.btnAddNewPerson.UseVisualStyleBackColor = false;
-            this.btnAddNewPerson.Click += new System.EventHandler(this.btnAddNewPerson_Click);
             // 
             // label2
             // 
@@ -236,6 +239,7 @@
             this.cbFilterBy.Name = "cbFilterBy";
             this.cbFilterBy.Size = new System.Drawing.Size(210, 24);
             this.cbFilterBy.TabIndex = 105;
+            // 
             // txtFilterValue
             // 
             this.txtFilterValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;

@@ -20,11 +20,6 @@ namespace DVLD.Users
             InitializeComponent();
             ApplyTheme();
         }
-        private void _RefreshUsersList()
-        {
-            _dtUsersList = clsUser.GetAllUsers();
-            dgvUsersList.DataSource = _dtUsersList;
-        }
         private void ApplyTheme()
         {
             // Form
@@ -51,33 +46,18 @@ namespace DVLD.Users
 
         private void frmUsersList_Load(object sender, EventArgs e)
         {
-            cbFilterBy.SelectedIndex = 0;
-            _RefreshUsersList();
+            cbFilterBy.SelectedIndex = 0; 
+            _dtUsersList = clsUser.GetAllUsers();
+            dgvUsersList.DataSource = _dtUsersList;
+            lblRecords.Text = dgvUsersList.Rows.Count.ToString();
         }
 
-        private void dgvUsersList_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Right && e.RowIndex >= 0)
-            {
-                dgvUsersList.ClearSelection();
-                dgvUsersList.Rows[e.RowIndex].Selected = true;
-                cmUserMenu.Show(Cursor.Position);
-            }
-        }
-
-        private void dgvUsersList_MouseDown(object sender, MouseEventArgs e)
-        {   //to ensure always i have row select
-            if (e.Button == MouseButtons.Right && dgvUsersList.GetCellCount(DataGridViewElementStates.Selected) > 0)
-            {
-                dgvUsersList.Rows[dgvUsersList.CurrentCell.RowIndex].Selected = true;
-            }
-        }
 
         private void tsmShowUser_Click(object sender, EventArgs e)
         {
             frmShowUserInfo frm = new frmShowUserInfo((int)dgvUsersList.SelectedRows[0].Cells["UserID"].Value,true);
             frm.ShowDialog();
-            _RefreshUsersList();
+            frmUsersList_Load(null, null);
         }
 
         private void tsmDeleteUser_Click(object sender, EventArgs e)
@@ -88,22 +68,43 @@ namespace DVLD.Users
                 if (clsUser.Delete(UserID))
                 {
                     MessageBox.Show("User has been deleted successfully", "Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    _RefreshUsersList();
+                    frmUsersList_Load(null, null);
                 }
 
                 else
                     MessageBox.Show("User is not delted due to data connected to it.", "Faild", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+       
 
-
-
+        private void dgvUsersList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            frmShowUserInfo frm = new frmShowUserInfo((int)dgvUsersList.Rows[dgvUsersList.CurrentCell.RowIndex].Cells[0].Value, true);
+            frm.ShowDialog();
+            frmUsersList_Load(null, null);
         }
 
-        private void btnAddNewPerson_Click(object sender, EventArgs e)
+        private void dgvUsersList_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
         {
-            frmAddAndUpdateUser frm = new frmAddAndUpdateUser();
-            frm.Show();
-            _RefreshUsersList();
+            if (e.Button == MouseButtons.Right  && e.RowIndex >= 0)
+            {
+                dgvUsersList.ClearSelection();
+                dgvUsersList.Rows[e.RowIndex].Selected = true;
+                cmUserMenu.Show(Cursor.Position);
+            }
+        }
+
+        private void cmUserMenu_Opening(object sender, CancelEventArgs e)
+        {
+            if(dgvUsersList.Rows.Count <= 0)
+            {
+                e.Cancel = true;
+            }
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
