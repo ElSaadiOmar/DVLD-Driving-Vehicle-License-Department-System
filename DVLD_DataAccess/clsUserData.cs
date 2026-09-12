@@ -270,7 +270,7 @@ namespace DVLD_DataAccess
         }
         public static bool IsUserExist(string UserName)
         {
-            string Query = "select Found=1 from [dbo].[Users] where UserName = @UserName";
+            string Query = "select Found=1 from [dbo].[Users] where UserName = @UserName COLLATE Latin1_General_CS_AS";
             using (SqlConnection Connection = new SqlConnection(clsDataSettings.ConnectionString))
             using (SqlCommand Command = new SqlCommand(Query, Connection))
             {
