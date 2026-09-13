@@ -84,6 +84,14 @@ namespace DVLD.Login
             }
         }
 
-      
+        private void btnShowPassword_MouseDown(object sender, MouseEventArgs e)
+        {
+            txtPassword.UseSystemPasswordChar = false;
+        }
+
+        private void btnShowPassword_MouseUp(object sender, MouseEventArgs e)
+        {
+            txtPassword.UseSystemPasswordChar = true;
+        }
     }
 }

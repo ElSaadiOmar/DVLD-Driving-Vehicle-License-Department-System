@@ -39,6 +39,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lblTitle = new System.Windows.Forms.Label();
+            this.btnShowPassword = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -59,6 +60,7 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.btnShowPassword);
             this.splitContainer1.Panel2.Controls.Add(this.pictureBox5);
             this.splitContainer1.Panel2.Controls.Add(this.pictureBox4);
             this.splitContainer1.Panel2.Controls.Add(this.btnClose);
@@ -140,8 +142,9 @@
             this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.txtPassword.Location = new System.Drawing.Point(211, 249);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(237, 28);
+            this.txtPassword.Size = new System.Drawing.Size(213, 28);
             this.txtPassword.TabIndex = 80;
+            this.txtPassword.UseSystemPasswordChar = true;
             // 
             // txtUserName
             // 
@@ -179,6 +182,18 @@
             this.lblTitle.TabIndex = 76;
             this.lblTitle.Text = "Login to Your Account";
             // 
+            // btnShowPassword
+            // 
+            this.btnShowPassword.BackgroundImage = global::DVLD.Properties.Resources.ShowPassword;
+            this.btnShowPassword.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnShowPassword.Location = new System.Drawing.Point(421, 249);
+            this.btnShowPassword.Name = "btnShowPassword";
+            this.btnShowPassword.Size = new System.Drawing.Size(27, 31);
+            this.btnShowPassword.TabIndex = 86;
+            this.btnShowPassword.UseVisualStyleBackColor = true;
+            this.btnShowPassword.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnShowPassword_MouseDown);
+            this.btnShowPassword.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnShowPassword_MouseUp);
+            // 
             // frmLoginScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -214,5 +229,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.Button btnShowPassword;
     }
 }
