@@ -43,6 +43,7 @@ namespace DVLD.Users
             btnSave.ForeColor = Color.White;
             btnSave.FlatStyle = FlatStyle.Flat;
             btnSave.FlatAppearance.BorderSize = 0;
+
         }
 
         private void frmChangePassword_Load(object sender, EventArgs e)
@@ -126,6 +127,16 @@ namespace DVLD.Users
                 MessageBox.Show("An Erro Occured, Password did not change.",
                   "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void btnShowPassword_MouseDown(object sender, MouseEventArgs e)
+        {
+            ((TextBox)((Button)sender).Tag).UseSystemPasswordChar = false;
+        }
+
+        private void btnShowPassword_MouseUp(object sender, MouseEventArgs e)
+        {
+            ((TextBox)((Button)sender).Tag).UseSystemPasswordChar = true;
         }
     }
 }

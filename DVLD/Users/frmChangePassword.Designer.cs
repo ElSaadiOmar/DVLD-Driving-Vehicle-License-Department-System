@@ -41,6 +41,9 @@
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.btnSave = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
+            this.btnShowCurrentPassword = new System.Windows.Forms.Button();
+            this.btnShowNewPassword = new System.Windows.Forms.Button();
+            this.btnShowConfirmPassword = new System.Windows.Forms.Button();
             this.ctrlUserCard1 = new DVLD.Users.ctrlUserCard();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -97,9 +100,9 @@
             this.txtCurrentPassword.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtCurrentPassword.MaxLength = 50;
             this.txtCurrentPassword.Name = "txtCurrentPassword";
-            this.txtCurrentPassword.PasswordChar = '*';
             this.txtCurrentPassword.Size = new System.Drawing.Size(253, 26);
             this.txtCurrentPassword.TabIndex = 139;
+            this.txtCurrentPassword.UseSystemPasswordChar = true;
             this.txtCurrentPassword.Validating += new System.ComponentModel.CancelEventHandler(this.txtCurrentPassword_Validating);
             // 
             // label1
@@ -130,9 +133,9 @@
             this.txtNewPassword.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtNewPassword.MaxLength = 50;
             this.txtNewPassword.Name = "txtNewPassword";
-            this.txtNewPassword.PasswordChar = '*';
             this.txtNewPassword.Size = new System.Drawing.Size(253, 26);
             this.txtNewPassword.TabIndex = 142;
+            this.txtNewPassword.UseSystemPasswordChar = true;
             this.txtNewPassword.Validating += new System.ComponentModel.CancelEventHandler(this.txtNewPassword_Validating);
             // 
             // txtConfirmPassword
@@ -142,9 +145,9 @@
             this.txtConfirmPassword.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtConfirmPassword.MaxLength = 50;
             this.txtConfirmPassword.Name = "txtConfirmPassword";
-            this.txtConfirmPassword.PasswordChar = '*';
             this.txtConfirmPassword.Size = new System.Drawing.Size(253, 26);
             this.txtConfirmPassword.TabIndex = 143;
+            this.txtConfirmPassword.UseSystemPasswordChar = true;
             this.txtConfirmPassword.Validating += new System.ComponentModel.CancelEventHandler(this.txtConfirmPassword_Validating);
             // 
             // errorProvider1
@@ -182,6 +185,54 @@
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
+            // btnShowCurrentPassword
+            // 
+            this.btnShowCurrentPassword.BackgroundImage = global::DVLD.Properties.Resources.ShowPassword;
+            this.btnShowCurrentPassword.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnShowCurrentPassword.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnShowCurrentPassword.FlatAppearance.BorderSize = 0;
+            this.btnShowCurrentPassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnShowCurrentPassword.Location = new System.Drawing.Point(539, 524);
+            this.btnShowCurrentPassword.Name = "btnShowCurrentPassword";
+            this.btnShowCurrentPassword.Size = new System.Drawing.Size(32, 33);
+            this.btnShowCurrentPassword.TabIndex = 146;
+            this.btnShowCurrentPassword.Tag = this.txtCurrentPassword;
+            this.btnShowCurrentPassword.UseVisualStyleBackColor = true;
+            this.btnShowCurrentPassword.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnShowPassword_MouseDown);
+            this.btnShowCurrentPassword.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnShowPassword_MouseUp);
+            // 
+            // btnShowNewPassword
+            // 
+            this.btnShowNewPassword.BackgroundImage = global::DVLD.Properties.Resources.ShowPassword;
+            this.btnShowNewPassword.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnShowNewPassword.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnShowNewPassword.FlatAppearance.BorderSize = 0;
+            this.btnShowNewPassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnShowNewPassword.Location = new System.Drawing.Point(539, 576);
+            this.btnShowNewPassword.Name = "btnShowNewPassword";
+            this.btnShowNewPassword.Size = new System.Drawing.Size(32, 33);
+            this.btnShowNewPassword.TabIndex = 147;
+            this.btnShowNewPassword.Tag = this.txtNewPassword;
+            this.btnShowNewPassword.UseVisualStyleBackColor = true;
+            this.btnShowNewPassword.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnShowPassword_MouseDown);
+            this.btnShowNewPassword.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnShowPassword_MouseUp);
+            // 
+            // btnShowConfirmPassword
+            // 
+            this.btnShowConfirmPassword.BackgroundImage = global::DVLD.Properties.Resources.ShowPassword;
+            this.btnShowConfirmPassword.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnShowConfirmPassword.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnShowConfirmPassword.FlatAppearance.BorderSize = 0;
+            this.btnShowConfirmPassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnShowConfirmPassword.Location = new System.Drawing.Point(539, 628);
+            this.btnShowConfirmPassword.Name = "btnShowConfirmPassword";
+            this.btnShowConfirmPassword.Size = new System.Drawing.Size(32, 33);
+            this.btnShowConfirmPassword.TabIndex = 148;
+            this.btnShowConfirmPassword.Tag = this.txtConfirmPassword;
+            this.btnShowConfirmPassword.UseVisualStyleBackColor = true;
+            this.btnShowConfirmPassword.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnShowPassword_MouseDown);
+            this.btnShowConfirmPassword.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnShowPassword_MouseUp);
+            // 
             // ctrlUserCard1
             // 
             this.ctrlUserCard1.Location = new System.Drawing.Point(1, -10);
@@ -195,6 +246,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.ClientSize = new System.Drawing.Size(1042, 765);
+            this.Controls.Add(this.btnShowConfirmPassword);
+            this.Controls.Add(this.btnShowNewPassword);
+            this.Controls.Add(this.btnShowCurrentPassword);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.txtConfirmPassword);
@@ -234,5 +288,8 @@
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Button btnShowConfirmPassword;
+        private System.Windows.Forms.Button btnShowNewPassword;
+        private System.Windows.Forms.Button btnShowCurrentPassword;
     }
 }

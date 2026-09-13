@@ -269,5 +269,15 @@ namespace DVLD.Users
         {
             ctrlPersonCardWithFilter1.FilterFocus();
         }
+
+        private void btnShowPassword_MouseDown(object sender, MouseEventArgs e)
+        {
+            ((TextBox)((Button)sender).Tag).UseSystemPasswordChar = false;
+        }
+
+        private void btnShowPassword_MouseUp(object sender, MouseEventArgs e)
+        {
+            ((TextBox)((Button)sender).Tag).UseSystemPasswordChar = true;
+        }
     }
 }
