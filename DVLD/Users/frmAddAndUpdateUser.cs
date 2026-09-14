@@ -162,6 +162,20 @@ namespace DVLD.Users
             }
 
         }
+        private void _ChangeUserInfoRemember()
+        {
+            if (_User.UserID == clsGlobal.CurrentUser.UserID)
+            {
+                string _UserName = string.Empty;
+                string _Password = string.Empty;
+                clsGlobal.GetStoredCredential(ref _UserName, ref _Password);
+                if (_UserName != _User.UserName || _Password != _User.Password)
+                {
+                    clsGlobal.CurrentUser = _User;
+                    clsGlobal.RememberUsernameAndPassword(_User.UserName, _User.Password);
+                }
+            }
+        }
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (!this.ValidateChildren())
@@ -184,8 +198,9 @@ namespace DVLD.Users
                 _Mode = enMode.Update;
                 lblTitle.Text = "Update User";
                 this.Text = "Update User";
-
                 MessageBox.Show("Data Saved Successfully.", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                _ChangeUserInfoRemember();
+
             }
             else
                 MessageBox.Show("Error: Data Is not Saved Successfully.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
