@@ -63,16 +63,23 @@ namespace DVLD.Users
         private void tsmDeleteUser_Click(object sender, EventArgs e)
         {
             int UserID = (int)dgvUsersList.SelectedRows[0].Cells[0].Value;
-            if(MessageBox.Show($"Are you sure you want delete User [{UserID.ToString()}]", "Confirm Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            if(UserID != clsGlobal.CurrentUser.UserID)
             {
-                if (clsUser.Delete(UserID))
+                if (MessageBox.Show($"Are you sure you want delete User [{UserID.ToString()}]", "Confirm Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
-                    MessageBox.Show("User has been deleted successfully", "Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    frmUsersList_Load(null, null);
-                }
+                    if (clsUser.Delete(UserID))
+                    {
+                        MessageBox.Show("User has been deleted successfully", "Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        frmUsersList_Load(null, null);
+                    }
 
-                else
-                    MessageBox.Show("User is not delted due to data connected to it.", "Faild", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    else
+                        MessageBox.Show("User is not delted due to data connected to it.", "Faild", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("You can not delete your own user.", "Faild", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
