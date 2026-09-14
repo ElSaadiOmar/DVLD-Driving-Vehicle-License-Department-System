@@ -6,10 +6,12 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.UI.WebControls;
 using System.Windows.Forms;
 using DVLD.Helpers;
 using DVLD.People;
 using DVLD.People.Controls;
+using DVLD.Users;
 
 namespace DVLD
 {
@@ -35,8 +37,26 @@ namespace DVLD
 
 
             // MenuStrip
-            menuStrip1.BackColor = AppColors.NavyDark;
-            menuStrip1.ForeColor = AppColors.TextLight;
+            msMainMenue.BackColor = AppColors.NavyDark;
+            msMainMenue.ForeColor = AppColors.TextLight;
+
+
+            //ToolStripDropDownItem
+            currentUserInfoToolStripMenuItem.BackColor = AppColors.NavyDark;
+            currentUserInfoToolStripMenuItem.ForeColor = AppColors.TextLight;
+
+            changePasswordToolStripMenuItem.BackColor = AppColors.NavyDark;
+            changePasswordToolStripMenuItem.ForeColor = AppColors.TextLight;
+
+            signOutToolStripMenuItem.BackColor = AppColors.NavyDark;
+            signOutToolStripMenuItem.ForeColor = AppColors.TextLight;
+
         }
-     }
+
+        private void licenceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmUsersList frm = new frmUsersList();
+            frm.ShowDialog();
+        }
+    }
 }
