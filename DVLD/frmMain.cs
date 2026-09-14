@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Web.UI.WebControls;
 using System.Windows.Forms;
 using DVLD.Helpers;
+using DVLD.Login;
 using DVLD.People;
 using DVLD.People.Controls;
 using DVLD.Users;
@@ -53,7 +54,35 @@ namespace DVLD
 
         }
 
-        private void licenceToolStripMenuItem_Click(object sender, EventArgs e)
+        private void currentUserInfoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmShowUserInfo frm = new frmShowUserInfo(clsGlobal.CurrentUser.UserID, true);
+            frm.ShowDialog();
+        }
+
+        private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmChangePassword frm = new frmChangePassword(clsGlobal.CurrentUser.UserID);
+            frm.ShowDialog();
+        }
+
+        private void signOutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            clsGlobal.CurrentUser = null;
+            this.Hide();
+            frmLoginScreen frm = new frmLoginScreen();
+            frm.ShowDialog();
+            this.Close();
+
+        }
+
+        private void smiPeople_Click(object sender, EventArgs e)
+        {
+            frmListPeople frm = new frmListPeople();
+            frm.ShowDialog();
+        }
+
+        private void smiUsers_Click(object sender, EventArgs e)
         {
             frmUsersList frm = new frmUsersList();
             frm.ShowDialog();
