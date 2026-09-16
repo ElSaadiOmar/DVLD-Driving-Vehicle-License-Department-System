@@ -227,6 +227,7 @@
             this.cbIsActive.Size = new System.Drawing.Size(121, 24);
             this.cbIsActive.TabIndex = 106;
             this.cbIsActive.Visible = false;
+            this.cbIsActive.SelectedIndexChanged += new System.EventHandler(this.cbIsActive_SelectedIndexChanged);
             // 
             // cbFilterBy
             // 
@@ -243,6 +244,7 @@
             this.cbFilterBy.Name = "cbFilterBy";
             this.cbFilterBy.Size = new System.Drawing.Size(210, 24);
             this.cbFilterBy.TabIndex = 105;
+            this.cbFilterBy.SelectedIndexChanged += new System.EventHandler(this.cbFilterBy_SelectedIndexChanged);
             // 
             // txtFilterValue
             // 
@@ -253,6 +255,8 @@
             this.txtFilterValue.Size = new System.Drawing.Size(256, 22);
             this.txtFilterValue.TabIndex = 104;
             this.txtFilterValue.Visible = false;
+            this.txtFilterValue.TextChanged += new System.EventHandler(this.txtFilterValue_TextChanged);
+            this.txtFilterValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFilterValue_KeyPress);
             // 
             // frmUsersList
             // 
@@ -261,13 +265,13 @@
             this.ClientSize = new System.Drawing.Size(1254, 698);
             this.Controls.Add(this.cbIsActive);
             this.Controls.Add(this.cbFilterBy);
-            this.Controls.Add(this.txtFilterValue);
             this.Controls.Add(this.lblRecords);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dgvUsersList);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnAddNewPerson);
+            this.Controls.Add(this.txtFilterValue);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmUsersList";
             this.Text = "Users List";
