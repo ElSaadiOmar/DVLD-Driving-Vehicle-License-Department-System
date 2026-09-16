@@ -288,26 +288,6 @@ namespace DVLD_DataAccess
                 }
             }
         }
-        public static bool IsUserExistByPersonID(int PersonID)
-        {
-            string Query = "select Found=1 from People where PersonID = @PersonID";
-            using (SqlConnection Connection = new SqlConnection(clsDataSettings.ConnectionString))
-            using (SqlCommand Command = new SqlCommand(Query, Connection))
-            {
-                Command.Parameters.AddWithValue("@PersonID", PersonID);
-                try
-                {
-                    Connection.Open();
-                    object Result = Command.ExecuteScalar();
-                    return Result != null;
-                }
-                catch (Exception ex)
-                {
-                    Debug.WriteLine(ex.ToString());
-                    return false;
-                }
-            }
-        }
 
         public static DataTable GetAllUsers()
         {

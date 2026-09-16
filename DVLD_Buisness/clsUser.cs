@@ -121,10 +121,6 @@ namespace DVLD_Buisness
             return clsUserData.DeleteUser(UserID);
         }
 
-        public static bool IsUserExistByPersonID(int PersonID)
-        {
-            return clsUserData.IsUserExistByPersonID(PersonID);
-        }
         public static bool IsUserExist(int UserID)
         {
             return clsUserData.IsUserExist(UserID);
