@@ -23,7 +23,7 @@ namespace DVLD.Users
             _User = clsUser.Find(UserID);
             if(_User ==null)
             {
-                ResetUserInfo();
+                _ResetUserInfo();
                 MessageBox.Show("No User with UserID = " + UserID.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
 
@@ -35,14 +35,14 @@ namespace DVLD.Users
             _User = clsUser.FindByPersonID(PersonID);
             if (_User == null)
             {
-                ResetUserInfo();
+                _ResetUserInfo();
                 MessageBox.Show("No User with PersonID = " + PersonID.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
 
             }
             _FillUserInfo();
         }
-        public void ResetUserInfo()
+        private void _ResetUserInfo()
         {
             ctrlPersonCard1.ResetPersonInfo();
             lblUserID.Text = "???";
