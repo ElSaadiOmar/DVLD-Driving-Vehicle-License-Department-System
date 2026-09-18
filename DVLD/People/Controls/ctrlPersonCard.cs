@@ -39,7 +39,7 @@ namespace DVLD.People.Controls
             if (_Person == null)
             {
                 ResetPersonInfo();
-                MessageBox.Show("No _Person with PersonID = " + PersonID.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Person With this PersonID [{PersonID}] was not exist", "Person not found", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -51,7 +51,7 @@ namespace DVLD.People.Controls
             if (_Person == null)
             {
                 ResetPersonInfo();
-                MessageBox.Show("No _Person with National No. = " + NationalNo.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Person With this National No [{NationalNo}] was not exist", "Person not found", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             _FillPersonInfo();

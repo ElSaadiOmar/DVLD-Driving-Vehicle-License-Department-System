@@ -58,16 +58,16 @@ namespace DVLD.People.Controls
                 gbFilter.Enabled = _FilterEnabled;
             }
         }
-     
+
         public int PersonID
         {
             get { return ctrlPersonCard1.PersonID; }
         }
-        public clsPerson SelectedPersonInfo 
-        { 
-            get { return ctrlPersonCard1.SelectedPersonInfo; } 
+        public clsPerson SelectedPersonInfo
+        {
+            get { return ctrlPersonCard1.SelectedPersonInfo; }
         }
-   
+
         private void _DigitOnly_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
@@ -162,34 +162,21 @@ namespace DVLD.People.Controls
             switch (cbSearchBy.Text)
             {
                 case "Person ID":
-                {
-                    if (int.TryParse(txtSearchValue.Text, out int ID))
                     {
-                        if (clsPerson.IsPersonExist(ID))
+                        if (int.TryParse(txtSearchValue.Text, out int ID))
                         {
                             ctrlPersonCard1.LoadPersonInfo(ID);
                         }
                         else
                         {
-                            MessageBox.Show($"Person With this PersonID [{ID}] was not exist", "Person not found", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Invalid Person ID. Please enter a valid number.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
+                        break;
                     }
-                    else
-                    {
-                        MessageBox.Show($"this PersonID is Invalid", "Invalid ID", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    break;
-                }
                 case "National No":
                     {
-                        if (clsPerson.IsPersonExist(txtSearchValue.Text.ToString()))
-                        {
-                            ctrlPersonCard1.LoadPersonInfo(txtSearchValue.Text.ToString());
-                        }
-                        else
-                        {
-                            MessageBox.Show($"Person With this National No [{txtSearchValue.Text.ToString()}] was not exist", "Person not found", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
+                        ctrlPersonCard1.LoadPersonInfo(txtSearchValue.Text.ToString());
+
                         break;
                     }
             }
