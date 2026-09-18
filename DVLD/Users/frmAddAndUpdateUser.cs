@@ -164,17 +164,21 @@ namespace DVLD.Users
         }
         private void _ChangeUserInfoRemember()
         {
-            if (_User.UserID == clsGlobal.CurrentUser.UserID)
-            {
-                string _UserName = string.Empty;
-                string _Password = string.Empty;
-                clsGlobal.GetStoredCredential(ref _UserName, ref _Password);
-                if (_UserName != _User.UserName || _Password != _User.Password)
-                {
-                    clsGlobal.CurrentUser = _User;
-                    clsGlobal.RememberUsernameAndPassword(_User.UserName, _User.Password);
-                }
-            }
+            if (_User.UserID != clsGlobal.CurrentUser.UserID)
+                return;
+
+            clsGlobal.CurrentUser = _User;
+            string _UserName = string.Empty;
+            string _Password = string.Empty;
+            clsGlobal.GetStoredCredential(ref _UserName, ref _Password);
+
+            if (string.IsNullOrEmpty(_UserName) || string.IsNullOrEmpty(_Password))
+                return;
+
+            if (_UserName == _User.UserName && _Password == _User.Password)
+                return;
+
+            clsGlobal.RememberUsernameAndPassword(_User.UserName, _User.Password);
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
