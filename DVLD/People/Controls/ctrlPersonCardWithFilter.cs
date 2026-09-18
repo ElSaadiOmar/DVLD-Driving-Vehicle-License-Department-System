@@ -142,7 +142,7 @@ namespace DVLD.People.Controls
 
         private void txtSearchValue_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (cbSearchBy.SelectedItem.ToString() == "Person ID")
+            if (cbSearchBy.Text == "Person ID")
             {
                 _DigitOnly_KeyPress(sender, e);
             }
@@ -150,7 +150,7 @@ namespace DVLD.People.Controls
 
         private void txtSearchValue_Validating(object sender, CancelEventArgs e)
         {
-            if (cbSearchBy.SelectedItem.ToString() == "Person ID")
+            if (cbSearchBy.Text == "Person ID")
             {
                 _DigitesOnly_Validating(sender, e);
             }
