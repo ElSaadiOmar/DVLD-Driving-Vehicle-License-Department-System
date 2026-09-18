@@ -195,6 +195,7 @@ namespace DVLD.Users
             if (_User.Save())
             {
                 lblUserID.Text = _User.UserID.ToString();
+                _UserID = _User.UserID;
                 _Mode = enMode.Update;
                 lblTitle.Text = "Update User";
                 this.Text = "Update User";
