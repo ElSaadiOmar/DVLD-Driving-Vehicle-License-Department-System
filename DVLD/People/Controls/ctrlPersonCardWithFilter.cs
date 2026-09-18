@@ -135,6 +135,8 @@ namespace DVLD.People.Controls
         private void cbSearchBy_SelectedIndexChanged(object sender, EventArgs e)
         {
             txtSearchValue.Text = string.Empty;
+            txtSearchValue.Focus();
+            errorProvider1.SetError(txtSearchValue, null);
 
         }
 
