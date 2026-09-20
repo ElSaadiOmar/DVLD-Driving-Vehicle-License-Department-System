@@ -310,6 +310,7 @@ namespace DVLD.People
 
         private bool _HandelPersonImage()
         {
+            //We have bug when we add new person
             if(_Person.ImagePath != pbPersonImage.ImageLocation)
             {
                 if(!string.IsNullOrEmpty(_Person.ImagePath))
