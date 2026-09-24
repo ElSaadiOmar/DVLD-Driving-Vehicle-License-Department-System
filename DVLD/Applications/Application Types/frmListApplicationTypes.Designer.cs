@@ -34,11 +34,11 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvApplicationType = new System.Windows.Forms.DataGridView();
             this.cmApplicationTypesMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnClose = new System.Windows.Forms.Button();
             this.lblTitle = new System.Windows.Forms.Label();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgvApplicationType)).BeginInit();
             this.cmApplicationTypesMenu.SuspendLayout();
             this.SuspendLayout();
@@ -95,7 +95,27 @@
             this.editToolStripMenuItem,
             this.toolStripSeparator2});
             this.cmApplicationTypesMenu.Name = "cmApplicationTypesMenu";
-            this.cmApplicationTypesMenu.Size = new System.Drawing.Size(257, 72);
+            this.cmApplicationTypesMenu.Size = new System.Drawing.Size(257, 44);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(253, 6);
+            // 
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editToolStripMenuItem.Image = global::DVLD.Properties.Resources.Edit_32;
+            this.editToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Transparent;
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(256, 28);
+            this.editToolStripMenuItem.Text = "Edit Application Type";
+            this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(253, 6);
             // 
             // btnClose
             // 
@@ -119,26 +139,6 @@
             this.lblTitle.Size = new System.Drawing.Size(678, 54);
             this.lblTitle.TabIndex = 85;
             this.lblTitle.Text = "Application Types Mangement";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(253, 6);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(253, 6);
-            // 
-            // editToolStripMenuItem
-            // 
-            this.editToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.editToolStripMenuItem.Image = global::DVLD.Properties.Resources.Edit_32;
-            this.editToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Transparent;
-            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(256, 28);
-            this.editToolStripMenuItem.Text = "Edit Application Type";
-            this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
             // 
             // frmListApplicationTypes
             // 

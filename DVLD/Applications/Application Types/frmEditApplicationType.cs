@@ -15,7 +15,21 @@ namespace DVLD.Applications.Application_Types
 {
     public partial class frmEditApplicationType : Form
     {
+        // Custom Delegate for edit events
+        public Action OnApplicationTypeEdited;
+
+        // Eventsprotected
+        protected virtual void ApplicationTypeEdited()
+        {
+            Action handler = OnApplicationTypeEdited;
+            if (handler != null)
+            {
+                handler(); // Raise the event with the parameter
+            } 
+        }
         private int _ApplicationTypeID;
+        private string _ApplicationTypeTitle;
+        private float _ApplicationFees;
         private clsApplicationType _ApplicationType;
         public frmEditApplicationType(int ApplicationTypeID)
         {
@@ -56,6 +70,8 @@ namespace DVLD.Applications.Application_Types
             lblID.Text = _ApplicationType.ApplicationTypeID.ToString();
             txtTitle.Text = _ApplicationType.ApplicationTypeTitle.ToString();
             txtFee.Text = _ApplicationType.ApplicationFees.ToString();
+            _ApplicationTypeTitle = _ApplicationType.ApplicationTypeTitle;
+            _ApplicationFees = _ApplicationType.ApplicationFees;
         }
 
         private void txtFee_KeyPress(object sender, KeyPressEventArgs e)
@@ -121,14 +137,22 @@ namespace DVLD.Applications.Application_Types
             {
                 _ApplicationType.ApplicationTypeTitle = txtTitle.Text;
                 _ApplicationType.ApplicationFees = float.Parse(txtFee.Text);
-                if (_ApplicationType.Save())
+                if(_ApplicationType.ApplicationTypeTitle != _ApplicationTypeTitle || _ApplicationType.ApplicationFees != _ApplicationFees)
                 {
-                    MessageBox.Show("Application Type updated successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Close();
+                    if (_ApplicationType.Save())
+                    {
+                        MessageBox.Show("Application Type updated successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        ApplicationTypeEdited(); // Raise the event to notify subscribers)
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed to update Application Type.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Failed to update Application Type.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    this.Close();
                 }
             }
         }

@@ -31,10 +31,8 @@ namespace DVLD.Applications.Application_Types
             cmApplicationTypesMenu.ForeColor = Color.White;
         }
 
-
-        private void frmListApplicationTypes_Load(object sender, EventArgs e)
+        private void _RefreshApplicationTypesList()
         {
-            _ApplyTheme();
             dgvApplicationType.DataSource = clsApplicationType.GetAllApplicationType();
 
             dgvApplicationType.Columns[0].HeaderText = "ID";
@@ -43,8 +41,11 @@ namespace DVLD.Applications.Application_Types
             dgvApplicationType.Columns[1].Width = 350;
             dgvApplicationType.Columns[2].HeaderText = "Fees";
             dgvApplicationType.Columns[2].Width = 150;
-
-
+        }
+        private void frmListApplicationTypes_Load(object sender, EventArgs e)
+        {
+            _ApplyTheme();
+            _RefreshApplicationTypesList();
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -55,15 +56,15 @@ namespace DVLD.Applications.Application_Types
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmEditApplicationType frm = new frmEditApplicationType((int)dgvApplicationType.SelectedRows[0].Cells[0].Value);
+            frm.OnApplicationTypeEdited += _RefreshApplicationTypesList;
             frm.ShowDialog();
-            frmListApplicationTypes_Load(null,null);
         }
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             frmEditApplicationType frm = new frmEditApplicationType((int)dgvApplicationType.SelectedRows[0].Cells[0].Value);
+            frm.OnApplicationTypeEdited += _RefreshApplicationTypesList;
             frm.ShowDialog();
-            frmListApplicationTypes_Load(null, null);
         }
     }
 }
