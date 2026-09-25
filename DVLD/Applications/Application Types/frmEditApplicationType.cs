@@ -107,7 +107,12 @@ namespace DVLD.Applications.Application_Types
 
         private void txtTitle_Validating(object sender, CancelEventArgs e)
         {
-            if(!Regex.IsMatch(txtTitle.Text, @"^[a-zA-Z\s]+$"))
+            if(string.IsNullOrWhiteSpace(txtTitle.Text))
+            {
+                errorProvider1.SetError(txtTitle, "Title cannot be empty.");
+                e.Cancel = true;
+            }
+            else if(!Regex.IsMatch(txtTitle.Text, @"^[a-zA-Z\s]+$"))
             {
                 errorProvider1.SetError(txtTitle, "Please enter a valid title.");
                 e.Cancel = true;
