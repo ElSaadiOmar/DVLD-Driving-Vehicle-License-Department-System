@@ -93,7 +93,7 @@ namespace DVLD.Tests.Test_Types
 
         private void txtTitle_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar) && !Regex.IsMatch(e.KeyChar.ToString(), @"^[a-zA-Z\s,.{}()\[\]'""!?]+$"))
             {
                 errorProvider1.SetError(txtTitle, "Please enter a valid character.");
                 e.Handled = true;
@@ -116,7 +116,7 @@ namespace DVLD.Tests.Test_Types
                 errorProvider1.SetError(txtTitle, "Title cannot be empty.");
                 e.Cancel = true;
             }
-            else if (!Regex.IsMatch(txtTitle.Text, @"^[a-zA-Z\s]+$"))
+            else if (!Regex.IsMatch(txtTitle.Text, @"^[a-zA-Z\s,.{}()\[\]'""!?]+$"))        
             {
                 errorProvider1.SetError(txtTitle, "Please enter a valid title.");
                 e.Cancel = true;
