@@ -36,15 +36,17 @@ namespace DVLD.Tests.Test_Types
         private void _RefreshTestTypesList()
         {
             dgvTestTypes.DataSource = clsTestType.GetAllTestTypes();
-
-            dgvTestTypes.Columns[0].HeaderText = "ID";
-            dgvTestTypes.Columns[0].Width = 50;
-            dgvTestTypes.Columns[1].HeaderText = "Title";
-            dgvTestTypes.Columns[1].Width = 155;
-            dgvTestTypes.Columns[2].HeaderText = "Description";
-            dgvTestTypes.Columns[2].Width = 377;
-            dgvTestTypes.Columns[3].HeaderText = "Fees";
-            dgvTestTypes.Columns[3].Width = 130;
+            if(dgvTestTypes.Columns.Count >= 4)
+            {
+                dgvTestTypes.Columns[0].HeaderText = "ID";
+                dgvTestTypes.Columns[0].Width = 50;
+                dgvTestTypes.Columns[1].HeaderText = "Title";
+                dgvTestTypes.Columns[1].Width = 155;
+                dgvTestTypes.Columns[2].HeaderText = "Description";
+                dgvTestTypes.Columns[2].Width = 377;
+                dgvTestTypes.Columns[3].HeaderText = "Fees";
+                dgvTestTypes.Columns[3].Width = 130;
+            }
         }
     
         private void btnClose_Click(object sender, EventArgs e)
