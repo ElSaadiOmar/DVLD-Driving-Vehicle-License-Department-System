@@ -61,7 +61,7 @@ namespace DVLD.Tests.Test_Types
         {
             _ApplyTheme();
             _ResetDefualtValues();
-            _TestType = clsTestType.Find(_TestTypeID);
+            _TestType = clsTestType.Find((clsTestType.enTestType)_TestTypeID);
             if (_TestType == null)
             {
                 this.Close();

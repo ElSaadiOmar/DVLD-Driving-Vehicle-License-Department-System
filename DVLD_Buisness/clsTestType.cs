@@ -10,11 +10,17 @@ namespace DVLD_Buisness
 {
     public class clsTestType
     {
-        public int TestTypeID { get; set; }
+        public enum enTestType
+        {
+            VisionTest = 1,
+            WrittenTest = 2,
+            StreetTest = 3
+        }
+        public enTestType TestTypeID { get; set; }
         public string TestTypeTitle { get; set; }
         public string TestTypeDescription { get; set; }
         public float TestTypeFees { get; set; }
-        private clsTestType(int TestTypeID, string TestTypeTitle, string TestTypeDescription, float TestTypeFees)
+        private clsTestType(enTestType TestTypeID, string TestTypeTitle, string TestTypeDescription, float TestTypeFees)
         {
             this.TestTypeID = TestTypeID;
             this.TestTypeTitle = TestTypeTitle;
@@ -23,17 +29,17 @@ namespace DVLD_Buisness
         }
         public clsTestType()
         {
-            this.TestTypeID = -1;
+            this.TestTypeID = enTestType.VisionTest;
             this.TestTypeTitle = string.Empty;
             this.TestTypeDescription = string.Empty;
             this.TestTypeFees = 0;
         }
-        public static clsTestType Find(int TestTypeID)
+        public static clsTestType Find(enTestType TestTypeID)
         {
             string TestTypeTitle = string.Empty;
             string TestTypeDescription = string.Empty;
             float TestTypeFees = 0;
-            if (clsTestTypeData.GetTestTypeByID(TestTypeID, ref TestTypeTitle, ref TestTypeDescription, ref TestTypeFees))
+            if (clsTestTypeData.GetTestTypeByID((int)TestTypeID, ref TestTypeTitle, ref TestTypeDescription, ref TestTypeFees))
             {
                 return new clsTestType(TestTypeID, TestTypeTitle, TestTypeDescription, TestTypeFees);
             }
@@ -50,7 +56,7 @@ namespace DVLD_Buisness
 
         private bool _UpdateTestType()
         {
-            return clsTestTypeData.UpdateTestType(this.TestTypeID, this.TestTypeTitle, this.TestTypeDescription, this.TestTypeFees);
+            return clsTestTypeData.UpdateTestType((int)this.TestTypeID, this.TestTypeTitle, this.TestTypeDescription, this.TestTypeFees);
         }
         public bool Save()
         {
