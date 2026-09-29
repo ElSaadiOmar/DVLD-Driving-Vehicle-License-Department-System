@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.IO;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
@@ -13,7 +13,6 @@ using System.Web;
 using System.Windows.Forms;
 using DVLD.Helpers;
 using DVLD_Buisness;
-
 namespace DVLD.People
 {
     public partial class frmAddAndUpdatePerson : Form
@@ -211,8 +210,11 @@ namespace DVLD.People
         }    
         private void txtNationalNo_Validating(object sender, CancelEventArgs e)
         {
-            _RequiredField_Validating(sender, e);
-            if (clsPerson.IsPersonExist(txtNationalNo.Text.Trim()) && txtNationalNo.Text.Trim() != _Person.NationalNo)
+            if(string.IsNullOrWhiteSpace(txtNationalNo.Text))
+            {
+                errorProvider1.SetError(txtNationalNo, "The NationalNo cannot be a blank");
+            }
+            else if (clsPerson.IsPersonExist(txtNationalNo.Text.Trim()) && txtNationalNo.Text.Trim() != _Person.NationalNo)
             {
                 errorProvider1.SetError(txtNationalNo, "Person with this NationalNo are exist");
                 e.Cancel = true;
@@ -221,7 +223,6 @@ namespace DVLD.People
             {
                 errorProvider1.SetError(txtNationalNo, null);
             }
-
         }
 
 
