@@ -46,6 +46,42 @@ namespace DVLD_DataAccess
             }
 
         }
+        public static bool GetUserInfoByUserName(  string UserName , ref int UserID, ref int PersonID, ref string Password, ref bool IsActive)
+        {
+            string Query = @"SELECT * FROM [dbo].[Users] where Users.UserName = @UserName;";
+            using (SqlConnection Connection = new SqlConnection(clsDataSettings.ConnectionString))
+            using (SqlCommand Command = new SqlCommand(Query, Connection))
+            {
+                Command.Parameters.AddWithValue("@UserName", UserName);
+                try
+                {
+                    Connection.Open();
+                    using (SqlDataReader Reader = Command.ExecuteReader())
+                    {
+                        if (Reader.Read())
+                        {
+                            UserID = (int)Reader["UserID"];
+                            PersonID = (int)Reader["PersonID"];
+                            Password = (string)Reader["Password"];
+                            IsActive = (bool)Reader["IsActive"];
+                            return true;
+                        }
+                        else
+                        {
+                            return false;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex.ToString());
+                    return false;
+
+                }
+            }
+
+        }
+
         public static bool GetUserInfoByPersonID(int PersonID, ref int UserID, ref string UserName, ref string Password, ref bool IsActive)
         {
             string Query = @"SELECT * FROM [dbo].[Users] where Users.PersonID = @PersonID;";
