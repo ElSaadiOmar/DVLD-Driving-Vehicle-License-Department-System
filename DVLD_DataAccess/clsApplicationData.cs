@@ -12,7 +12,7 @@ namespace DVLD_DataAccess
     public class clsApplicationData
     {
         public static bool GetApplicationInfoByID(int ApplicationID, ref int ApplicantPersonID, ref DateTime ApplicationDate,
-            ref int ApplicationTypeID, ref int ApplicationStatus, ref DateTime LastStatusDate, ref int PaidFees, ref int CreatedByUserID)
+            ref int ApplicationTypeID, ref byte ApplicationStatus, ref DateTime LastStatusDate, ref float PaidFees, ref int CreatedByUserID)
         {
             string Query = @"SELECT [ApplicationID]
                             ,[ApplicantPersonID]
@@ -39,9 +39,51 @@ namespace DVLD_DataAccess
                             ApplicantPersonID = (int)Reader["ApplicantPersonID"];
                             ApplicationDate = (DateTime)Reader["ApplicationDate"];
                             ApplicationTypeID = (int)Reader["ApplicationTypeID"];
-                            ApplicationStatus = (int)Reader["ApplicationStatus"];
+                            ApplicationStatus = (byte)Reader["ApplicationStatus"];
                             LastStatusDate = (DateTime)Reader["LastStatusDate"];
-                            PaidFees = (int)Reader["PaidFees"];
+                            PaidFees = Convert.ToSingle(Reader["PaidFees"]);
+                            CreatedByUserID = (int)Reader["CreatedByUserID"];
+                            return true;
+                        }
+                        else
+                        {
+                            return false;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex.ToString());
+                    return false;
+                }
+            }
+        }
+        public static bool GetApplicationInfoByApplicantPersonIDAndLicenseClassID(int ApplicantPersonID, int LicenseClassID, ref int ApplicationID, ref DateTime ApplicationDate,
+            ref int ApplicationTypeID, ref byte ApplicationStatus, ref DateTime LastStatusDate, ref float PaidFees, ref int CreatedByUserID)
+        {
+            string Query = @"SELECT Applications.* FROM [dbo].[Applications] 
+                               inner join LocalDrivingLicenseApplications LDLA 
+                           On LDLA.ApplicationID = Applications.ApplicationID where LDLA.LicenseClassID = @LicenseClassID 
+                          and Applications.ApplicantPersonID = @ApplicantPersonID and Applications.ApplicationStatus !=2";
+
+            using (SqlConnection Connection = new SqlConnection(clsDataSettings.ConnectionString))
+            using (SqlCommand Command = new SqlCommand(Query, Connection))
+            {
+                Command.Parameters.AddWithValue("@ApplicantPersonID", ApplicantPersonID);
+                Command.Parameters.AddWithValue("@LicenseClassID", LicenseClassID);
+                try
+                {
+                    Connection.Open();
+                    using (SqlDataReader Reader = Command.ExecuteReader())
+                    {
+                        if (Reader.Read())
+                        {
+                            ApplicationID = (int)Reader["ApplicationID"];
+                            ApplicationDate = (DateTime)Reader["ApplicationDate"];
+                            ApplicationTypeID = (int)Reader["ApplicationTypeID"];
+                            ApplicationStatus = (byte)Reader["ApplicationStatus"];
+                            LastStatusDate = (DateTime)Reader["LastStatusDate"];
+                            PaidFees = Convert.ToSingle(Reader["PaidFees"]);
                             CreatedByUserID = (int)Reader["CreatedByUserID"];
                             return true;
                         }
@@ -60,7 +102,7 @@ namespace DVLD_DataAccess
         }
 
         public static int AddNewApplication(int ApplicantPersonID, DateTime ApplicationDate, int ApplicationTypeID,
-            int ApplicationStatus, DateTime LastStatusDate, int PaidFees, int CreatedByUserID)
+            byte ApplicationStatus, DateTime LastStatusDate, float PaidFees, int CreatedByUserID)
         {
             string Query = @"INSERT INTO [dbo].[Applications]
                                 ([ApplicantPersonID]
@@ -109,7 +151,7 @@ namespace DVLD_DataAccess
         }
 
         public static bool UpdateApplication(int ApplicationID, int ApplicantPersonID, DateTime ApplicationDate,
-            int ApplicationTypeID, int ApplicationStatus, DateTime LastStatusDate, int PaidFees, int CreatedByUserID)
+            int ApplicationTypeID, byte ApplicationStatus, DateTime LastStatusDate, float PaidFees, int CreatedByUserID)
         {
             string Query = @"UPDATE [dbo].[Applications]
                             SET [ApplicantPersonID] = @ApplicantPersonID,
