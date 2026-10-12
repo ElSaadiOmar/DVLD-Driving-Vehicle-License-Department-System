@@ -43,7 +43,39 @@ namespace DVLD_DataAccess
                 }
             }
         }
-        
+        public static bool GetLocalDrivingLicenseApplicationInfoByApplicationID(int ApplicationID, ref int LocalDrivingLicenseApplicationID, ref int LicenseClassID)
+        {
+            string Query = @"SELECT * FROM [LocalDrivingLicenseApplications] where [ApplicationID] = @ApplicationID";
+
+            using (SqlConnection Connection = new SqlConnection(clsDataSettings.ConnectionString))
+            using (SqlCommand Command = new SqlCommand(Query, Connection))
+            {
+                Command.Parameters.AddWithValue("@ApplicationID", ApplicationID);
+                try
+                {
+                    Connection.Open();
+                    using (SqlDataReader Reader = Command.ExecuteReader())
+                    {
+                        if (Reader.Read())
+                        {
+                            LocalDrivingLicenseApplicationID = (int)Reader["LocalDrivingLicenseApplicationID"];
+                            LicenseClassID = (int)Reader["LicenseClassID"];
+                            return true;
+                        }
+                        else
+                        {
+                            return false;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex.ToString());
+                    return false;
+                }
+            }
+        }
+
 
         public static int AddNewLocalDrivingLicenseApplication(int ApplicationID,  int LicenseClassID)
         {
