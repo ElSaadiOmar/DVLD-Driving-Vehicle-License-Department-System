@@ -331,5 +331,39 @@ Order By LocalDrivingLicenseApplicationID DESC";
             }
         }
 
+        public static byte TotalTrialsPerTest(int LocalDrivingLicenseApplicationID, int TestTypeID)
+        {
+            string Query = @"SELECT COUNT(*) as TotalTrials
+                     FROM [dbo].[LocalDrivingLicenseApplications] INNER JOIN [dbo].[TestAppointments]
+                     on [LocalDrivingLicenseApplications].LocalDrivingLicenseApplicationID = [TestAppointments].LocalDrivingLicenseApplicationID
+                     inner join [dbo].[Tests] on [TestAppointments].TestAppointmentID = [Tests].TestAppointmentID
+                     
+                     where [TestAppointments].LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID 
+                     and [TestAppointments].TestTypeID =@TestTypeID";
+            using (SqlConnection Connection = new SqlConnection(clsDataSettings.ConnectionString))
+            using (SqlCommand Command = new SqlCommand(Query, Connection))
+            {
+                Command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
+                Command.Parameters.AddWithValue("@TestTypeID", TestTypeID);
+                try
+                {
+                    Connection.Open();
+                    object Result = Command.ExecuteScalar();
+                    if (Result != null && byte.TryParse(Result.ToString(), out byte TotalTrials))
+                    {
+                        return TotalTrials;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex.ToString());
+                    return 0;
+                }
+            }
+        }
     }
 }
