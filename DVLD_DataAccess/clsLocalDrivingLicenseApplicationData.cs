@@ -162,7 +162,7 @@ namespace DVLD_DataAccess
 
         }
        
-        public static bool IsLocalDrivingLicenseApplication(int ID)
+        public static bool IsLocalDrivingLicenseApplicationExist(int ID)
         {
             string Query = @"select Found=1 from [dbo].[LocalDrivingLicenseApplications] 
                             WHERE LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID";
@@ -194,7 +194,8 @@ namespace DVLD_DataAccess
                                   ,[ApplicationDate]
                                   ,[PassedTestCount]
                                   ,[Status]
-                              FROM [dbo].[LocalDrivingLicenseApplications_View]";
+                              FROM [dbo].[LocalDrivingLicenseApplications_View]
+Order By LocalDrivingLicenseApplicationID DESC";
             using (SqlConnection Connection = new SqlConnection(clsDataSettings.ConnectionString))
             using (SqlCommand Command = new SqlCommand(Query, Connection))
             {
@@ -216,6 +217,6 @@ namespace DVLD_DataAccess
                 }
             }
         }
-
+            
     }
 }
