@@ -217,6 +217,39 @@ Order By LocalDrivingLicenseApplicationID DESC";
                 }
             }
         }
-            
+
+        public static int GetPassedTestsCount(int LocalDrivingLicenseApplicationID)
+        {
+            string Query = @"SELECT COUNT(*) as PassedTestCount
+                     FROM [dbo].[TestAppointments]
+                     inner join [Tests] on [TestAppointments].TestAppointmentID = [Tests].TestAppointmentID
+                     where [TestAppointments].LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID 
+                     and [Tests].TestResult=1;";
+            using (SqlConnection Connection = new SqlConnection(clsDataSettings.ConnectionString))
+            using (SqlCommand Command = new SqlCommand(Query, Connection))
+            {
+                Command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
+                try
+                {
+                    Connection.Open();
+                    object Result = Command.ExecuteScalar();
+                    if (Result != null && int.TryParse(Result.ToString(), out int PassedTestCount))
+                    {
+                        return PassedTestCount;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex.ToString());
+                    return 0;
+                }
+            }
+        }
+
+
     }
 }
