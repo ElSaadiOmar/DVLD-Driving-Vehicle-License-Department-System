@@ -365,5 +365,29 @@ Order By LocalDrivingLicenseApplicationID DESC";
                 }
             }
         }
+        
+        public static bool IsLicenseIssued(int LocalDrivingLicenseApplicationID)
+        {
+            string Query = @"Select Found=1  from LocalDrivingLicenseApplications inner join Licenses 
+                     on LocalDrivingLicenseApplications.ApplicationID = Licenses.ApplicationID
+                     where LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID) ";
+            using (SqlConnection Connection = new SqlConnection(clsDataSettings.ConnectionString))
+            using (SqlCommand Command = new SqlCommand(Query, Connection))
+            {
+                Command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
+                try
+                {
+                    Connection.Open();
+                    object Result = Command.ExecuteScalar();
+                    return Result != null;
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex.ToString());
+                    return false;
+                }
+            }
+        }
+
     }
 }
