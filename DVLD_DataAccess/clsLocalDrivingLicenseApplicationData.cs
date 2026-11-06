@@ -301,6 +301,35 @@ Order By LocalDrivingLicenseApplicationID DESC";
                 }
             }
         }
+        public static bool DoesAttendTestType(int LocalDrivingLicenseApplicationID, int TestTypeID)
+        {
+            // This method checks if a local driving license application has attended a specific test type.
+            // It returns true if a record is found, indicating that the application has attended the test type; otherwise, it returns false.
+            string Query = @" SELECT Found=1
+                     FROM LocalDrivingLicenseApplications INNER JOIN
+                          TestAppointments ON LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID = TestAppointments.LocalDrivingLicenseApplicationID INNER JOIN
+                          Tests ON TestAppointments.TestAppointmentID = Tests.TestAppointmentID
+                     WHERE
+                     (LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID) 
+                     AND(TestAppointments.TestTypeID = @TestTypeID)";
+            using (SqlConnection Connection = new SqlConnection(clsDataSettings.ConnectionString))
+            using (SqlCommand Command = new SqlCommand(Query, Connection))
+            {
+                Command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
+                Command.Parameters.AddWithValue("@TestTypeID", TestTypeID);
+                try
+                {
+                    Connection.Open();
+                    object Result = Command.ExecuteScalar();
+                    return Result != null;
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex.ToString());
+                    return false;
+                }
+            }
+        }
 
     }
 }
