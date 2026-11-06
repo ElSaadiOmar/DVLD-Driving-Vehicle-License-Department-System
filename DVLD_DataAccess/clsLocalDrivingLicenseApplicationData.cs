@@ -250,6 +250,32 @@ Order By LocalDrivingLicenseApplicationID DESC";
             }
         }
 
+        public static bool DoesPassTestType(int LocalDrivingLicenseApplicationID, int TestTypeID)
+        {
+            string Query = @"SELECT Found=1
+                     FROM [dbo].[TestAppointments]
+                     inner join [Tests] on [TestAppointments].TestAppointmentID = [Tests].TestAppointmentID
+                     where [TestAppointments].LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID 
+                     and [TestAppointments].TestTypeID =@TestTypeID and [Tests].TestResult=1;";
+            using (SqlConnection Connection = new SqlConnection(clsDataSettings.ConnectionString))
+            using (SqlCommand Command = new SqlCommand(Query, Connection))
+            {
+                Command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
+                Command.Parameters.AddWithValue("@TestTypeID", TestTypeID);
+                try
+                {
+                    Connection.Open();
+                    object Result = Command.ExecuteScalar();
+                    return Result != null;
+
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex.ToString());
+                    return false;
+                }
+            }
+        }
 
     }
 }
