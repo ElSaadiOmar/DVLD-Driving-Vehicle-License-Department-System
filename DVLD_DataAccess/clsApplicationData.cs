@@ -262,5 +262,31 @@ namespace DVLD_DataAccess
                 return false;
             }
         }
+        public static bool UpdateStatus(int ApplicationID,int NewStatus)
+        {
+            string Query = @"UPDATE [dbo].[Applications]
+                             SET
+                             [ApplicationStatus] = @NewStatus
+                            ,[LastStatusDate] = @LastStatusDate
+                             WHERE [ApplicationID] = @ApplicationID";
+            using (SqlConnection Connection = new SqlConnection(clsDataSettings.ConnectionString))
+            using (SqlCommand Command = new SqlCommand(Query, Connection))
+            {
+                Command.Parameters.AddWithValue("@ApplicationID", ApplicationID);
+                Command.Parameters.AddWithValue("@NewStatus", NewStatus);
+                Command.Parameters.AddWithValue("@LastStatusDate", DateTime.Now);
+                try
+                {
+                    Connection.Open();
+                    int RowsAffected = Command.ExecuteNonQuery();
+                    return RowsAffected > 0;
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex.ToString());
+                    return false;
+                }
+            }
+        }
     }
 }
