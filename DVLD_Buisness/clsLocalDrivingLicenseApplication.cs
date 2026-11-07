@@ -185,5 +185,13 @@ namespace DVLD_Buisness
         {
             return clsLocalDrivingLicenseApplicationData.TotalTrialsPerTest(this.LocalDrivingLicenseApplicationID, (int)TestType);
         }
+        public int IssueLicenseForTheFirstTime(string Notes, int CreatedByUserID)
+        {
+            return clsLocalDrivingLicenseApplicationData.IssueLicenseForTheFirstTime(this.LocalDrivingLicenseApplicationID, Notes, CreatedByUserID);
+        }
+        public bool IsLicenseIssued()
+        {
+            return clsLocalDrivingLicenseApplicationData.IsLicenseIssued(this.LocalDrivingLicenseApplicationID);
+        }
     }
 }
