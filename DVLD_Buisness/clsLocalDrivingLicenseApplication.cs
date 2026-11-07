@@ -87,5 +87,60 @@ namespace DVLD_Buisness
                 return null;
             }
         }
+        private bool _AddNewLocalDrivingLicenseApplication()
+        {
+            this.LocalDrivingLicenseApplicationID = clsLocalDrivingLicenseApplicationData.AddNewLocalDrivingLicenseApplication
+                (
+                this.ApplicationID, this.LicenseClassID);
+
+            return (this.LocalDrivingLicenseApplicationID != -1);
+        }
+        private bool _UpdateLocalDrivingLicenseApplication()
+        {
+            return clsLocalDrivingLicenseApplicationData.UpdateLocalDrivingLicenseApplication(
+                this.LocalDrivingLicenseApplicationID, this.ApplicationID, this.LicenseClassID);
+        }
+        public bool Save()
+        {
+            base.Mode = (clsApplication.enMode)Mode;
+            if (!base.Save())
+            {
+                return false;
+            }
+            switch (Mode)
+            {
+                case enMode.AddNew:
+                    if (_AddNewLocalDrivingLicenseApplication())
+                    {
+                        Mode = enMode.Update;
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                case enMode.Update:
+                    return _UpdateLocalDrivingLicenseApplication();
+
+            }
+            return false;
+        }
+        public static DataTable GetAllLocalDrivingLicenseApplications()
+        {
+            return clsLocalDrivingLicenseApplicationData.GetAllLocalDrivingLicenseApplications();
+        }
+        public new bool Delete()
+        {
+            bool IsLocalDrivingApplicationDeleted = false;
+            bool IsBaseApplicationDeleted = false;
+            //First we delete the Local Driving License Application
+            IsLocalDrivingApplicationDeleted = clsLocalDrivingLicenseApplicationData.DeleteLocalDrivingLicenseApplication(this.LocalDrivingLicenseApplicationID);
+
+            if (!IsLocalDrivingApplicationDeleted)
+                return false;
+            //Then we delete the base Application
+            IsBaseApplicationDeleted = base.Delete();
+            return IsBaseApplicationDeleted;
+        }
     }
 }
