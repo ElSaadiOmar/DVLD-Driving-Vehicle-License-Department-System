@@ -44,5 +44,48 @@ namespace DVLD_Buisness
             this.LicenseClassInfo = clsLicenseClass.Find(LicenseClassID);
             Mode = enMode.Update;
         }
+
+        public static clsLocalDrivingLicenseApplication FindByLocalDrivingAppLicenseID(int LocalDrivingAppLicenseID)
+        {
+            int LicenseClassID = -1;
+            int ApplicationID = -1;
+            if (clsLocalDrivingLicenseApplicationData.GetLocalDrivingLicenseApplicationInfo(LocalDrivingAppLicenseID, ref ApplicationID, ref LicenseClassID))
+            {
+                clsApplication Application = clsApplication.Find(ApplicationID);
+                if (Application == null)
+                {
+                    return null;
+                }
+                return new clsLocalDrivingLicenseApplication(LocalDrivingAppLicenseID, ApplicationID, Application.ApplicantPersonID, Application.ApplicationDate,
+                    Application.ApplicationTypeID, Application.ApplicationStatus, Application.LastStatusDate,
+                    Application.PaidFees, Application.CreatedByUserID, LicenseClassID);
+
+            }
+            else
+            {
+                return null;
+            }
+        }
+        public static clsLocalDrivingLicenseApplication FindByApplicationID(int ApplicationID)
+        {
+            int LicenseClassID = -1;
+            int LocalDrivingAppLicenseID = -1;
+            if (clsLocalDrivingLicenseApplicationData.GetLocalDrivingLicenseApplicationInfoByApplicationID(ApplicationID, ref LocalDrivingAppLicenseID, ref LicenseClassID))
+            {
+                clsApplication Application = clsApplication.Find(ApplicationID);
+                if (Application == null)
+                {
+                    return null;
+                }
+                return new clsLocalDrivingLicenseApplication(LocalDrivingAppLicenseID, ApplicationID, Application.ApplicantPersonID, Application.ApplicationDate,
+                    Application.ApplicationTypeID, Application.ApplicationStatus, Application.LastStatusDate,
+                    Application.PaidFees, Application.CreatedByUserID, LicenseClassID);
+
+            }
+            else
+            {
+                return null;
+            }
+        }
     }
 }
