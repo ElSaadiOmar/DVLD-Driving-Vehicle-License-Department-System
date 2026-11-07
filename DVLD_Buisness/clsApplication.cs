@@ -22,7 +22,8 @@ namespace DVLD_Buisness
         public string ApplicantFullName { get { return clsPerson.Find(ApplicantPersonID).FullName; } }
         public DateTime ApplicationDate { get; set; }
         public int ApplicationTypeID { get; set; }
-        public clsApplicationType ApplicationTypeInfo;
+        
+        public clsApplicationType ApplicationTypeInfo { get; private set; }
         public enApplicationStatus ApplicationStatus { get; set; }
         public string StatusText
         {
@@ -44,7 +45,7 @@ namespace DVLD_Buisness
         public DateTime LastStatusDate { get; set; }
         public float PaidFees { get; set; }
         public int CreatedByUserID { get; set; }
-        public clsUser CreatedByUserInfo;
+        public clsUser CreatedByUserInfo { get;private set; }
         public clsApplication()
         {
             ApplicationID = -1;
