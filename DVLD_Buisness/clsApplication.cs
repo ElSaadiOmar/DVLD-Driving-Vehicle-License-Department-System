@@ -148,5 +148,13 @@ namespace DVLD_Buisness
         {
             return clsApplicationData.DeleteApplication(this.ApplicationID);
         }
+        public bool Cancel()
+        {
+            return clsApplicationData.UpdateStatus(ApplicationID, (int)enApplicationStatus.Cancelled);
+        }
+        public bool SetComplete()
+        {
+            return clsApplicationData.UpdateStatus(ApplicationID, (int)enApplicationStatus.Completed);
+        }
     }
 }
