@@ -82,7 +82,13 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Applications\Local Driving License\frmLocalDrivingLicenseApplicationInfo.Designer.cs">
-      <DependentUpon>frmLocalDrivingLicenseApplicationInfo.cs</DependentUpon>   
+      <DependentUpon>frmLocalDrivingLicenseApplicationInfo.cs</DependentUpon>  
+    </Compile>
+    <Compile Include="Applications\Local Driving License\frmNewLocalDrivingLicenseApplication.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Applications\Local Driving License\frmNewLocalDrivingLicenseApplication.Designer.cs">
+      <DependentUpon>frmNewLocalDrivingLicenseApplication.cs</DependentUpon>   
     </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
@@ -199,7 +205,10 @@
       <DependentUpon>ctrlDrivingLicenseApplicationInfo.cs</DependentUpon>  
     </EmbeddedResource>
     <EmbeddedResource Include="Applications\Local Driving License\frmLocalDrivingLicenseApplicationInfo.resx">
-      <DependentUpon>frmLocalDrivingLicenseApplicationInfo.cs</DependentUpon>  
+      <DependentUpon>frmLocalDrivingLicenseApplicationInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Applications\Local Driving License\frmNewLocalDrivingLicenseApplication.resx">
+      <DependentUpon>frmNewLocalDrivingLicenseApplication.cs</DependentUpon>    
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
