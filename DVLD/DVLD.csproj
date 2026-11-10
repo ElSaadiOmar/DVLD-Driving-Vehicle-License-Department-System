@@ -88,7 +88,13 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Applications\Local Driving License\frmNewLocalDrivingLicenseApplication.Designer.cs">
-      <DependentUpon>frmNewLocalDrivingLicenseApplication.cs</DependentUpon>   
+      <DependentUpon>frmNewLocalDrivingLicenseApplication.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tests\Controls\ctrlScheduleTest.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Tests\Controls\ctrlScheduleTest.Designer.cs">
+      <DependentUpon>ctrlScheduleTest.cs</DependentUpon>     
     </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
@@ -208,7 +214,10 @@
       <DependentUpon>frmLocalDrivingLicenseApplicationInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Applications\Local Driving License\frmNewLocalDrivingLicenseApplication.resx">
-      <DependentUpon>frmNewLocalDrivingLicenseApplication.cs</DependentUpon>    
+      <DependentUpon>frmNewLocalDrivingLicenseApplication.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tests\Controls\ctrlScheduleTest.resx">
+      <DependentUpon>ctrlScheduleTest.cs</DependentUpon>      
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
