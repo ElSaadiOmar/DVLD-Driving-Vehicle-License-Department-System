@@ -238,7 +238,7 @@ namespace DVLD_DataAccess
 
         public static bool IsApplicationExists(int ApplicationID)
         {
-            string Query = @"SELECT COUNT(*) FROM [dbo].[Applications]
+            string Query = @"SELECT Found=1 FROM [dbo].[Applications]
                             WHERE ApplicationID = @ApplicationID";
 
             using (SqlConnection Connection = new SqlConnection(clsDataSettings.ConnectionString))
@@ -249,17 +249,13 @@ namespace DVLD_DataAccess
                 {
                     Connection.Open();
                     object result = Command.ExecuteScalar();
-                    if (result != null && int.TryParse(result.ToString(), out int count))
-                    {
-                        return count > 0;
-                    }
+                    return result != null;
                 }
                 catch (Exception ex)
                 {
                     Debug.WriteLine(ex.ToString());
                     return false;
                 }
-                return false;
             }
         }
         public static bool UpdateStatus(int ApplicationID,int NewStatus)
