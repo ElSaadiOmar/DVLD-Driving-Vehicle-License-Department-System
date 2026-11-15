@@ -12,7 +12,7 @@ namespace DVLD_DataAccess
     public class clsLicenseData
     {
 
-        public static bool GetLicense(int LicenseID, ref int ApplicationID, ref int DriverID, ref byte LicenseClass,
+        public static bool GetLicense(int LicenseID, ref int ApplicationID, ref int DriverID, ref int LicenseClass,
             ref DateTime IssueDate, ref DateTime ExpirationDate, ref string Notes, ref float PaidFees,
             ref bool IsActive, ref byte IssueReason, ref int CreatedByUserID)
         {
@@ -42,7 +42,7 @@ namespace DVLD_DataAccess
                         {
                             ApplicationID = (int)Reader["ApplicationID"];
                             DriverID = (int)Reader["DriverID"];
-                            LicenseClass = (byte)Reader["LicenseClass"];
+                            LicenseClass = (int)Reader["LicenseClass"];
                             IssueDate = (DateTime)Reader["IssueDate"];
                             ExpirationDate = (DateTime)Reader["ExpirationDate"];
                             Notes = (string)Reader["Notes"];
@@ -68,7 +68,7 @@ namespace DVLD_DataAccess
 
 
 
-        public static int AddNewLicense(int ApplicationID, int DriverID, byte LicenseClass,
+        public static int AddNewLicense(int ApplicationID, int DriverID, int LicenseClass,
              DateTime IssueDate, DateTime ExpirationDate, string Notes, float PaidFees,
              bool IsActive, byte IssueReason, int CreatedByUserID)
         {
@@ -125,7 +125,7 @@ namespace DVLD_DataAccess
             }
         }
 
-        public static bool UpdateLicense(int LicenseID, int ApplicationID, int DriverID, byte LicenseClass,
+        public static bool UpdateLicense(int LicenseID, int ApplicationID, int DriverID, int LicenseClass,
              DateTime IssueDate, DateTime ExpirationDate, string Notes, float PaidFees,
              bool IsActive, byte IssueReason, int CreatedByUserID)
         {
