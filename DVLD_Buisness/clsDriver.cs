@@ -13,7 +13,7 @@ namespace DVLD_Buisness
         public enum enMode { AddNew = 0, Update = 1 };
         public enMode Mode = enMode.AddNew;
         public int DriverID { get; set; }
-        public DateTime CreatedDate { get; set; }
+        public DateTime CreatedDate { get; }
         public int CreatedByUserID { get; set; }
         public clsUser CreatedByUserInfo { get; private set; }
         public int PersonID { get; set; }
