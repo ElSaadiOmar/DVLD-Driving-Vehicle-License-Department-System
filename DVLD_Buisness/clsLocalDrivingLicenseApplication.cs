@@ -165,6 +165,10 @@ namespace DVLD_Buisness
         {
             return this.GetPassedTestsCount() == 3;
         }
+        public int GetActiveLicenseID()
+        {
+            return clsLicense.GetActiveLicenseIDByPersonID(this.ApplicantPersonID, this.LicenseClassID);
+        }
         public bool IsThereAnActiveScheduledTest(clsTestType.enTestType TestType)
         {
             return clsLocalDrivingLicenseApplicationData.IsThereAnActiveScheduledTest(this.LocalDrivingLicenseApplicationID, (int)TestType);
