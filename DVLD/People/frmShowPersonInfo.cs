@@ -33,7 +33,7 @@ namespace DVLD
             label1.ForeColor = AppColors.NavyDark;
 
         }
-     
+
 
     }
 }

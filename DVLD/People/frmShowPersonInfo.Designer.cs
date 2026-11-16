@@ -29,7 +29,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 35F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.label1.Location = new System.Drawing.Point(285, 26);
+            this.label1.Location = new System.Drawing.Point(293, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(414, 67);
             this.label1.TabIndex = 0;
@@ -37,20 +37,20 @@
             // 
             // ctrlPersonCard1
             // 
-            this.ctrlPersonCard1.Location = new System.Drawing.Point(12, 67);
+            this.ctrlPersonCard1.Location = new System.Drawing.Point(-6, 67);
             this.ctrlPersonCard1.Name = "ctrlPersonCard1";
-            this.ctrlPersonCard1.Size = new System.Drawing.Size(1038, 414);
+            this.ctrlPersonCard1.Size = new System.Drawing.Size(1036, 414);
             this.ctrlPersonCard1.TabIndex = 1;
             // 
             // frmShowPersonInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1072, 493);
+            this.ClientSize = new System.Drawing.Size(1029, 481);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.ctrlPersonCard1);
             this.Name = "frmShowPersonInfo";
-            this.Text = "frmPersonDetails";
+            this.Text = "Person Details";
             this.ResumeLayout(false);
             this.PerformLayout();
 
