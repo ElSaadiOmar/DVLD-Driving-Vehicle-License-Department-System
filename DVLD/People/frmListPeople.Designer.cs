@@ -32,7 +32,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmListPeople));
             this.dgvPeopleList = new System.Windows.Forms.DataGridView();
             this.cmPersonMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tsmshowDetails = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmaddNewPerson = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmedit = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmdelete = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
@@ -44,8 +46,6 @@
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.btnClose = new System.Windows.Forms.Button();
             this.btnAddNewPerson = new System.Windows.Forms.Button();
-            this.tsmshowDetails = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmaddNewPerson = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPeopleList)).BeginInit();
             this.cmPersonMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
@@ -55,7 +55,8 @@
             // 
             this.dgvPeopleList.AllowUserToAddRows = false;
             this.dgvPeopleList.AllowUserToDeleteRows = false;
-            this.dgvPeopleList.AllowUserToOrderColumns = true;
+            this.dgvPeopleList.AllowUserToResizeColumns = false;
+            this.dgvPeopleList.AllowUserToResizeRows = false;
             this.dgvPeopleList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -64,10 +65,12 @@
             this.dgvPeopleList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPeopleList.ContextMenuStrip = this.cmPersonMenu;
             this.dgvPeopleList.Location = new System.Drawing.Point(12, 234);
+            this.dgvPeopleList.MultiSelect = false;
             this.dgvPeopleList.Name = "dgvPeopleList";
             this.dgvPeopleList.ReadOnly = true;
             this.dgvPeopleList.RowHeadersWidth = 51;
             this.dgvPeopleList.RowTemplate.Height = 24;
+            this.dgvPeopleList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPeopleList.Size = new System.Drawing.Size(1388, 381);
             this.dgvPeopleList.TabIndex = 0;
             this.dgvPeopleList.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvPeopleList_CellMouseDown);
@@ -87,10 +90,27 @@
             this.cmPersonMenu.Name = "cmsPersonMenu";
             this.cmPersonMenu.Size = new System.Drawing.Size(192, 172);
             // 
+            // tsmshowDetails
+            // 
+            this.tsmshowDetails.Image = ((System.Drawing.Image)(resources.GetObject("tsmshowDetails.Image")));
+            this.tsmshowDetails.ImageTransparentColor = System.Drawing.Color.Black;
+            this.tsmshowDetails.Name = "tsmshowDetails";
+            this.tsmshowDetails.Size = new System.Drawing.Size(191, 26);
+            this.tsmshowDetails.Text = "Show Details";
+            this.tsmshowDetails.Click += new System.EventHandler(this.tsmshowDetails_Click);
+            // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(188, 6);
+            // 
+            // tsmaddNewPerson
+            // 
+            this.tsmaddNewPerson.Image = ((System.Drawing.Image)(resources.GetObject("tsmaddNewPerson.Image")));
+            this.tsmaddNewPerson.Name = "tsmaddNewPerson";
+            this.tsmaddNewPerson.Size = new System.Drawing.Size(191, 26);
+            this.tsmaddNewPerson.Text = "Add New Person";
+            this.tsmaddNewPerson.Click += new System.EventHandler(this.tsmaddNewPerson_Click);
             // 
             // tsmedit
             // 
@@ -193,23 +213,6 @@
             this.btnAddNewPerson.TabIndex = 3;
             this.btnAddNewPerson.UseVisualStyleBackColor = false;
             this.btnAddNewPerson.Click += new System.EventHandler(this.btnAddNewPerson_Click);
-            // 
-            // tsmshowDetails
-            // 
-            this.tsmshowDetails.Image = ((System.Drawing.Image)(resources.GetObject("tsmshowDetails.Image")));
-            this.tsmshowDetails.ImageTransparentColor = System.Drawing.Color.Black;
-            this.tsmshowDetails.Name = "tsmshowDetails";
-            this.tsmshowDetails.Size = new System.Drawing.Size(191, 26);
-            this.tsmshowDetails.Text = "Show Details";
-            this.tsmshowDetails.Click += new System.EventHandler(this.tsmshowDetails_Click);
-            // 
-            // tsmaddNewPerson
-            // 
-            this.tsmaddNewPerson.Image = ((System.Drawing.Image)(resources.GetObject("tsmaddNewPerson.Image")));
-            this.tsmaddNewPerson.Name = "tsmaddNewPerson";
-            this.tsmaddNewPerson.Size = new System.Drawing.Size(191, 26);
-            this.tsmaddNewPerson.Text = "Add New Person";
-            this.tsmaddNewPerson.Click += new System.EventHandler(this.tsmaddNewPerson_Click);
             // 
             // frmListPeople
             // 
