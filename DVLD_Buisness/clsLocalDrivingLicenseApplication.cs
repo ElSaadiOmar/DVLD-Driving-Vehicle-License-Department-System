@@ -187,7 +187,39 @@ namespace DVLD_Buisness
         }
         public int IssueLicenseForTheFirstTime(string Notes, int CreatedByUserID)
         {
-            return clsLocalDrivingLicenseApplicationData.IssueLicenseForTheFirstTime(this.LocalDrivingLicenseApplicationID, Notes, CreatedByUserID);
+            clsDriver Driver = clsDriver.FindByPersonID(base.ApplicantPersonID);
+            if (Driver == null)
+            { 
+                Driver = new clsDriver();
+                Driver.PersonID = base.ApplicantPersonID;
+                Driver.CreatedByUserID = CreatedByUserID;
+                if(!Driver.Save())
+                {
+                    return -1;
+                }
+            }
+            clsLicense License = new clsLicense();
+
+            License.ApplicationID = this.ApplicationID;
+            License.DriverID = Driver.DriverID;
+            License.LicenseClassID = this.LicenseClassID;
+            License.IssueDate = DateTime.Now;
+            License.ExpirationDate = DateTime.Now.AddYears(this.LicenseClassInfo.DefaultValidityLength);
+            License.Notes = Notes;
+            License.PaidFees = this.LicenseClassInfo.ClassFees;
+            License.IsActive = true;
+            License.IssueReason = clsLicense.enIssueReason.FirstTime;
+            License.CreatedByUserID = CreatedByUserID;
+
+
+            if (License.Save())
+            {
+                this.SetComplete();
+                return License.LicenseID;
+            }
+
+            else
+                return -1;
         }
         public bool IsLicenseIssued()
         {

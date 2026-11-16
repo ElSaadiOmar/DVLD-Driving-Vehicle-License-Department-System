@@ -365,10 +365,6 @@ Order By LocalDrivingLicenseApplicationID DESC";
                 }
             }
         }
-        public static int IssueLicenseForTheFirstTime(int LocalDrivingLicenseApplicationID, string Notes,int CreatedByUserID)
-        {
-            return -1;
-        }
         public static bool IsLicenseIssued(int LocalDrivingLicenseApplicationID)
         {
             string Query = @"Select Found=1  from LocalDrivingLicenseApplications inner join Licenses 
