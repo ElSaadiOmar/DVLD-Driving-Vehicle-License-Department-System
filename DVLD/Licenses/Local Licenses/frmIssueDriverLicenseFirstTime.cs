@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DVLD.Helpers;
+using DVLD_Buisness;
 
 namespace DVLD.Licenses.Local_Licenses
 {
@@ -29,7 +30,8 @@ namespace DVLD.Licenses.Local_Licenses
             btnIssue.ForeColor = Color.White;
         }
         private int _LocalDrivingLicenseApplicationID;
-       
+        private clsLocalDrivingLicenseApplication _LocalDrivingLicenseApplication;
+
         public frmIssueDriverLicenseFirstTime(int LocalDrivingLicenseApplicationID)
         {
             InitializeComponent();
@@ -39,6 +41,27 @@ namespace DVLD.Licenses.Local_Licenses
         private void frmIssueDriverLicenseFirstTime_Load(object sender, EventArgs e)
         {
             _ApplyTheme();
+            _LocalDrivingLicenseApplication = clsLocalDrivingLicenseApplication.FindByLocalDrivingAppLicenseID(_LocalDrivingLicenseApplicationID);
+            if (_LocalDrivingLicenseApplication == null)
+            {
+
+                MessageBox.Show("No Applicaiton with ID=" + _LocalDrivingLicenseApplicationID.ToString(), "Not Allowed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
+                return;
+            }
+            if(!_LocalDrivingLicenseApplication.PassedAllTests())
+            {
+                MessageBox.Show("Person Should Pass All Tests First.", "Not Allowed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
+                return;
+            }
+            int LicenseID = _LocalDrivingLicenseApplication.GetActiveLicenseID();
+            if (LicenseID != -1)
+            {
+                MessageBox.Show("Person already has License before with License ID=" + LicenseID.ToString(), "Not Allowed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
+                return;
+            }
             ctrlDrivingLicenseApplicationInfo1.LoadApplicationInfoByLocalDrivingAppID(_LocalDrivingLicenseApplicationID);
         }
 
@@ -49,9 +72,18 @@ namespace DVLD.Licenses.Local_Licenses
 
         private void btnIssue_Click(object sender, EventArgs e)
         {
-            if(true)
+            int LicenseID = _LocalDrivingLicenseApplication.IssueLicenseForTheFirstTime(txtNotes.Text.Trim(), clsGlobal.CurrentUser.UserID);
+            if (LicenseID != -1)
             {
+                MessageBox.Show("License Issued Successfully with License ID = " + LicenseID.ToString(),
+                    "Succeeded", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("License Was not Issued ! ",
+                 "Faild", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

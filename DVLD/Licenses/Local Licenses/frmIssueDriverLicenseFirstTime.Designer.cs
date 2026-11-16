@@ -28,20 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtNotes = new System.Windows.Forms.TextBox();
             this.btnIssue = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.ctrlDrivingLicenseApplicationInfo1 = new DVLD.Applications.Local_Driving_License.ctrlDrivingLicenseApplicationInfo();
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // textBox1
+            // txtNotes
             // 
-            this.textBox1.Location = new System.Drawing.Point(167, 395);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(758, 119);
-            this.textBox1.TabIndex = 2;
+            this.txtNotes.Location = new System.Drawing.Point(167, 395);
+            this.txtNotes.Multiline = true;
+            this.txtNotes.Name = "txtNotes";
+            this.txtNotes.Size = new System.Drawing.Size(758, 119);
+            this.txtNotes.TabIndex = 2;
             // 
             // btnIssue
             // 
@@ -105,7 +105,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnIssue);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtNotes);
             this.Controls.Add(this.ctrlDrivingLicenseApplicationInfo1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmIssueDriverLicenseFirstTime";
@@ -119,7 +119,7 @@
         #endregion
 
         private Applications.Local_Driving_License.ctrlDrivingLicenseApplicationInfo ctrlDrivingLicenseApplicationInfo1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtNotes;
         private System.Windows.Forms.Button btnIssue;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Label label1;
