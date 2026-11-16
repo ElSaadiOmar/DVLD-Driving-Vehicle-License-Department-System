@@ -127,5 +127,9 @@ namespace DVLD_Buisness
             return false;
         }
 
+        public static int GetActiveLicenseIDByPersonID(int PersonID, int LicenseClassID)
+        {
+            return clsLicenseData.GetActiveLicenseIDByPersonID(PersonID, LicenseClassID);
+        }
     }
 }

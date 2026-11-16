@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
@@ -232,6 +233,32 @@ namespace DVLD_DataAccess
             }
 
             return Licenses;
+        }
+
+        public static int GetActiveLicenseIDByPersonID(int PersonID, int LicenseClassID)
+        {
+            string Query = @"SELECT [LicenseID]
+                    FROM [dbo].[Licenses] inner join Drivers on Licenses.DriverID = Drivers.DriverID
+	            where [LicenseClass] =@LicenseClassID and Drivers.PersonID =@PersonID and [IsActive] =1";
+
+            using (SqlConnection Connection = new SqlConnection(clsDataSettings.ConnectionString))
+            using (SqlCommand Command = new SqlCommand(Query, Connection))
+            {
+                Command.Parameters.AddWithValue("@PersonID", PersonID);
+                Command.Parameters.AddWithValue("@LicenseClassID", LicenseClassID);
+                try
+                {
+                    Connection.Open();
+                    object result = Command.ExecuteScalar();
+                    if (result != null && result != DBNull.Value)
+                        return Convert.ToInt32(result);
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex.ToString());
+                }
+            }
+            return -1;
         }
     }
 }
