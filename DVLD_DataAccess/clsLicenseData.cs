@@ -46,7 +46,7 @@ namespace DVLD_DataAccess
                             LicenseClass = (int)Reader["LicenseClass"];
                             IssueDate = (DateTime)Reader["IssueDate"];
                             ExpirationDate = (DateTime)Reader["ExpirationDate"];
-                            Notes = (string)Reader["Notes"];
+                            Notes = Reader["Notes"] == DBNull.Value ? "" : (string)Reader["Notes"];
                             PaidFees = Convert.ToSingle(Reader["PaidFees"]);
                             IsActive = (bool)Reader["IsActive"];
                             IssueReason = (byte)Reader["IssueReason"];
