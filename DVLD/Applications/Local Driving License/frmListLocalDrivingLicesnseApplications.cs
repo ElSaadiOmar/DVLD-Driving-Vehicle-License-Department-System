@@ -297,6 +297,7 @@ namespace DVLD.Applications.Local_Driving_License
             {
                 txtFilterValue.Text = "";
                 txtFilterValue.Visible = false;
+                cbStatus.Visible = false;
                 return;
             }
             if(cbFilterBy.Text== "Status")
@@ -308,6 +309,7 @@ namespace DVLD.Applications.Local_Driving_License
                 return;
             }
             txtFilterValue.Visible = true;
+            cbStatus.Visible = false;
             txtFilterValue.Text = "";
             txtFilterValue.Focus();
 
