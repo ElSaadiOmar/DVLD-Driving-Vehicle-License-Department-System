@@ -237,7 +237,14 @@ namespace DVLD.Applications.Local_Driving_License
 
         private void showLicenseToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //not implemented yet
+            clsLocalDrivingLicenseApplication LocalDrivingLicenseApplication = clsLocalDrivingLicenseApplication.FindByLocalDrivingAppLicenseID((int)dgvLocalDrivingLicenseApplications.CurrentRow.Cells[0].Value);
+            if (LocalDrivingLicenseApplication != null)
+            {
+                int LicenseID = clsLicense.GetActiveLicenseIDByPersonID(LocalDrivingLicenseApplication.ApplicantPersonID, LocalDrivingLicenseApplication.LicenseClassID);
+                frmShowLicenseInfo frm = new frmShowLicenseInfo(LicenseID);
+                frm.ShowDialog();
+                frmListLocalDrivingLicesnseApplications_Load(null, null);
+            }
         }
 
         private void showPersonLicenseHistoryToolStripMenuItem_Click(object sender, EventArgs e)
