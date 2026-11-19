@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DVLD.Applications.Controls;
+using DVLD.Licenses.Local_Licenses;
 using DVLD_Buisness;
 
 namespace DVLD.Applications.Local_Driving_License
@@ -65,7 +66,8 @@ namespace DVLD.Applications.Local_Driving_License
         }
         private void _FillLocalDrivingLicenseApplicationInfo()
         {
-            llShowLicenceInfo.Enabled = false;
+            _LicenseID = _LocalDrivingLicenseApplication.GetActiveLicenseID();
+            llShowLicenceInfo.Enabled = _LicenseID!=-1;
             _LocalDrivingLicenseApplicationID = _LocalDrivingLicenseApplication.LocalDrivingLicenseApplicationID;
             lblLocalDrivingLicenseApplicationID.Text = _LocalDrivingLicenseApplication.LocalDrivingLicenseApplicationID.ToString();
             lblLicenseClass.Text = clsLicenseClass.Find(_LocalDrivingLicenseApplication.LicenseClassID).ClassName;
@@ -75,7 +77,8 @@ namespace DVLD.Applications.Local_Driving_License
 
         private void llShowLicenceInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            //for now , we will just show a message box with the license ID. In a real application, you would open a new form or control to display the license information.
+            frmShowLicenseInfo frm = new frmShowLicenseInfo(_LicenseID);
+            frm.ShowDialog();
         }
     }
 }
