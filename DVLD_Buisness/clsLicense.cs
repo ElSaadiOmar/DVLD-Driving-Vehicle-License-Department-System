@@ -14,7 +14,7 @@ namespace DVLD_Buisness
     {
         public enum enMode { AddNew = 0, Update = 1 };
         public enMode Mode;
-        public int LicenseID {  get; set; }
+        public int LicenseID { get; set; }
         public int DriverID { get; set; }
         public clsDriver DriverInfo { get; private set; }
         public int ApplicationID { get; set; }
@@ -28,6 +28,25 @@ namespace DVLD_Buisness
 
         public enum enIssueReason { FirstTime = 1, Renew = 2, DamagedReplacement = 3, LostReplacement = 4 };
         public enIssueReason IssueReason { get; set; }
+        public string IssueReasonText
+        {
+            get
+            {
+                switch (IssueReason)
+                {
+                    case enIssueReason.FirstTime:
+                        return "First Time";
+                    case enIssueReason.Renew:
+                        return "Renew";
+                    case enIssueReason.DamagedReplacement:
+                        return "Replacement for Damaged";
+                    case enIssueReason.LostReplacement:
+                        return "Replacement for Lost";
+                    default:
+                        return "First Time";
+                }
+            }
+        }
         public int CreatedByUserID {  get; set; }
         public clsUser UserInfo { get; private set; }
         public clsLicense()

@@ -45,7 +45,7 @@ namespace DVLD.Licenses.Local_Licenses
             lblLicenseID.Text = SelectedLicenseInfo.LicenseID.ToString();
             lblNationalNo.Text = SelectedLicenseInfo.DriverInfo.PersonInfo.NationalNo;
             lblIssueDate.Text = SelectedLicenseInfo.IssueDate.ToString("dd/MM/yyyy");
-            lblIssueReason.Text = SelectedLicenseInfo.IssueReason.ToString();//for now
+            lblIssueReason.Text = SelectedLicenseInfo.IssueReasonText;
             lblNotes.Text = SelectedLicenseInfo.Notes;
             lblIsActive.Text = SelectedLicenseInfo.IsActive ? "Yes" : "No";
             lblDateOfBirth.Text = SelectedLicenseInfo.DriverInfo.PersonInfo.DateOfBirth.ToString("dd/MM/yyyy");
