@@ -182,9 +182,8 @@ namespace DVLD.People.Controls
                         break;
                     }
             }
-            if (OnPersonSelected != null && FilterEnabled)
-                // Raise the event with a parameter
-                OnPersonSelected(ctrlPersonCard1.PersonID);
+            if (FilterEnabled)
+                PersonSelected(ctrlPersonCard1.PersonID);
         }
         private void btnSearch_Click(object sender, EventArgs e)
         {
