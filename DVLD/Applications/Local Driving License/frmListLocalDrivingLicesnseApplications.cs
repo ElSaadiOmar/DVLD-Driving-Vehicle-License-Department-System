@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DVLD.Helpers;
+using DVLD.Licenses;
 using DVLD.Licenses.Local_Licenses;
 using DVLD.Tests;
 using DVLD_Buisness;
@@ -249,7 +250,15 @@ namespace DVLD.Applications.Local_Driving_License
 
         private void showPersonLicenseHistoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //not implemented yet
+            clsLocalDrivingLicenseApplication LocalDrivingLicenseApplication =
+                clsLocalDrivingLicenseApplication.FindByLocalDrivingAppLicenseID((int)dgvLocalDrivingLicenseApplications.CurrentRow.Cells[0].Value);
+            if (LocalDrivingLicenseApplication != null)
+            {
+                frmShowPersonLicenseHistory frm = new frmShowPersonLicenseHistory(LocalDrivingLicenseApplication.ApplicantPersonID);
+                frm.ShowDialog();
+                frmListLocalDrivingLicesnseApplications_Load(null, null);
+            }
+          
         }
 
         private void scheduleVisionTestToolStripMenuItem_Click(object sender, EventArgs e)
@@ -400,6 +409,11 @@ namespace DVLD.Applications.Local_Driving_License
                     _Filter("Status", "Cancelled");
                     break;
             }
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
