@@ -150,5 +150,9 @@ namespace DVLD_Buisness
         {
             return clsLicenseData.GetActiveLicenseIDByPersonID(PersonID, LicenseClassID);
         }
+        public static DataTable GetDriverLocalLicenses(int DriverID)
+        {
+            return clsLicenseData.GetDriverLocalLicenses(DriverID);
+        }
     }
 }

@@ -80,6 +80,15 @@ namespace DVLD_Buisness
         {
             return clsDriverData.GetAllDrivers();
         }
+        public static DataTable GetDriverLocalLicenses(int DriverID)
+        {
+            return clsLicense.GetDriverLocalLicenses(DriverID);
+        }
+        public static DataTable GetDriverInternationalLicenses(int DriverID)
+        {
+            return clsDriverData.GetDriverInternationalLicenses(DriverID);
+        }
+
         private bool _AddNewDriver()
         {
             this.DriverID= clsDriverData.AddNewDriver(this.PersonID, this.CreatedByUserID);
