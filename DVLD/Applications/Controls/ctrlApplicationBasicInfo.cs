@@ -25,7 +25,7 @@ namespace DVLD.Applications.Controls
         }
         public void LoadApplicationInfo(int ApplicationID)
         {
-            _Application = clsApplication.Find(ApplicationID);
+            _Application = clsApplication.FindBaseApplication(ApplicationID);
             if (_Application == null)
             {
                 ResetApplicationInfo();

@@ -72,7 +72,7 @@ namespace DVLD_Buisness
             this.CreatedByUserInfo = clsUser.Find(CreatedByUserID);
             Mode = enMode.Update;
         }
-        static public clsApplication Find(int ApplicationID)
+        static public clsApplication FindBaseApplication(int ApplicationID)
         {
             int ApplicantPersonID = -1;
             DateTime ApplicationDate = DateTime.Now;

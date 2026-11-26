@@ -51,7 +51,7 @@ namespace DVLD_Buisness
             int ApplicationID = -1;
             if (clsLocalDrivingLicenseApplicationData.GetLocalDrivingLicenseApplicationInfo(LocalDrivingAppLicenseID, ref ApplicationID, ref LicenseClassID))
             {
-                clsApplication Application = clsApplication.Find(ApplicationID);
+                clsApplication Application = clsApplication.FindBaseApplication(ApplicationID);
                 if (Application == null)
                 {
                     return null;
@@ -72,7 +72,7 @@ namespace DVLD_Buisness
             int LocalDrivingAppLicenseID = -1;
             if (clsLocalDrivingLicenseApplicationData.GetLocalDrivingLicenseApplicationInfoByApplicationID(ApplicationID, ref LocalDrivingAppLicenseID, ref LicenseClassID))
             {
-                clsApplication Application = clsApplication.Find(ApplicationID);
+                clsApplication Application = clsApplication.FindBaseApplication(ApplicationID);
                 if (Application == null)
                 {
                     return null;

@@ -51,7 +51,7 @@ namespace DVLD_Buisness
             this.CreatedByUserID = CreatedByUserID;
             this.CreatedByUserInfo = clsUser.Find(CreatedByUserID);
             this.RetakeTestApplicationID = RetakeTestApplicationID;
-            this.RetakeTestApplicationInfo = RetakeTestApplicationID != null ? clsApplication.Find((int)RetakeTestApplicationID) : null;
+            this.RetakeTestApplicationInfo = RetakeTestApplicationID != null ? clsApplication.FindBaseApplication((int)RetakeTestApplicationID) : null;
             Mode = enMode.Update;
         }
 
