@@ -17,13 +17,13 @@ namespace DVLD_Buisness
             NewDrivingLicense = 1, RenewDrivingLicense = 2, ReplaceLostDrivingLicense = 3,
             ReplaceDamagedDrivingLicense = 4, ReleaseDetainedDrivingLicsense = 5, NewInternationalLicense = 6, RetakeTest = 7
         };
-        public int ApplicationID { get; set; }
+        public int ApplicationID { get; protected set; }
         public int ApplicantPersonID { get; set; }
         public string ApplicantFullName { get { return clsPerson.Find(ApplicantPersonID).FullName; } }
         public DateTime ApplicationDate { get; set; }
         public int ApplicationTypeID { get; set; }
         
-        public clsApplicationType ApplicationTypeInfo { get; private set; }
+        public clsApplicationType ApplicationTypeInfo { get; protected set; }
         public enApplicationStatus ApplicationStatus { get; set; }
         public string StatusText
         {
@@ -45,7 +45,7 @@ namespace DVLD_Buisness
         public DateTime LastStatusDate { get; set; }
         public float PaidFees { get; set; }
         public int CreatedByUserID { get; set; }
-        public clsUser CreatedByUserInfo { get;private set; }
+        public clsUser CreatedByUserInfo { get;protected set; }
         public clsApplication()
         {
             ApplicationID = -1;
