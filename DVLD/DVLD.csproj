@@ -470,5 +470,9 @@
   <ItemGroup>
     <None Include="Resources\Add Appointment 32.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Applications\International License\" />
+    <Folder Include="Licenses\International Licenses\Controls\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
